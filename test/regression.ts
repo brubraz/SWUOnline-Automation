@@ -7,9 +7,10 @@ import { OnAttackCases } from './cases/on-attack';
 import { AmbushCases } from './cases/ambush';
 import { BounceCases } from './cases/bounce';
 import { LeaderAbilitySORCases } from './cases/leader-ability-sor';
-import { LeaderUnitCases } from './cases/leader-unit';
+import { LeaderUnitTWICases } from './cases/leader-unit-twi';
 import { BountyCases } from './cases/bounty';
 import { ExploitCases } from './cases/exploit';
+import { SpecificSORCases } from './cases/specific/sor';
 import { SpecificSHDCases } from './cases/specific/shd';
 import { SpecificTWICases } from './cases/specific/twi';
 
@@ -35,7 +36,8 @@ const home: NightwatchTests = {
     let inviteRetry = 0;
 
     while(!await browser.element.find('input.invite-link').isPresent() && inviteRetry < maxRetries) {
-      await browser.refresh().refresh().refresh().pause(p.WaitToBegin);
+      await browser
+        .refresh().refresh().pause(p.WaitToBegin)
       inviteRetry++;
     }
 
@@ -59,8 +61,7 @@ const home: NightwatchTests = {
 
     while(!await browser.element.find('div#setup-content').isPresent() && joinGameRetry < maxRetries) {
       await browser.navigateTo(inviteLink).pause(p.WaitToBegin)
-        .refresh().refresh().refresh()
-        .pause(p.WaitToBegin)
+        .refresh().refresh().pause(p.WaitToBegin)
         .waitForElementPresent('input#fabdb')
         .setValue('input#fabdb', genericJangoDeck)
         .waitForElementPresent('input.JoinGame_Button')
@@ -76,13 +77,13 @@ const home: NightwatchTests = {
       ;
 
       await browser.window.switchTo(player1Window)
-        .refresh()
+        .refresh().pause(p.WaitToBegin)
         .waitForElementPresent('input.GameLobby_Button[value="Start"]')
         .click('input.GameLobby_Button[value="Start"]').pause(p.ButtonPress)
         ;
     } else {
       await browser.window.switchTo(player1Window)
-        .refresh()
+        .refresh().refresh().pause(p.WaitToBegin)
         .waitForElementPresent('input.GameLobby_Button[value="Go First"]')
         .click('input.GameLobby_Button[value="Go First"]').pause(p.ButtonPress)
         .waitForElementPresent('input.GameLobby_Button[value="Start"]')
@@ -90,7 +91,7 @@ const home: NightwatchTests = {
       ;
 
       await browser.window.switchTo(player2Window)
-        .refresh()
+        .refresh().refresh().pause(p.WaitToBegin)
         .waitForElementPresent('input.GameLobby_Button[value="Ready"]')
         .click('input.GameLobby_Button[value="Ready"]').pause(p.ButtonPress)
       ;
@@ -106,8 +107,8 @@ const home: NightwatchTests = {
   ...AmbushCases,
   ...BounceCases,
   ...LeaderAbilitySORCases,
-  ...LeaderUnitCases,
-  //...SpecificSORCases,
+  ...LeaderUnitTWICases,
+  ...SpecificSORCases,
   ...BountyCases,
   ...SpecificSHDCases,
   ...ExploitCases,

@@ -17,8 +17,9 @@ export const LeaderAbilitySORCases = {
     await LoadTestGameStateAsync('leader-ability-sor/iden-versio-heal');
 
     await browser.waitForElementPresent(com.Leader(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.Leader(1))
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
     ;
 
@@ -28,6 +29,7 @@ export const LeaderAbilitySORCases = {
     await LoadTestGameStateAsync('leader-ability-sor/chewbacca-taunt');
 
     await browser.waitForElementPresent(com.Leader(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.Leader(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
@@ -42,6 +44,7 @@ export const LeaderAbilitySORCases = {
     await LoadTestGameStateAsync('leader-ability-sor/chirrut-buff');
 
     await browser.waitForElementPresent(com.Leader(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.Leader(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
@@ -56,6 +59,7 @@ export const LeaderAbilitySORCases = {
     await LoadTestGameStateAsync('leader-ability-sor/luke-shield');
 
     await browser.waitForElementPresent(com.Leader(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.Leader(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
@@ -70,6 +74,7 @@ export const LeaderAbilitySORCases = {
     await LoadTestGameStateAsync('leader-ability-sor/luke-shield');
 
     await browser.waitForElementPresent(com.MyHand)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(3))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .click(com.TopBottomButton(1, 1)).pause(p.ButtonPress)
@@ -77,11 +82,13 @@ export const LeaderAbilitySORCases = {
 
     await browser.window.switchTo(player2Window)
       .waitForElementPresent(com.PassButton)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.PassButton).pause(p.ButtonPress)
     ;
 
     await browser.window.switchTo(player1Window)
       .waitForElementPresent(com.Leader(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.Leader(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
@@ -97,6 +104,7 @@ export const LeaderAbilitySORCases = {
     await LoadTestGameStateAsync('leader-ability-sor/palp-fails');
 
     await browser.waitForElementPresent(com.Leader(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.Leader(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
@@ -110,6 +118,7 @@ export const LeaderAbilitySORCases = {
     await LoadTestGameStateAsync('leader-ability-sor/palp-ping');
 
     await browser.waitForElementPresent(com.Leader(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.Leader(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
@@ -128,6 +137,7 @@ export const LeaderAbilitySORCases = {
     await LoadTestGameStateAsync('leader-ability-sor/tarkin-fails');
 
     await browser.waitForElementPresent(com.Leader(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.Leader(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
@@ -140,6 +150,7 @@ export const LeaderAbilitySORCases = {
     await LoadTestGameStateAsync('leader-ability-sor/tarkin-xp');
 
     await browser.waitForElementPresent(com.Leader(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.Leader(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
@@ -169,6 +180,7 @@ export const LeaderAbilitySORCases = {
 
     await browser
       .waitForElementPresent(com.Leader(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.Leader(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
@@ -190,6 +202,7 @@ export const LeaderAbilitySORCases = {
 
       await browser
         .waitForElementPresent(com.Leader(1))
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.Leader(1))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
@@ -202,6 +215,7 @@ export const LeaderAbilitySORCases = {
 
       await browser.window.switchTo(player2Window)
         .waitForElementPresent(com.MyHand)
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.YesNoButton("NO")).pause(p.ButtonPress)
       ;
 
@@ -223,6 +237,7 @@ export const LeaderAbilitySORCases = {
       await LoadTestGameStateAsync('leader-ability-sor/vader-ping');
 
       await browser.waitForElementPresent(com.Leader(1))
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.Leader(1))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
@@ -239,6 +254,7 @@ export const LeaderAbilitySORCases = {
       await LoadTestGameStateAsync('leader-ability-sor/grandinq-ready');
 
       await browser.waitForElementPresent(com.Leader(1))
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.Leader(1))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
@@ -253,6 +269,7 @@ export const LeaderAbilitySORCases = {
       await LoadTestGameStateAsync('leader-ability-sor/ig88-buff');
 
       await browser.waitForElementPresent(com.Leader(1))
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.Leader(1))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
@@ -268,6 +285,7 @@ export const LeaderAbilitySORCases = {
       await LoadTestGameStateAsync('leader-ability-sor/cassian-draw');
 
       await browser.waitForElementPresent(com.MyHand)
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.HandCard(1))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
         .click(com.Base(2))
@@ -276,11 +294,13 @@ export const LeaderAbilitySORCases = {
 
       await browser.window.switchTo(player2Window)
         .waitForElementPresent(com.PassButton)
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.PassButton).pause(p.ButtonPress)
       ;
 
       await browser.window.switchTo(player1Window)
         .waitForElementPresent(com.Leader(1))
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.Leader(1))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
@@ -293,6 +313,7 @@ export const LeaderAbilitySORCases = {
       await LoadTestGameStateAsync('leader-ability-sor/sabine-ping');
 
       await browser.waitForElementPresent(com.Leader(1))
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.Leader(1))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
@@ -306,6 +327,7 @@ export const LeaderAbilitySORCases = {
       await LoadTestGameStateAsync('leader-ability-sor/boba-ready');
       await browser.assert.textEquals(com.MyResources, '4/7');
       await browser.waitForElementPresent(com.AllyGroundUnit(1))
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.AllyGroundUnit(1))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
         .click(com.EnemyGroundUnit(1))
@@ -318,6 +340,7 @@ export const LeaderAbilitySORCases = {
       await LoadTestGameStateAsync('leader-ability-sor/thrawn-exhaust');
 
       await browser.waitForElementPresent(com.Leader(1))
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.Leader(1))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
@@ -334,6 +357,7 @@ export const LeaderAbilitySORCases = {
       await LoadTestGameStateAsync('leader-ability-sor/han-resource');
 
       await browser.waitForElementPresent(com.Leader(1))
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.Leader(1))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
@@ -346,11 +370,13 @@ export const LeaderAbilitySORCases = {
 
       await browser.window.switchTo(player2Window)
         .waitForElementPresent(com.PassButton)
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.PassButton).pause(p.ButtonPress)
       ;
 
       await browser.window.switchTo(player1Window)
         .waitForElementPresent(com.PassButton)
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.PassButton).pause(p.ButtonPress)
         .moveToElement(com.GameChat, 0, 0).pause(p.ButtonPress)
         .click(com.PassButton).pause(p.ButtonPress)
@@ -365,6 +391,7 @@ export const LeaderAbilitySORCases = {
       await LoadTestGameStateAsync('leader-ability-sor/jyn-erso-debuff');
 
       await browser.waitForElementPresent(com.Leader(1))
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.Leader(1))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)

@@ -10,6 +10,7 @@ export const WhenPlayedCases = {
 
         await browser
         .waitForElementPresent(com.MyHand)
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.HandCard(1))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         .click(com.Checkbox(3)).pause(p.CheckBox)
@@ -42,6 +43,7 @@ export const WhenPlayedCases = {
         await LoadTestGameStateAsync('when-played/vader-bottom-deck');
 
         await browser.waitForElementPresent(com.MyHand)
+          .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.HandCard(1))
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
           .click(com.PassButton).pause(p.ButtonPress)
@@ -57,11 +59,13 @@ export const WhenPlayedCases = {
 
         await browser.window.switchTo(player2Window)
           .waitForElementPresent(com.ClaimButton)
+          .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.ClaimButton).pause(p.ButtonPress)
         ;
 
         await browser.window.switchTo(player1Window)
           .waitForElementPresent(com.MyHand)
+          .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.HandCard(1))
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         ;

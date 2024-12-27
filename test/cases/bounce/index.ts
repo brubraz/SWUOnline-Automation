@@ -9,6 +9,7 @@ export const BounceCases = {
     await LoadTestGameStateAsync('bounce/waylay-tokens');
 
     await browser.waitForElementPresent(com.MyHand)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.EnemyGroundUnit(1))
@@ -17,13 +18,14 @@ export const BounceCases = {
 
     await browser.window.switchTo(player2Window)
       .waitForElementPresent(com.ClaimButton)
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.ClaimButton)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
 
     await browser.window.switchTo(player1Window)
       .waitForElementPresent(com.MyHand)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.EnemyGroundUnit(1))

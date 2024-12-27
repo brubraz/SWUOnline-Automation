@@ -77,8 +77,9 @@ export const p = {
   CheckBox: 250,
   ButtonPress: 1_000,
   WaitForEffect: 1_200,
-  WaitToBegin: 1_000,
+  WaitToBegin: 3_000,
   WaitToChooseTarget: 800,
+  Debug: 300_000,
 }
 
 export const src = {

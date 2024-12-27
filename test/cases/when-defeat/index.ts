@@ -10,7 +10,8 @@ export const WhenDefeatCases = {
         await LoadTestGameStateAsync('when-defeat/slt-clone-cohort');
         const player1SLT = com.UniqueIdSelector(77);
         await browser
-        .waitForElementPresent(com.MyHand).pause(p.WaitToBegin)
+        .waitForElementPresent(com.MyHand)
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.HandCard(2))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
         .click(player1SLT)
@@ -43,12 +44,14 @@ export const WhenDefeatCases = {
 
         await browser.window.switchTo(player1Window)
         .waitForElementPresent(com.MyHand)
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.YesNoButton('YES')).pause(p.ButtonPress)
         .click(com.YesNoButton('YES')).pause(p.ButtonPress)
         ;
 
         await browser.window.switchTo(player2Window)
         .waitForElementPresent(com.MyHand)
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.TopBottomButton(1, 1)).pause(p.ButtonPress)
         ;
 

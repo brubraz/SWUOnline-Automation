@@ -9,7 +9,7 @@ export const SpecificSHDCases = {
     await LoadTestGameStateAsync('specific/shd/lurking-tie');
 
     await browser.waitForElementPresent(com.MyHand)
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.EnemySpaceUnit(1))
@@ -24,7 +24,7 @@ export const SpecificSHDCases = {
     await LoadTestGameStateAsync('specific/shd/lurking-tie');
 
     await browser.waitForElementPresent(com.MyHand)
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(2))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.EnemySpaceUnit(1))
@@ -37,7 +37,7 @@ export const SpecificSHDCases = {
     await LoadTestGameStateAsync('specific/shd/lurking-tie');
 
     await browser.waitForElementPresent(com.MyHand)
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(3))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.AllySpaceUnit(1))
@@ -46,7 +46,7 @@ export const SpecificSHDCases = {
 
     await browser.window.switchTo(player2Window).refresh()
       .waitForElementPresent(com.AllySpaceUnit(1))
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.AllySpaceUnit(1))
     ;
 
@@ -61,7 +61,7 @@ export const SpecificSHDCases = {
     await LoadTestGameStateAsync('specific/shd/lurking-tie');
 
     await browser.waitForElementPresent(com.MyHand)
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(2))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.AllySpaceUnit(1))
@@ -74,7 +74,7 @@ export const SpecificSHDCases = {
     await LoadTestGameStateAsync('specific/shd/lurking-tie');
 
     await browser.waitForElementPresent(com.MyHand)
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(4))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.EnemySpaceUnit(1))
@@ -88,7 +88,7 @@ export const SpecificSHDCases = {
     await LoadTestGameStateAsync('specific/shd/lurking-tie');
 
     await browser.waitForElementPresent(com.MyHand)
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(4))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.AllySpaceUnit(1))

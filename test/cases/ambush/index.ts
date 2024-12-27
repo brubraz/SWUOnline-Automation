@@ -32,7 +32,8 @@ export const AmbushCases = {
     'Ambush: Rukh into Krayt Dragon with ECL': async function () {
         await LoadTestGameStateAsync('ambush/rukh-krayt');
 
-        await browser.waitForElementPresent(com.MyHand)
+        await browser.waitForElementPresent(com.Base(1))
+          .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.Base(1))
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
           .click(com.HandCard(1))
@@ -45,7 +46,7 @@ export const AmbushCases = {
         ;
 
         await browser.window.switchTo(player2Window)
-          .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+          .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
           .click(com.EnemyGroundUnit(1))
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
 
@@ -56,6 +57,7 @@ export const AmbushCases = {
       await LoadTestGameStateAsync('ambush/rukh-krayt');
 
         await browser.waitForElementPresent(com.MyHand)
+          .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.HandCard(2))
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
           .click(com.HandCard(1))
@@ -71,9 +73,9 @@ export const AmbushCases = {
 
         await browser.window.switchTo(player2Window)
           .refresh()
-          .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+          .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
           .click(com.EnemyGroundUnit(1))
-          .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+          .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
           .click(com.EnemyGroundUnit(1))
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
 

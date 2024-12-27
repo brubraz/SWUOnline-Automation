@@ -31,6 +31,7 @@ export const SpecificTWICases = {
 
     await browser.window.switchTo(player2Window)
       .waitForElementPresent(expectDooku)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(expectDooku)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .click(com.YesNoButton('NO')).pause(p.ButtonPress)
@@ -39,7 +40,7 @@ export const SpecificTWICases = {
       .click(expectDooku)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .click(com.YesNoButton('NO')).pause(p.ButtonPress)
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .click(com.HandCard(4))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .click(com.HandCard(1))
@@ -51,11 +52,13 @@ export const SpecificTWICases = {
 
     await browser.window.switchTo(player1Window)
       .waitForElementPresent(com.ClaimButton)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.ClaimButton).pause(p.ButtonPress)
     ;
 
     await browser.window.switchTo(player2Window)
       .waitForElementPresent(com.MyHand)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(expectDooku)
@@ -92,6 +95,7 @@ export const SpecificTWICases = {
     await LoadTestGameStateAsync('specific/twi/maul-single');
 
     await browser.waitForElementPresent(com.AllyGroundUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.AllyGroundUnit(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .click(com.ButtonInputChoice(2)).pause(p.ButtonPress)
@@ -105,6 +109,7 @@ export const SpecificTWICases = {
     await LoadTestGameStateAsync('specific/twi/maul-choose-single');
 
     await browser.waitForElementPresent(com.AllyGroundUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.AllyGroundUnit(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .click(com.ButtonInputChoice(2)).pause(p.ButtonPress)
@@ -121,6 +126,7 @@ export const SpecificTWICases = {
     await LoadTestGameStateAsync('specific/twi/maul-sentinels');
 
     await browser.waitForElementPresent(com.AllyGroundUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.AllyGroundUnit(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .click(com.Checkbox(1)).pause(p.CheckBox)
@@ -140,6 +146,7 @@ export const SpecificTWICases = {
     await LoadTestGameStateAsync('specific/twi/maul-sentinel-single');
 
     await browser.waitForElementPresent(com.AllyGroundUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.AllyGroundUnit(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
@@ -151,7 +158,7 @@ export const SpecificTWICases = {
     await LoadTestGameStateAsync('specific/twi/shadowed-intentions');
 
     await browser.waitForElementPresent(com.MyHand)
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.EnemyGroundUnit(1))
@@ -166,7 +173,7 @@ export const SpecificTWICases = {
     await LoadTestGameStateAsync('specific/twi/shadowed-intentions');
 
     await browser.waitForElementPresent(com.MyHand)
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(2))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.EnemyGroundUnit(1))
@@ -179,7 +186,7 @@ export const SpecificTWICases = {
     await LoadTestGameStateAsync('specific/twi/shadowed-intentions');
 
     await browser.waitForElementPresent(com.MyHand)
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(3))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.AllyGroundUnit(1))
@@ -188,7 +195,7 @@ export const SpecificTWICases = {
 
     await browser.window.switchTo(player2Window).refresh()
       .waitForElementPresent(com.AllyGroundUnit(1))
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.AllyGroundUnit(1))
     ;
 
@@ -203,7 +210,7 @@ export const SpecificTWICases = {
     await LoadTestGameStateAsync('specific/twi/shadowed-intentions');
 
     await browser.waitForElementPresent(com.MyHand)
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(2))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.AllyGroundUnit(1))
@@ -216,7 +223,7 @@ export const SpecificTWICases = {
     await LoadTestGameStateAsync('specific/twi/shadowed-intentions');
 
     await browser.waitForElementPresent(com.MyHand)
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(4))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.EnemyGroundUnit(1))
@@ -232,7 +239,7 @@ export const SpecificTWICases = {
     await LoadTestGameStateAsync('specific/twi/shadowed-intentions');
 
     await browser.waitForElementPresent(com.MyHand)
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(4))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.AllyGroundUnit(1))
