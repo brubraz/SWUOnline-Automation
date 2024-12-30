@@ -233,6 +233,33 @@ export const LeaderAbilitySORCases = {
       await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 3), '2');
       await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(2), 3), '2');
     },
+    'Leader Ability: Leia interrupted by Ezra': ''+async function () {//currently failing. here for TDD
+      await LoadTestGameStateAsync('leader-ability-sor/leia-ezra');
+
+      await browser.waitForElementPresent(com.Leader(1))
+        .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+        .click(com.Leader(1))
+        .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+        .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
+        .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+        .click(com.AllyGroundUnit(2))
+        .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+        .click(com.Base(2))
+        .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+        .click(com.Checkbox(3)).pause(p.CheckBox)
+        .click(com.SubmitButton).pause(p.ButtonPress)
+        .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+        .click(com.AllyGroundUnit(1))
+        .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+        .click(com.Base(2))
+        .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+      ;
+
+      await browser.assert.textEquals(com.TheirBaseDamage, '6');
+      await browser.assert.textEquals(com.MyDiscardCount, '1');
+      await browser.assert.textEquals(com.TheirDiscardCount, '2');
+
+    },
     'Leader Ability: Darth Vader ping': async function () {
       await LoadTestGameStateAsync('leader-ability-sor/vader-ping');
 
