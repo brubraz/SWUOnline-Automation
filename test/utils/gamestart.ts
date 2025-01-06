@@ -21,13 +21,15 @@ export const beforeFunc: NightwatchTestHook = async (browser, done) => {
   await browser
     .waitForElementPresent(com.DeckInput)
     .setValue(com.DeckInput, genericJangoDeck)
-    .click(com.CreateGameButton).pause(p.ButtonPress);
+    .click(com.CreateGameButton).pause(p.ButtonPress)
+    .refresh().pause(p.WaitToBegin)
+  ;
 
   let inviteRetry = 0;
 
   while(!await browser.element.find(com.InviteLink).isPresent() && inviteRetry < maxRetries) {
     await browser
-    .refresh().refresh().pause(p.WaitToBegin)
+    .refresh().pause(p.ButtonPress).refresh().pause(p.WaitToBegin)
     inviteRetry++;
   }
 
@@ -53,7 +55,7 @@ export const beforeFunc: NightwatchTestHook = async (browser, done) => {
     || (await browser.getText(com.LobbySetupContent)).length === 0)
     && joinGameRetry < maxRetries) {
     await browser.navigateTo(inviteLink).pause(p.WaitToBegin)
-    .refresh().refresh().pause(p.WaitToBegin)
+    .refresh().pause(p.ButtonPress).refresh().pause(p.WaitToBegin)
     .waitForElementPresent(com.DeckInput)
     .setValue(com.DeckInput, genericJangoDeck)
     .waitForElementPresent(com.JoinGameButton)
@@ -75,7 +77,7 @@ export const beforeFunc: NightwatchTestHook = async (browser, done) => {
     ;
   } else {
     await browser.window.switchTo(player1Window)
-    .refresh().refresh().pause(p.WaitToBegin)
+    .refresh().pause(p.ButtonPress).refresh().pause(p.WaitToBegin)
     .waitForElementPresent(com.GoFirstButton)
     .click(com.GoFirstButton).pause(p.ButtonPress)
     .waitForElementPresent(com.StartButton)
@@ -83,7 +85,7 @@ export const beforeFunc: NightwatchTestHook = async (browser, done) => {
     ;
 
     await browser.window.switchTo(player2Window)
-    .refresh().refresh().pause(p.WaitToBegin)
+    .refresh().pause(p.ButtonPress).refresh().pause(p.WaitToBegin)
     .waitForElementPresent(com.ReadyButton)
     .click(com.ReadyButton).pause(p.ButtonPress)
     ;

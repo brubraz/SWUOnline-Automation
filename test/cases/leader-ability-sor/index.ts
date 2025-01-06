@@ -4,7 +4,7 @@ import {
     player1Window, player2Window
 } from '../../utils/util';
 
-export const LeaderAbilitySORCases = {
+export const LeaderAbilitySORCases = process.env.SKIP_FULL_REGRESSION ? {} :{
   'Leader Ability: Director Krennic passive buff': async function () {
     await LoadTestGameStateAsync('leader-ability-sor/krennic-passive');
 

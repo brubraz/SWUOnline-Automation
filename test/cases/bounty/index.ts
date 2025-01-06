@@ -36,7 +36,7 @@ export const BountyCases = {
     await browser.assert.textEquals(com.MyBaseDamage, '7');
     await browser.assert.textEquals(com.TheirBaseDamage, '18')
   },
-  'Bounty: The Client edge case': async function () {
+  'Bounty: The Client edge case': process.env.SKIP_FULL_REGRESSION ? '' : async function () {
     await LoadTestGameStateAsync('bounty/the-client-heal');
 
     await browser.waitForElementPresent(com.AllyGroundUnit(3))

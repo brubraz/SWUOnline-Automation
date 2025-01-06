@@ -27,7 +27,7 @@ export const SpecificSORCases = {
 
         await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 1), 'EXPERIENCE');
     },
-    'Gideon Hask: opponent pings self': async function () {
+    'Gideon Hask: opponent pings self': process.env.SKIP_FULL_REGRESSION ? '' : async function () {
         await LoadTestGameStateAsync('specific/sor/gideon-hask');
 
         await browser.window.switchTo(player2Window).refresh()
@@ -49,7 +49,7 @@ export const SpecificSORCases = {
 
         await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 1), 'EXPERIENCE');
     },
-    'Gideon Hask: pinged to death': async function () {
+    'Gideon Hask: pinged to death': process.env.SKIP_FULL_REGRESSION ? '' : async function () {
         await LoadTestGameStateAsync('specific/sor/gideon-hask');
 
         await browser.window.switchTo(player2Window).refresh()
