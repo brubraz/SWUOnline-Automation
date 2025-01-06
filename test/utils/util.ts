@@ -38,6 +38,7 @@ export async function LoadTestGameStateAsync(filename: string) {
 }
 
 export const com = {
+    ChromeReloadButton: 'button#reload-button',
     GameLog: 'div#gamelog',
     GameChat: 'input#chatText',
     DeckInput: 'input#fabdb',

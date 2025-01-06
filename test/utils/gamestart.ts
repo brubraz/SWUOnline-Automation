@@ -1,4 +1,4 @@
-import { NightwatchTestHook } from "nightwatch";
+import { NightwatchAPI, NightwatchTestHook } from "nightwatch";
 
 import {
   com, p,
@@ -49,11 +49,12 @@ export const beforeFunc: NightwatchTestHook = async (browser, done) => {
     .pause(p.WaitToBegin)
   ;
 
-  let joinGameRetry = 0;
+  let retries = 0;
 
-  while((!await browser.element.find(com.LobbySetupContent).isPresent()
+  while((await browser.element.find(com.ChromeReloadButton).isPresent()
+    || !await browser.element.find(com.LobbySetupContent).isPresent()
     || (await browser.getText(com.LobbySetupContent)).length === 0)
-    && joinGameRetry < maxRetries) {
+    && retries < maxRetries) {
     await browser.navigateTo(inviteLink).pause(p.WaitToBegin)
     .refresh().pause(p.ButtonPress).refresh().pause(p.WaitToBegin)
     .waitForElementPresent(com.DeckInput)
@@ -61,8 +62,17 @@ export const beforeFunc: NightwatchTestHook = async (browser, done) => {
     .waitForElementPresent(com.JoinGameButton)
     .click(com.JoinGameButton).pause(p.ButtonPress)
     .pause(p.WaitToBegin)
-    joinGameRetry++;
+    retries++;
   }
+
+  retries = 0;
+
+  const state = {
+    browser,
+    retries
+  }
+
+  await WaitForChromeToNotBeBrokenAsync(state);
 
   if(await browser.element.find(com.GoFirstButton).isPresent()) {
     await browser.click(com.GoFirstButton)
@@ -96,3 +106,12 @@ export const beforeFunc: NightwatchTestHook = async (browser, done) => {
 
   done();
 };
+
+async function WaitForChromeToNotBeBrokenAsync(state:{browser: NightwatchAPI, retries: number}) {
+  while(await browser.element.find(com.ChromeReloadButton).isPresent() && state.retries < maxRetries) {
+    await browser
+    .click(com.ChromeReloadButton).pause(p.ButtonPress)
+    .pause(p.WaitToBegin)
+    state.retries += 1;
+  }
+}
