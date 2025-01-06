@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "nightwatch ./test/regression.ts"
+    "test": "nightwatch ./test/regression.ts",
+    "test:engine": "nightwatch ./test/engine.ts"
   },
   "keywords": [],
   "author": "",

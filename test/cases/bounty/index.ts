@@ -21,7 +21,7 @@ export const BountyCases = {
     await browser.window.switchTo(player2Window).refresh()
       .waitForElementPresent(com.PassButton)
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
-      .click(com.PassButton)
+      .click(com.PassButton).pause(p.ButtonPress)
     ;
 
     await browser.window.switchTo(player1Window).refresh()

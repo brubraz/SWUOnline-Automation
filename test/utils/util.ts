@@ -82,15 +82,16 @@ export const com = {
     TheirResources: 'div.their-resources div.resources span',
     MyBaseDamage: 'span.base-my-dmg',
     TheirBaseDamage: 'span.base-their-dmg',
+    ClaimVictoryButton: 'button[title=claimVictoryButton]',
   }
 
 export const p = {
-  Move: 300,
+  Move: 500,
   CheckBox: 250,
   ButtonPress: 1_000,
   WaitForEffect: 1_200,
   WaitToBegin: 3_000,
-  WaitToChooseTarget: 800,
+  WaitToChooseTarget: 1_000,
   Debug: 300_000,
 }
 
