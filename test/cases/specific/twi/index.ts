@@ -5,7 +5,7 @@ import {
 } from '../../../utils/util';
 
 export const SpecificTWICases = {
-  'Exploit: Red Dooku TWI and triggers': process.env.SKIP_FULL_REGRESSION ? '' : async function() {
+  'Exploit: Red Dooku TWI and triggers': process.env.SKIP_FULL_REGRESSION !== "0" ? '' : async function() {
     await LoadTestGameStateAsync('specific/twi/dooku-exploit-2units');
 
     await browser
@@ -122,7 +122,7 @@ export const SpecificTWICases = {
     await browser.assert.not.elementPresent(com.EnemyGroundUnit(2));
     await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 3), '3');
   },
-  'On Attack: Maul TWI sentinels': process.env.SKIP_FULL_REGRESSION ? '' : async function () {
+  'On Attack: Maul TWI sentinels': process.env.SKIP_FULL_REGRESSION !== "0" ? '' : async function () {
     await LoadTestGameStateAsync('specific/twi/maul-sentinels');
 
     await browser.waitForElementPresent(com.AllyGroundUnit(1))

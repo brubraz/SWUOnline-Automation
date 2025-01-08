@@ -4,7 +4,7 @@ import {
     player1Window, player2Window
 } from '../../../utils/util';
 
-export const SpecificSHDCases = process.env.SKIP_FULL_REGRESSION ? {} :{
+export const SpecificSHDCases = process.env.SKIP_FULL_REGRESSION !== "0" ? {} :{
   'Lurking TIE: avoids enemy capture': async function() {
     await LoadTestGameStateAsync('specific/shd/lurking-tie');
 
