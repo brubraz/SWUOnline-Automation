@@ -21,8 +21,6 @@ export const AmbushCases = {
         .click(com.YesNoButton("YES")).pause(p.ButtonPress)
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
         .click(com.EnemyGroundUnit(1))
-        .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
-        .click(com.EnemyGroundUnit(1))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         ;
 
@@ -41,7 +39,6 @@ export const AmbushCases = {
           .click(com.PassButton).pause(p.ButtonPress)
           .click(com.PassButton).pause(p.ButtonPress)
           .click(com.YesNoButton("YES")).pause(p.ButtonPress)
-          .click(com.EnemyGroundUnit(1))
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         ;
 
@@ -66,7 +63,6 @@ export const AmbushCases = {
           .click(com.PassButton).pause(p.ButtonPress)
           .click(com.PassButton).pause(p.ButtonPress)
           .click(com.YesNoButton("YES")).pause(p.ButtonPress)
-          .click(com.EnemyGroundUnit(1))
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
           .click(com.PassButton).pause(p.ButtonPress)
         ;
