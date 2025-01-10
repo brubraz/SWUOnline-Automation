@@ -53,8 +53,6 @@ export const LeaderUnitSORCases = {
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
           .click(com.AllyGroundUnit(2))
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
-          .click(com.AllyGroundUnit(2))
-          .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
           .click(com.AllyGroundUnit(1))
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         ;

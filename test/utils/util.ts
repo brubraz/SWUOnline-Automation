@@ -92,7 +92,7 @@ export const p = {
   ButtonPress: 1_000,
   WaitForEffect: 1_200,
   WaitToBegin: 3_000,
-  WaitToChooseTarget: 1_000,
+  WaitToChooseTarget: 1_500,
   Debug: 300_000,
 }
 
