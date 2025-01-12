@@ -19,7 +19,7 @@ export const LeaderUnitSORCases = {
         await browser.assert.elementPresent(com.AllyGroundUnit(5));
         await browser.assert.attributeContains(com.UnitDivPiece(com.AllyGroundUnit(5), 3), 'style', src.ShieldToken);
 
-        await browser.window.switchTo(player2Window)
+        await browser.window.switchTo(player2Window).refresh()
           .waitForElementPresent(com.Leader(2))
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.Leader(2)).pause(p.ButtonPress)
@@ -34,7 +34,7 @@ export const LeaderUnitSORCases = {
         await browser.assert.elementPresent(com.AllySpaceUnit(1));
         await browser.assert.not.elementPresent(com.EnemySpaceUnit(1));
 
-        await browser.window.switchTo(player1Window)
+        await browser.window.switchTo(player1Window).refresh()
           .waitForElementPresent(com.AllyGroundUnit(4))
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.AllyGroundUnit(4))
@@ -46,7 +46,7 @@ export const LeaderUnitSORCases = {
         //Luke Skywalker gives shield to any unit
         await browser.assert.attributeContains(com.UnitDivPiece(com.AllyGroundUnit(1), 3), 'style', src.ShieldToken);
 
-        await browser.window.switchTo(player2Window)
+        await browser.window.switchTo(player2Window).refresh()
           .waitForElementPresent(com.AllyGroundUnit(3))
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.AllyGroundUnit(3))
@@ -65,7 +65,7 @@ export const LeaderUnitSORCases = {
         await browser.assert.attributeContains(com.UnitDivPiece(com.EnemyGroundUnit(2), 4), 'style', src.SentinelToken);
         await browser.assert.textEquals(com.TheirBaseDamage, '5');
 
-        await browser.window.switchTo(player1Window)
+        await browser.window.switchTo(player1Window).refresh()
           .waitForElementPresent(com.AllyGroundUnit(5))
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.AllyGroundUnit(5))
@@ -78,7 +78,7 @@ export const LeaderUnitSORCases = {
         await browser.assert.textEquals(com.MyBaseDamage, '4');
         await browser.assert.attributeEquals(com.UnitDivPiece(com.AllyGroundUnit(5), 3), 'class', 'overlay');
 
-        await browser.window.switchTo(player2Window)
+        await browser.window.switchTo(player2Window).refresh()
           .waitForElementPresent(com.AllyGroundUnit(1))
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.AllyGroundUnit(1))
@@ -91,7 +91,7 @@ export const LeaderUnitSORCases = {
         await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 1), 'EXPERIENCE');
         await browser.assert.textEquals(com.TheirBaseDamage, '3');
 
-        await browser.window.switchTo(player1Window)
+        await browser.window.switchTo(player1Window).refresh()
           .waitForElementPresent(com.AllyGroundUnit(2))
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.AllyGroundUnit(2))
@@ -104,7 +104,7 @@ export const LeaderUnitSORCases = {
         await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(2), 1), '4');
         await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(2), 2), '5');
 
-        await browser.window.switchTo(player2Window)
+        await browser.window.switchTo(player2Window).refresh()
           .waitForElementPresent(com.AllyGroundUnit(1))
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.AllyGroundUnit(1))
@@ -128,7 +128,7 @@ export const LeaderUnitSORCases = {
         await browser.assert.textEquals(com.TheirBaseDamage, '2');
         await browser.assert.textEquals(com.MyBaseDamage, '9');
 
-        await browser.window.switchTo(player1Window)
+        await browser.window.switchTo(player1Window).refresh()
           .waitForElementPresent(com.AllyGroundUnit(1))
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.AllyGroundUnit(1))
@@ -159,7 +159,7 @@ export const LeaderUnitSORCases = {
       await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(1), 3), '6');
       await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(2), 3), '2');
 
-      await browser.window.switchTo(player2Window)
+      await browser.window.switchTo(player2Window).refresh()
         .waitForElementPresent(com.AllyGroundUnit(1))
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.AllyGroundUnit(1))
@@ -172,7 +172,7 @@ export const LeaderUnitSORCases = {
       await browser.assert.textEquals(com.MyResources, '8/8');
       await browser.assert.textEquals(com.TheirBaseDamage, '10');
 
-      await browser.window.switchTo(player1Window)
+      await browser.window.switchTo(player1Window).refresh()
         .waitForElementPresent(com.AllyGroundUnit(5))
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.AllyGroundUnit(5))
@@ -188,7 +188,7 @@ export const LeaderUnitSORCases = {
       await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(2), 3), '5');
       await browser.assert.attributeEquals(com.HandCardImg(1), 'src', 'http://localhost:8080/SWUOnline/concat/7964782056.webp');
 
-      await browser.window.switchTo(player2Window)
+      await browser.window.switchTo(player2Window).refresh()
         .waitForElementPresent(com.AllyGroundUnit(3))
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.AllyGroundUnit(3))
@@ -200,7 +200,7 @@ export const LeaderUnitSORCases = {
       await browser.assert.textEquals(com.TheirBaseDamage, '14');
       await browser.assert.textEquals(com.MyResources, '9/9');
 
-      await browser.window.switchTo(player1Window)
+      await browser.window.switchTo(player1Window).refresh()
         .waitForElementPresent(com.AllyGroundUnit(2))
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.AllyGroundUnit(2))
@@ -216,7 +216,7 @@ export const LeaderUnitSORCases = {
       await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(5), 3), '4');
       await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(4), 3), '4');
 
-      await browser.window.switchTo(player2Window)
+      await browser.window.switchTo(player2Window).refresh()
         .waitForElementPresent(com.AllyGroundUnit(2))
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.AllyGroundUnit(2))
@@ -234,7 +234,7 @@ export const LeaderUnitSORCases = {
       await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(2), 3), '7');
       ;
 
-      await browser.window.switchTo(player1Window)
+      await browser.window.switchTo(player1Window).refresh()
         .waitForElementPresent(com.AllyGroundUnit(2))
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.AllyGroundUnit(2))

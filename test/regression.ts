@@ -14,10 +14,10 @@ import { ExploitCases } from './cases/exploit';
 import { SpecificSORCases } from './cases/specific/sor';
 import { SpecificSHDCases } from './cases/specific/shd';
 import { SpecificTWICases } from './cases/specific/twi';
-import { beforeFunc } from './utils/gamestart';
+import { init } from './utils/gamestart';
 
 const home: NightwatchTests = {
-  before: beforeFunc,
+  before: init,
 //regression suite
   ...WhenPlayedCases,
   ...WhenDefeatCases,

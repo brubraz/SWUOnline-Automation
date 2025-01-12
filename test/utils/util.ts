@@ -32,13 +32,12 @@ export async function LoadTestGameStateAsync(filename: string) {
   const newGameState = testState.split('\n').join('\r\n') + originalStateModified.join('\r\n');
   await fsp.writeFile(`../SWUOnline/Games/${lastGameNumber}/gamestate.txt`, newGameState, 'ascii');
   await browser.window.switchTo(player2Window).refresh();
-  await browser.pause(1_000);
+  await browser.pause(p.WaitForEffect);
   await browser.window.switchTo(player1Window).refresh();
-  await browser.pause(2_000);
+  await browser.pause(p.WaitToBegin);
 }
 
 export const com = {
-    ChromeReloadButton: 'button#reload-button',
     GameLog: 'div#gamelog',
     GameChat: 'input#chatText',
     DeckInput: 'input#fabdb',

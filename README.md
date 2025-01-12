@@ -18,7 +18,7 @@ const home: NightwatchTests = {
       .click('input.GameLobby_Button[value="Ready"]').pause(p.ButtonPress)
     ;
 
-    await browser.window.switchTo(player1Window)
+    await browser.window.switchTo(player1Window).refresh()
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToBegin);
   },
 //regression suite

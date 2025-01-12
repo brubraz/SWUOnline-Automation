@@ -29,7 +29,7 @@ export const SpecificTWICases = {
 
     const expectDooku = com.EnemyGroundUnit(1);
 
-    await browser.window.switchTo(player2Window)
+    await browser.window.switchTo(player2Window).refresh()
       .waitForElementPresent(expectDooku)
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(expectDooku)
@@ -50,13 +50,13 @@ export const SpecificTWICases = {
       .click(com.YesNoButton('NO')).pause(p.ButtonPress)
     ;
 
-    await browser.window.switchTo(player1Window)
+    await browser.window.switchTo(player1Window).refresh()
       .waitForElementPresent(com.ClaimButton)
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.ClaimButton).pause(p.ButtonPress)
     ;
 
-    await browser.window.switchTo(player2Window)
+    await browser.window.switchTo(player2Window).refresh()
       .waitForElementPresent(com.MyHand)
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(1))

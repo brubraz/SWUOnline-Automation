@@ -80,13 +80,13 @@ export const LeaderAbilitySORCases = process.env.SKIP_FULL_REGRESSION !== "0" ? 
       .click(com.TopBottomButton(1, 1)).pause(p.ButtonPress)
     ;
 
-    await browser.window.switchTo(player2Window)
+    await browser.window.switchTo(player2Window).refresh()
       .waitForElementPresent(com.PassButton)
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.PassButton).pause(p.ButtonPress)
     ;
 
-    await browser.window.switchTo(player1Window)
+    await browser.window.switchTo(player1Window).refresh()
       .waitForElementPresent(com.Leader(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.Leader(1))
@@ -213,13 +213,13 @@ export const LeaderAbilitySORCases = process.env.SKIP_FULL_REGRESSION !== "0" ? 
         .pause(p.WaitForEffect)
       ;
 
-      await browser.window.switchTo(player2Window)
+      await browser.window.switchTo(player2Window).refresh()
         .waitForElementPresent(com.MyHand)
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.YesNoButton("NO")).pause(p.ButtonPress)
       ;
 
-      await browser.window.switchTo(player1Window)
+      await browser.window.switchTo(player1Window).refresh()
         .waitForElementPresent(com.AllyGroundUnit(2))
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.AllyGroundUnit(2))
@@ -319,13 +319,13 @@ export const LeaderAbilitySORCases = process.env.SKIP_FULL_REGRESSION !== "0" ? 
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       ;
 
-      await browser.window.switchTo(player2Window)
+      await browser.window.switchTo(player2Window).refresh()
         .waitForElementPresent(com.PassButton)
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.PassButton).pause(p.ButtonPress)
       ;
 
-      await browser.window.switchTo(player1Window)
+      await browser.window.switchTo(player1Window).refresh()
         .waitForElementPresent(com.Leader(1))
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.Leader(1))
@@ -395,13 +395,13 @@ export const LeaderAbilitySORCases = process.env.SKIP_FULL_REGRESSION !== "0" ? 
 
       await browser.assert.textEquals(com.MyResources, '5/8');
 
-      await browser.window.switchTo(player2Window)
+      await browser.window.switchTo(player2Window).refresh()
         .waitForElementPresent(com.PassButton)
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.PassButton).pause(p.ButtonPress)
       ;
 
-      await browser.window.switchTo(player1Window)
+      await browser.window.switchTo(player1Window).refresh()
         .waitForElementPresent(com.PassButton)
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.PassButton).pause(p.ButtonPress)

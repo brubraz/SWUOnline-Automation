@@ -32,7 +32,7 @@ export const WhenDefeatCases = {
         const player2GarSaxonLeaderUnit = com.UniqueIdSelector(53);
         const player1Hevy = com.UniqueIdSelector(23);
 
-        await browser.window.switchTo(player2Window)
+        await browser.window.switchTo(player2Window).refresh()
         .waitForElementPresent(com.MyHand)
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(player2FollowerOfTheWay)
@@ -42,14 +42,14 @@ export const WhenDefeatCases = {
         .click(com.PassButton).pause(p.ButtonPress)
         ;
 
-        await browser.window.switchTo(player1Window)
+        await browser.window.switchTo(player1Window).refresh()
         .waitForElementPresent(com.MyHand)
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.YesNoButton('YES')).pause(p.ButtonPress)
         .click(com.YesNoButton('YES')).pause(p.ButtonPress)
         ;
 
-        await browser.window.switchTo(player2Window)
+        await browser.window.switchTo(player2Window).refresh()
         .waitForElementPresent(com.MyHand)
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.TopBottomButton(1, 1)).pause(p.ButtonPress)

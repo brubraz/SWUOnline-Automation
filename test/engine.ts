@@ -1,13 +1,13 @@
 import { NightwatchTests } from "nightwatch";
 
-import { beforeFunc } from "./utils/gamestart";
+import { init } from "./utils/gamestart";
 import { com, p,
     player1Window, player2Window,
     LoadTestGameStateAsync,
 } from "./utils/util";
 
 const engine: NightwatchTests = {
-    before: beforeFunc,
+    before: init,
     'Disconnect: Claim Victory': async () => {
         await LoadTestGameStateAsync('ambush/sabine-ping-shield');
         await browser.window.switchTo(player2Window).refresh();

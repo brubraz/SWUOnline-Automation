@@ -9,7 +9,7 @@ export const AmbushCases = {
         await LoadTestGameStateAsync('ambush/sabine-ping-shield');
 
         await browser
-        .window.switchTo(player2Window)
+        .window.switchTo(player2Window).refresh()
         .waitForElementPresent(com.MyHand)
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.Base(2))
@@ -42,7 +42,7 @@ export const AmbushCases = {
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         ;
 
-        await browser.window.switchTo(player2Window)
+        await browser.window.switchTo(player2Window).refresh()
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
           .click(com.EnemyGroundUnit(1))
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
@@ -67,8 +67,7 @@ export const AmbushCases = {
           .click(com.PassButton).pause(p.ButtonPress)
         ;
 
-        await browser.window.switchTo(player2Window)
-          .refresh()
+        await browser.window.switchTo(player2Window).refresh()
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
           .click(com.EnemyGroundUnit(1))
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)

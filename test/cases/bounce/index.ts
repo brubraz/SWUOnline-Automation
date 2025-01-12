@@ -16,14 +16,14 @@ export const BounceCases = {
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
 
-    await browser.window.switchTo(player2Window)
+    await browser.window.switchTo(player2Window).refresh()
       .waitForElementPresent(com.ClaimButton)
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.ClaimButton)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
 
-    await browser.window.switchTo(player1Window)
+    await browser.window.switchTo(player1Window).refresh()
       .waitForElementPresent(com.MyHand)
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(1))
