@@ -105,7 +105,7 @@ export const SpecificTWICases = {
     await browser.assert.not.elementPresent(com.EnemyGroundUnit(1));
     await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 3), '3');
   },
-  'On Attack: Maul TWI single target choice': async function () {
+  'On Attack: Maul TWI single target choice': process.env.SKIP_FULL_REGRESSION !== "0" ? '' : async function () {
     await LoadTestGameStateAsync('specific/twi/maul-choose-single');
 
     await browser.waitForElementPresent(com.AllyGroundUnit(1))
@@ -206,7 +206,7 @@ export const SpecificTWICases = {
     const lastLog = (await browser.getText(com.GameLog)).split('\n').slice(-1)[0];
     await browser.assert.equal(lastLog, 'Greedo Slow on the Draw cannot be defeated by enemy card effects.');
   },
-  'Shadowed Intentions: damaged by self': async function() {
+  'Shadowed Intentions: damaged by self': process.env.SKIP_FULL_REGRESSION !== "0" ? '' : async function() {
     await LoadTestGameStateAsync('specific/twi/shadowed-intentions');
 
     await browser.waitForElementPresent(com.MyHand)
@@ -235,7 +235,7 @@ export const SpecificTWICases = {
     const lastLog = (await browser.getText(com.GameLog)).split('\n').slice(-1)[0];
     await browser.assert.equal(lastLog, 'Greedo Slow on the Draw avoided bounce.');
   },
-  'Shadowed Intentions: bounced by self': async function() {
+  'Shadowed Intentions: bounced by self': process.env.SKIP_FULL_REGRESSION !== "0" ? '' : async function() {
     await LoadTestGameStateAsync('specific/twi/shadowed-intentions');
 
     await browser.waitForElementPresent(com.MyHand)

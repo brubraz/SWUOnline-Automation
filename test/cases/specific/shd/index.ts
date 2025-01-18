@@ -57,7 +57,7 @@ export const SpecificSHDCases = process.env.SKIP_FULL_REGRESSION !== "0" ? {} :{
     const lastLog = (await browser.getText(com.GameLog)).split('\n').slice(-1)[0];
     await browser.assert.equal(lastLog, 'Lurking TIE Phantom cannot be defeated by enemy card effects.');
   },
-  'Lurking TIE: damaged by self': async function() {
+  'Lurking TIE: damaged by self': process.env.SKIP_FULL_REGRESSION !== "0" ? '' : async function() {
     await LoadTestGameStateAsync('specific/shd/lurking-tie');
 
     await browser.waitForElementPresent(com.MyHand)
@@ -84,7 +84,7 @@ export const SpecificSHDCases = process.env.SKIP_FULL_REGRESSION !== "0" ? {} :{
     await browser.assert.not.elementPresent(com.EnemySpaceUnit(1));
     await browser.assert.elementsCount(com.TheirHandDivs, 2);
   },
-  'Lurking TIE: bounced by self': async function() {
+  'Lurking TIE: bounced by self': process.env.SKIP_FULL_REGRESSION !== "0" ? '' : async function() {
     await LoadTestGameStateAsync('specific/shd/lurking-tie');
 
     await browser.waitForElementPresent(com.MyHand)

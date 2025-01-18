@@ -100,4 +100,5 @@ export const src = {
   ShieldToken: 'url("./Images/ShieldToken.png") 0% 0% / contain no-repeat',
   CloneToken: 'url("./Images/CloneToken.png") 0% 0% / contain no-repeat',
   DamageGradient: 'linear-gradient(90deg, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0.9) 50%, rgb(255, 0, 0) 100%), linear-gradient(270deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.9) 45%, rgba(0, 0, 0, 0) 100%)',
+  NotPlayableBorder: 'border: 2px solid transparent; height: 96px; width: 96px; position: relative; border-radius: 10px;',
 }
