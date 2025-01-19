@@ -8,6 +8,7 @@ import { AmbushCases } from './cases/ambush';
 import { BounceCases } from './cases/bounce';
 import { LeaderAbilitySORCases } from './cases/leader-ability-sor';
 import { LeaderUnitSORCases } from './cases/leader-unit-sor';
+import { LeaderUnitSHDCases } from './cases/leader-unit-shd';
 import { LeaderUnitTWICases } from './cases/leader-unit-twi';
 import { BountyCases } from './cases/bounty';
 import { ExploitCases } from './cases/exploit';
@@ -26,6 +27,7 @@ const home: NightwatchTests = {
   ...BounceCases,
   ...LeaderAbilitySORCases,
   ...LeaderUnitSORCases,
+  ...LeaderUnitSHDCases,
   ...LeaderUnitTWICases,
   ...SpecificSORCases,
   ...BountyCases,

@@ -49,7 +49,7 @@ export const com = {
     StartButton: 'input.GameLobby_Button[value="Start"]',
     LobbySetupContent: 'div#setup-content p',
     MyHand: 'div#myHand',
-    MyHandDivs: 'div#myHand div',
+    MyHandDivs: 'div#myHand span a',
     TheirHand: "div#theirHand",
     TheirHandDivs: "div#theirHand div",
     MyDiscardCount: 'div.my-discard a div:nth-last-of-type(1)',
@@ -80,6 +80,8 @@ export const com = {
     UnitDivPiece(uniqueIdSelector: string, index: number) { return `${uniqueIdSelector} div:nth-last-of-type(${index})`; },
     MyResources: 'div.my-resources div.resources span',
     TheirResources: 'div.their-resources div.resources span',
+    ResourcePopupImgOption(index: number) { return `div#myResourcePopup div:nth-of-type(2) a:nth-of-type(${index}) img`; },
+    ResourcePopupCloseButton: 'div#myResourcePopup div:nth-of-type(1) div img',
     MyBaseDamage: 'span.base-my-dmg',
     TheirBaseDamage: 'span.base-their-dmg',
     ClaimVictoryButton: 'button[title=claimVictoryButton]',
@@ -88,10 +90,10 @@ export const com = {
 export const p = {
   Move: 500,
   CheckBox: 250,
-  ButtonPress: 1_000,
-  WaitForEffect: 1_200,
+  ButtonPress: 1_050,
+  WaitForEffect: 1_300,
   WaitToBegin: 3_000,
-  WaitToChooseTarget: 1_500,
+  WaitToChooseTarget: 1_600,
   Debug: 300_000,
 }
 

@@ -5,7 +5,7 @@ import {
 } from '../../utils/util';
 
 export const LeaderUnitSORCases = {
-    'Blue and Green Leader Units' : async function () {
+    'SOR: Blue and Green Leader Units' : async function () {
         await LoadTestGameStateAsync('leader-unit-sor/leaders-mass-test1');
 
         await browser.waitForElementPresent(com.Leader(1))
@@ -142,7 +142,7 @@ export const LeaderUnitSORCases = {
         await browser.assert.textEquals(com.MyBaseDamage, '0');
         await browser.assert.textEquals(com.TheirBaseDamage, '9');
     },
-    'Red and Yellow Leader Units': async function () {
+    'SOR: Red and Yellow Leader Units': async function () {
       await LoadTestGameStateAsync('leader-unit-sor/leaders-mass-test2');
 
       await browser.waitForElementPresent(com.AllyGroundUnit(1))

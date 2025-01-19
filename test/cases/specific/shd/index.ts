@@ -98,4 +98,8 @@ export const SpecificSHDCases = process.env.SKIP_FULL_REGRESSION !== "0" ? {} :{
     await browser.assert.not.elementPresent(com.AllySpaceUnit(2));
     await browser.assert.elementsCount(com.MyHandDivs, 4);
   },
+  'Cad Bane: ping multi layer': process.env.SKIP_FULL_REGRESSION !== "0" ? '' : ''+async function() {
+    await LoadTestGameStateAsync('specific/shd/cadbane-ping-multilayer');
+
+  },
 }
