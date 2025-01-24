@@ -189,6 +189,7 @@ export const LeaderAbilitySORCases = process.env.SKIP_FULL_REGRESSION !== "0" ? 
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.Base(2))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.AllyGroundUnit(2))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.Base(2))
