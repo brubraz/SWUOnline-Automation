@@ -104,3 +104,10 @@ export const src = {
   DamageGradient: 'linear-gradient(90deg, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0.9) 50%, rgb(255, 0, 0) 100%), linear-gradient(270deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.9) 45%, rgba(0, 0, 0, 0) 100%)',
   NotPlayableBorder: 'border: 2px solid transparent; height: 96px; width: 96px; position: relative; border-radius: 10px;',
 }
+
+export const customAsserts = {
+  AllyUnitDivPieceIsOverlay: (browser: NightwatchAPI, arena: 'GROUND'|'SPACE', unit: number, divPiece: number) =>
+    browser.assert.attributeEquals(com.UnitDivPiece(arena == 'GROUND' ? com.AllyGroundUnit(unit) : com.AllySpaceUnit(unit) , divPiece), 'class', 'overlay'),
+  EnemyUnitDivPieceIsOverlay: (browser: NightwatchAPI, arena: 'GROUND'|'SPACE', unit: number, divPiece: number) =>
+    browser.assert.attributeEquals(com.UnitDivPiece(arena == 'GROUND' ? com.EnemyGroundUnit(unit) : com.EnemySpaceUnit(unit) , divPiece), 'class', 'overlay'),
+}

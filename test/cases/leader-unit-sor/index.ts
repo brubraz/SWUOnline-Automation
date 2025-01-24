@@ -1,7 +1,8 @@
 import {
     com, p, src,
     LoadTestGameStateAsync,
-    player1Window, player2Window
+    player1Window, player2Window,
+    customAsserts
 } from '../../utils/util';
 
 export const LeaderUnitSORCases = {
@@ -76,7 +77,7 @@ export const LeaderUnitSORCases = {
         //Iden Versio heals 1 from base when enemy defeated
         await browser.assert.not.elementPresent(com.EnemyGroundUnit(3));
         await browser.assert.textEquals(com.MyBaseDamage, '4');
-        await browser.assert.attributeEquals(com.UnitDivPiece(com.AllyGroundUnit(5), 3), 'class', 'overlay');
+        await customAsserts.AllyUnitDivPieceIsOverlay(browser, "GROUND", 5, 3);
 
         await browser.window.switchTo(player2Window).refresh()
           .waitForElementPresent(com.AllyGroundUnit(1))
@@ -124,7 +125,7 @@ export const LeaderUnitSORCases = {
         await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(1), 1), '3');
         await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(1), 2), '7');
         await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(1), 3), '5');
-        await browser.assert.attributeEquals(com.UnitDivPiece(com.EnemyGroundUnit(1), 4), 'class', 'overlay');
+        await customAsserts.EnemyUnitDivPieceIsOverlay(browser, "GROUND", 1, 4);
         await browser.assert.textEquals(com.TheirBaseDamage, '2');
         await browser.assert.textEquals(com.MyBaseDamage, '9');
 

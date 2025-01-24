@@ -1,7 +1,8 @@
 import {
     com, p,
     LoadTestGameStateAsync,
-    player1Window, player2Window
+    player1Window, player2Window,
+    customAsserts
 } from '../../../utils/util';
 
 export const SpecificTWICases = {
@@ -140,7 +141,7 @@ export const SpecificTWICases = {
     await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(1), 1), '3');
     await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(1), 2), '1');
     await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(1), 3), '');
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.EnemyGroundUnit(1), 3), 'class', 'overlay');
+    await customAsserts.EnemyUnitDivPieceIsOverlay(browser, 'GROUND', 1, 3);
   },
   'On Attack: Maul TWI single sentinel': async function () {
     await LoadTestGameStateAsync('specific/twi/maul-sentinel-single');

@@ -1,7 +1,8 @@
 import {
     com, p,
     LoadTestGameStateAsync,
-    player1Window, player2Window
+    player1Window, player2Window,
+    customAsserts
 } from '../../../utils/util';
 
 export const SpecificSHDCases = process.env.SKIP_FULL_REGRESSION !== "0" ? {} :{
@@ -31,7 +32,7 @@ export const SpecificSHDCases = process.env.SKIP_FULL_REGRESSION !== "0" ? {} :{
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
 
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.EnemySpaceUnit(1), 3), 'class', 'overlay');
+    await customAsserts.EnemyUnitDivPieceIsOverlay(browser, 'SPACE', 1, 3);
   },
   'Lurking TIE: defeats (merciless contest)': async function() {
     await LoadTestGameStateAsync('specific/shd/lurking-tie');
@@ -102,4 +103,24 @@ export const SpecificSHDCases = process.env.SKIP_FULL_REGRESSION !== "0" ? {} :{
     await LoadTestGameStateAsync('specific/shd/cadbane-ping-multilayer');
 
   },
+  'Snoke wipes non-leaders and token units': async function() {
+    await LoadTestGameStateAsync('specific/shd/snoke');
+
+    await browser.assert.elementPresent(com.EnemySpaceUnit(1));
+    await browser.assert.textEquals(com.UnitDivPiece(com.EnemySpaceUnit(1), 1), 'Asajj Ventress I Work Alone');
+    await browser.assert.textEquals(com.UnitDivPiece(com.EnemySpaceUnit(1), 4), '3');
+    await browser.assert.elementPresent(com.EnemyGroundUnit(1));
+
+    await browser.assert.elementPresent(com.EnemyGroundUnit(2));
+    await browser.assert.elementPresent(com.EnemyGroundUnit(3));
+    await browser.assert.elementPresent(com.EnemyGroundUnit(4));
+
+
+
+    await browser.waitForElementPresent(com.MyHand)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.HandCard(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+    ;
+  }
 }

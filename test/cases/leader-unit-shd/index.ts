@@ -1,5 +1,5 @@
 import {
-    com, p, src,
+    com, p, src, customAsserts,
     LoadTestGameStateAsync,
     player1Window, player2Window
 } from '../../utils/util'
@@ -8,18 +8,18 @@ export const LeaderUnitSHDCases = {
   'SHD: Blue and Green Leader Units': async function () {
     await LoadTestGameStateAsync('leader-unit-shd/leaders-mass-test1');
     //pre-assert
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.AllySpaceUnit(1), 3), 'class', 'overlay');
-    await browser.assert.textEquals(com.UnitDivPiece(com.AllySpaceUnit(2), 4), '5');
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 3), 'class', 'overlay');
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.AllyGroundUnit(2), 3), 'class', 'overlay');
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.AllyGroundUnit(2), 3), 'class', 'overlay');
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.EnemySpaceUnit(1), 3), 'class', 'overlay');
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.EnemySpaceUnit(2), 3), 'class', 'overlay');
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.EnemySpaceUnit(3), 3), 'class', 'overlay');
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.EnemyGroundUnit(1), 3), 'class', 'overlay');
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.EnemyGroundUnit(2), 3), 'class', 'overlay');
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.EnemyGroundUnit(3), 3), 'class', 'overlay');
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.EnemyGroundUnit(4), 3), 'class', 'overlay');
+    await customAsserts.AllyUnitDivPieceIsOverlay(browser, "SPACE", 1, 3);
+    await browser.assert.textEquals(com.UnitDivPiece(com.AllySpaceUnit(2), 4), '5')
+    await customAsserts.AllyUnitDivPieceIsOverlay(browser, "GROUND", 1, 3);
+    await customAsserts.AllyUnitDivPieceIsOverlay(browser, "GROUND", 2, 3);
+    await customAsserts.AllyUnitDivPieceIsOverlay(browser, "GROUND", 2, 3);
+    await customAsserts.EnemyUnitDivPieceIsOverlay(browser, "SPACE", 1, 3);
+    await customAsserts.EnemyUnitDivPieceIsOverlay(browser, "SPACE", 2, 3);
+    await customAsserts.EnemyUnitDivPieceIsOverlay(browser, "SPACE", 3, 3);
+    await customAsserts.EnemyUnitDivPieceIsOverlay(browser, "GROUND", 1, 3);
+    await customAsserts.EnemyUnitDivPieceIsOverlay(browser, "GROUND", 2, 3);
+    await customAsserts.EnemyUnitDivPieceIsOverlay(browser, "GROUND", 3, 3);
+    await customAsserts.EnemyUnitDivPieceIsOverlay(browser, "GROUND", 4, 3);
     //Qi'Ra flip
     await browser.waitForElementPresent(com.Leader(1))
     .moveToElement(com.GameChat, 0, 0).pause(p.Move)
@@ -29,14 +29,14 @@ export const LeaderUnitSHDCases = {
     .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
     //Qi'Ra pings everyone
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.AllySpaceUnit(1), 3), 'class', 'overlay');
+    await customAsserts.AllyUnitDivPieceIsOverlay(browser, "SPACE", 1, 3);
     await browser.assert.textEquals(com.UnitDivPiece(com.AllySpaceUnit(2), 4), '3');
     await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 3), '3');
     await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(2), 3), '3');
     await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(3), 3), '3');
     await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(4), 3), '4');
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.EnemySpaceUnit(1), 3), 'class', 'overlay');
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.EnemySpaceUnit(2), 3), 'class', 'overlay');
+    await customAsserts.EnemyUnitDivPieceIsOverlay(browser, "SPACE", 1, 3);
+    await customAsserts.EnemyUnitDivPieceIsOverlay(browser, "SPACE", 2, 3);
     await browser.assert.textEquals(com.UnitDivPiece(com.EnemySpaceUnit(3), 3), '1');
     await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(1), 3), '3');
     await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(2), 3), '3');

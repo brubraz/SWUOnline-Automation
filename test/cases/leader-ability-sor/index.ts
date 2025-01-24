@@ -1,7 +1,8 @@
 import {
     com, p, src,
     LoadTestGameStateAsync,
-    player1Window, player2Window
+    player1Window, player2Window,
+    customAsserts
 } from '../../utils/util';
 
 export const LeaderAbilitySORCases = process.env.SKIP_FULL_REGRESSION !== "0" ? {} :{
@@ -66,8 +67,8 @@ export const LeaderAbilitySORCases = process.env.SKIP_FULL_REGRESSION !== "0" ? 
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
     ;
 
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 3), 'class', 'overlay');
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.AllyGroundUnit(2), 3), 'class', 'overlay');
+    await customAsserts.AllyUnitDivPieceIsOverlay(browser, 'GROUND', 1, 3);
+    await customAsserts.AllyUnitDivPieceIsOverlay(browser, 'GROUND', 2, 3);
     await browser.assert.textEquals(com.MyResources, '3/4');
   },
   'Leader Ability: Luke Shield': async function () {
@@ -143,7 +144,7 @@ export const LeaderAbilitySORCases = process.env.SKIP_FULL_REGRESSION !== "0" ? 
       .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
     ;
 
-    await browser.assert.attributeEquals(com.UnitDivPiece(com.AllySpaceUnit(1), 3), 'class', 'overlay');
+    await customAsserts.AllyUnitDivPieceIsOverlay(browser, 'SPACE', 1, 3);
     await browser.assert.textEquals(com.MyResources, '3/4');
   },
   'Leader Ability: Tarkin xp': async function () {
