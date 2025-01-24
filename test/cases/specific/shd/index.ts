@@ -105,22 +105,22 @@ export const SpecificSHDCases = process.env.SKIP_FULL_REGRESSION !== "0" ? {} :{
   },
   'Snoke wipes non-leaders and token units': async function() {
     await LoadTestGameStateAsync('specific/shd/snoke');
-
-    await browser.assert.elementPresent(com.EnemySpaceUnit(1));
-    await browser.assert.textEquals(com.UnitDivPiece(com.EnemySpaceUnit(1), 1), 'Asajj Ventress I Work Alone');
+    //pre-check
+    await browser.assert.textEquals(com.UnitDivPiece(com.EnemySpaceUnit(1), 1), 'ASAJJ VENTRESS I WORK ALONE');
     await browser.assert.textEquals(com.UnitDivPiece(com.EnemySpaceUnit(1), 4), '3');
-    await browser.assert.elementPresent(com.EnemyGroundUnit(1));
-
-    await browser.assert.elementPresent(com.EnemyGroundUnit(2));
-    await browser.assert.elementPresent(com.EnemyGroundUnit(3));
-    await browser.assert.elementPresent(com.EnemyGroundUnit(4));
-
-
-
+    await customAsserts.EnemyUnitDivPieceIsOverlay(browser, 'GROUND', 1, 3);
+    await customAsserts.EnemyUnitDivPieceIsOverlay(browser, 'GROUND', 2, 3);
+    await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(3), 3), '3');
+    await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(4), 3), '1');
+    //play Snoke
     await browser.waitForElementPresent(com.MyHand)
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.HandCard(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
+
+    await browser.assert.elementPresent(com.EnemySpaceUnit(1));
+    await browser.assert.elementPresent(com.EnemyGroundUnit(1));
+    await browser.assert.not.elementPresent(com.EnemyGroundUnit(2));
   }
 }
