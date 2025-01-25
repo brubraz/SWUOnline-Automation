@@ -53,6 +53,7 @@ export const WhenDefeatCases = {
         .waitForElementPresent(com.MyHand)
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
         .click(com.TopBottomButton(1, 1)).pause(p.ButtonPress)
+        .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         ;
 
         await browser.assert.elementsCount(com.TheirHand + ' span', 5);

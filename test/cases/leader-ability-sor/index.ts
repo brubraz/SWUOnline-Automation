@@ -79,6 +79,7 @@ export const LeaderAbilitySORCases = process.env.SKIP_FULL_REGRESSION !== "0" ? 
       .click(com.HandCard(3))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .click(com.TopBottomButton(1, 1)).pause(p.ButtonPress)
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
 
     await browser.window.switchTo(player2Window).refresh()

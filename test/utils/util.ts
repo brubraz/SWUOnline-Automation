@@ -89,11 +89,11 @@ export const com = {
 
 export const p = {
   Move: 500,
-  CheckBox: 250,
-  ButtonPress: 850,
+  CheckBox: 350,
+  ButtonPress: 800,
   WaitForEffect: 1_000,
   WaitToBegin: 3_000,
-  WaitToChooseTarget: 1_200,
+  WaitToChooseTarget: 1_500,
   Debug: 300_000,
 }
 
@@ -102,7 +102,8 @@ export const src = {
   ShieldToken: 'url("./Images/ShieldToken.png") 0% 0% / contain no-repeat',
   CloneToken: 'url("./Images/CloneToken.png") 0% 0% / contain no-repeat',
   DamageGradient: 'linear-gradient(90deg, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0.9) 50%, rgb(255, 0, 0) 100%), linear-gradient(270deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.9) 45%, rgba(0, 0, 0, 0) 100%)',
-  NotPlayableBorder: 'border: 2px solid transparent; height: 96px; width: 96px; position: relative; border-radius: 10px;',
+  NotPlayableBorderUnit: 'border: 2px solid transparent; height: 96px; width: 96px; position: relative; border-radius: 10px;',
+  NotPlayableBorderHand: 'border-radius: 8px; border: 1px solid transparent; height: 96px; width: 96px; position: relative;',
 }
 
 export const customAsserts = {

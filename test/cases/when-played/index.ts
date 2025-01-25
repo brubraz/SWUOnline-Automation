@@ -25,7 +25,7 @@ export const WhenPlayedCases = {
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         .click(com.PassButton).pause(p.ButtonPress)
         .click(com.TopBottomButton(1, 2)).pause(p.ButtonPress)
-        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+        .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         .click(com.YesNoButton("YES")).pause(p.ButtonPress)
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
         .click(com.EnemyGroundUnit(1))

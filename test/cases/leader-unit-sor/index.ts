@@ -8,7 +8,7 @@ import {
 export const LeaderUnitSORCases = {
     'SOR: Blue and Green Leader Units' : async function () {
         await LoadTestGameStateAsync('leader-unit-sor/leaders-mass-test1');
-
+        //deploy Iden Versio
         await browser.waitForElementPresent(com.Leader(1))
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.Leader(1)).pause(p.ButtonPress)
@@ -16,10 +16,10 @@ export const LeaderUnitSORCases = {
           .click(com.ButtonInputChoice(2)).pause(p.ButtonPress)
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         ;
-        //Iden Version deploys shielded
+        //Iden Versio deploys shielded
         await browser.assert.elementPresent(com.AllyGroundUnit(5));
         await browser.assert.attributeContains(com.UnitDivPiece(com.AllyGroundUnit(5), 3), 'style', src.ShieldToken);
-
+        //deploy palp
         await browser.window.switchTo(player2Window).refresh()
           .waitForElementPresent(com.Leader(2))
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
@@ -34,7 +34,7 @@ export const LeaderUnitSORCases = {
         await browser.assert.elementPresent(com.AllyGroundUnit(4));
         await browser.assert.elementPresent(com.AllySpaceUnit(1));
         await browser.assert.not.elementPresent(com.EnemySpaceUnit(1));
-
+        //Luke attacks Palpatine
         await browser.window.switchTo(player1Window).refresh()
           .waitForElementPresent(com.AllyGroundUnit(4))
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
@@ -46,13 +46,15 @@ export const LeaderUnitSORCases = {
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         //Luke Skywalker gives shield to any unit
         await browser.assert.attributeContains(com.UnitDivPiece(com.AllyGroundUnit(1), 3), 'style', src.ShieldToken);
-
+        //attack with Leia and Hera
         await browser.window.switchTo(player2Window).refresh()
           .waitForElementPresent(com.AllyGroundUnit(3))
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.AllyGroundUnit(3))
+          .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
           .click(com.AllyGroundUnit(2))
+          .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
           .click(com.AllyGroundUnit(1))
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
