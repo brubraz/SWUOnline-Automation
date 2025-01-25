@@ -107,7 +107,7 @@ export const SpecificTWICases = {
     await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 3), '3');
   },
   'On Attack: Maul TWI single target choice': process.env.SKIP_FULL_REGRESSION !== "0" ? '' : async function () {
-    await LoadTestGameStateAsync('specific/twi/maul-choose-single');
+    await LoadTestGameStateAsync('specific/twi/maul-would-be-defeated');
 
     await browser.waitForElementPresent(com.AllyGroundUnit(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
@@ -119,7 +119,7 @@ export const SpecificTWICases = {
       .click(com.SubmitButton).pause(p.ButtonPress)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
-
+    //chose single target
     await browser.assert.not.elementPresent(com.EnemyGroundUnit(2));
     await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 3), '3');
   },
