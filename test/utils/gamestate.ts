@@ -129,7 +129,7 @@ export class GameState {
         if(this._gameState[index] !== '') {
             this._gameState[index] += ' ';
         }
-        for(let i = 0; i < times; i++) {
+        for(let i = 0; i < times; ++i) {
             this._gameState[index] += `${cardID} DOWN 1 0 0 ${uniqueIdStart + i} -1`;
             if(i < times - 1) {
                 this._gameState[index] += ' ';
@@ -177,20 +177,30 @@ export class SubcardBuilder {
         return this;
     }
 
-    public AddShield(owner: number) {
+    public AddShield(owner: number, number: number = 1) {
         if(this._subcard !== '') {
             this._subcard += ',';
         }
-        this._subcard += `8752877738,${owner},0`;
+        for(let i = 0; i < number; ++i) {
+            this._subcard += `8752877738,${owner},0`;
+            if(i < number - 1) {
+                this._subcard += ',';
+            }
+        }
 
         return this;
     }
 
-    public AddExperience(owner: number) {
+    public AddExperience(owner: number, number: number = 1) {
         if(this._subcard !== '') {
             this._subcard += ',';
         }
-        this._subcard += `2007868442,${owner},0`;
+        for(let i = 0; i < number; ++i) {
+            this._subcard += `2007868442,${owner},0`;
+            if(i < number - 1) {
+                this._subcard += ',';
+            }
+        }
 
         return this;
     }
