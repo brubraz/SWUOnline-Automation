@@ -16,9 +16,15 @@ export const card = {
         CraftySmuggler: '0700214503',
         SabineUnit: '3646264648',
         Rukh: '3280523224',
+        Waylay: '7202133736',
     },
     SHD: {
         KraytDragon: '4935319539',
         TimelyIntervention: '6847268098',
+        TheClient: '1090660242',
+    },
+    TWI: {
+        BattleDroid: '3463348370',
+        CloneTrooper: '3941784506',
     }
 }
