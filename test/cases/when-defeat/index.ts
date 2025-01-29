@@ -6,7 +6,7 @@ import {
 } from '../../utils/util';
 
 export const WhenDefeatCases = {
-    'When Defeat: SLT w Clone Cohort Pinged by Dengar': process.env.SKIP_FULL_REGRESSION !== "0" ? '' : async function () {
+    'When Defeat: SLT w Clone Cohort Pinged by Dengar': process.env.FULL_REGRESSION !== "true" ? '' : async function () {
         await LoadTestGameStateAsync('when-defeat/slt-clone-cohort');
         const player1SLT = com.UniqueIdSelector(77);
         await browser
@@ -24,7 +24,7 @@ export const WhenDefeatCases = {
         await browser.assert.attributeEquals(com.AllyGroundUnit(2) + ' img', 'src', 'http://localhost:8080/SWUOnline/concat/3941784506.webp')
         await browser.assert.textEquals(com.MyResources, '5/7');
     },
-    'When Defeat: Gar Saxon Upgrade Bounce': process.env.SKIP_FULL_REGRESSION !== "0" ? '' : async function () {
+    'When Defeat: Gar Saxon Upgrade Bounce': process.env.FULL_REGRESSION !== "true" ? '' : async function () {
         await LoadTestGameStateAsync('when-defeat/garsaxon-bounce');
 
         const player2FollowerOfTheWay = com.UniqueIdSelector(6);

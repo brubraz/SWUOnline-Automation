@@ -16,7 +16,7 @@ export const BounceCases = {
       .AddLeader(1, card.SOR.SabineLeader)
       .AddBase(2, card.SOR.DagobahSwamp)
       .AddLeader(2, card.SOR.SabineLeader)
-      .AddSameResourceTimes(1, card.SOR.Waylay, 1, 6)
+      .FillResources(1, card.SOR.Waylay, 1, 6)
       .AddCardToHand(1, card.SOR.Waylay)
       .AddCardToHand(1, card.SOR.Waylay)
       .AddUnit(2, card.TWI.BattleDroid, 7)

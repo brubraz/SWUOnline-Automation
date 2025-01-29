@@ -17,13 +17,13 @@ export const DamageCases = {
       .AddLeader(1, card.SHD.BosskLeader)
       .AddBase(2, card.SOR.ECL)
       .AddLeader(2, card.SOR.SabineLeader)
-      .AddSameResourceTimes(1, card.SOR.BattlefieldMarine, 1, 5)
+      .FillResources(1, card.SOR.BFMarine, 1, 5)
       .AddCardToHand(1, card.SOR.OB)
-      .AddUnit(1, card.SOR.DeathStarStormTrooper, 6, true, 0, threeXpTokens)
-      .AddUnit(1, card.SOR.DeathStarStormTrooper, 7)
+      .AddUnit(1, card.SOR.DSStormTrooper, 6, true, 0, threeXpTokens)
+      .AddUnit(1, card.SOR.DSStormTrooper, 7)
       .AddUnit(2, card.TWI.Malevolence, 8, true, 3)
       .AddUnit(2, card.SOR.SLT, 9)
-      .AddUnit(2, card.TWI.WartimeTradeOfficial, 10)
+      .AddUnit(2, card.TWI.WTTradeOfficial, 10)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act

@@ -8,7 +8,7 @@ import {
 import { GameState } from '../../utils/gamestate';
 import { card } from '../../utils/cards';
 
-export const LeaderAbilitySORCases = process.env.SKIP_FULL_REGRESSION !== "0" ? {} :{
+export const LeaderAbilitySORCases = process.env.FULL_REGRESSION !== "true" ? {} :{
   'Leader Ability: Director Krennic passive buff': async function () {
     await LoadTestGameStateAsync('leader-ability-sor/krennic-passive');
 

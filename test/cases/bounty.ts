@@ -17,9 +17,9 @@ export const BountyCases = {
       .AddLeader(1, card.SOR.SabineLeader)
       .AddBase(2, card.SOR.DagobahSwamp)
       .AddLeader(2, card.SOR.SabineLeader)
-      .AddUnit(1, card.SOR.DeathStarStormTrooper, 1)
+      .AddUnit(1, card.SOR.DSStormTrooper, 1)
       .AddUnit(1, card.SHD.TheClient, 2)
-      .AddUnit(2, card.SOR.DeathStarStormTrooper, 3)
+      .AddUnit(2, card.SOR.DSStormTrooper, 3)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -51,7 +51,7 @@ export const BountyCases = {
     await browser.assert.textEquals(com.MyBaseDamage, '7');
     await browser.assert.textEquals(com.TheirBaseDamage, '10')
   },
-  'Bounty: The Client edge case': process.env.SKIP_FULL_REGRESSION !== "0" ? '' : async function () {
+  'Bounty: The Client edge case': process.env.FULL_REGRESSION !== "true" ? '' : async function () {
     //arrange
     const gameState = new GameState(gameName);
     await gameState.LoadGameStateLinesAsync();
@@ -61,9 +61,9 @@ export const BountyCases = {
       .AddLeader(1, card.SOR.SabineLeader)
       .AddBase(2, card.SOR.DagobahSwamp)
       .AddLeader(2, card.SOR.SabineLeader)
-      .AddUnit(1, card.SOR.DeathStarStormTrooper, 1)
+      .AddUnit(1, card.SOR.DSStormTrooper, 1)
       .AddUnit(1, card.SHD.TheClient, 2)
-      .AddUnit(2, card.SOR.DeathStarStormTrooper, 3)
+      .AddUnit(2, card.SOR.DSStormTrooper, 3)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act

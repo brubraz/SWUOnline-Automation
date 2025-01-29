@@ -133,7 +133,7 @@ export class GameState {
     return this;
   }
 
-  public AddSameResourceTimes(player: number, cardID: string, uniqueIdStart: number, times: number) {
+  public FillResources(player: number, cardID: string, uniqueIdStart: number, times: number) {
     const index = player === 1 ? g.P1ResourcesArray : g.P2ResourcesArray;
     if(this._gameState[index] !== '') {
       this._gameState[index] += ' ';

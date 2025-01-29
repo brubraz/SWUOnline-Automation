@@ -6,7 +6,7 @@ import {
   gameName
 } from '../../utils/util';
 
-const GideonHaskGameState = async () => {
+const GideonHaskGameStateAsync = async () => {
   const gameState = new GameState(gameName);
   await gameState.LoadGameStateLinesAsync();
   await gameState.ResetGameStateLines()
@@ -15,10 +15,11 @@ const GideonHaskGameState = async () => {
     .AddLeader(1, card.SOR.KrennicLeader, true)
     .AddBase(2, card.SOR.ChopperBase)
     .AddLeader(2, card.SOR.SabineLeader)
-    .AddCardToDeck(2, card.SOR.BattlefieldMarine)
-    .AddUnit(1, card.SOR.KrennicLeaderUnit, 1)
-    .AddUnit(1, card.SOR.GideonHask, 2, false, 3)
-    .AddUnit(2, card.TWI.SabineWren, 3, true, 2)
+    .AddResource(2, card.SOR.CraftySmuggler, 1)
+    .AddCardToHand(2, card.SHD.DaringRaid)
+    .AddUnit(1, card.SOR.KrennicLeaderUnit, 2)
+    .AddUnit(1, card.SOR.GideonHask, 3, false, 3)
+    .AddUnit(2, card.SOR.DSStormTrooper, 4)
     .FlushAsync(com.BeginTestCallback)
   ;
 }
@@ -27,7 +28,7 @@ const GideonHaskGameState = async () => {
 export const SpecificSORCases = {
   'Gideon Hask: traded from enemy unit': async function () {
     //arrange
-    await GideonHaskGameState();
+    await GideonHaskGameStateAsync();
     //act
     await browser
       .waitForElementPresent(com.PassButton)
@@ -54,9 +55,9 @@ export const SpecificSORCases = {
     //assert
     await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 1), 'EXPERIENCE');
   },
-  'Gideon Hask: opponent pings self': process.env.SKIP_FULL_REGRESSION !== "0" ? '' : async function () {
+  'Gideon Hask: opponent pings self': process.env.FULL_REGRESSION !== "true" ? '' : async function () {
     //arrange
-    await GideonHaskGameState();
+    await GideonHaskGameStateAsync();
     //act
     await browser
       .waitForElementPresent(com.PassButton)
@@ -65,11 +66,9 @@ export const SpecificSORCases = {
     ;
 
     await browser.window.switchTo(player2Window).refresh()
-      .waitForElementPresent(com.AllyGroundUnit(1))
+      .waitForElementPresent(com.HandCard(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
-      .click(com.AllyGroundUnit(1))
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
-      .click(com.Base(1))
+      .click(com.HandCard(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.AllyGroundUnit(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
@@ -83,9 +82,9 @@ export const SpecificSORCases = {
     //assert
     await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 1), 'EXPERIENCE');
   },
-  'Gideon Hask: pinged to death': process.env.SKIP_FULL_REGRESSION !== "0" ? '' : async function () {
+  'Gideon Hask: pinged to death': process.env.FULL_REGRESSION !== "true" ? '' : async function () {
     //arrange
-    await GideonHaskGameState();
+    await GideonHaskGameStateAsync();
     //act
     await browser
       .waitForElementPresent(com.PassButton)
@@ -94,11 +93,9 @@ export const SpecificSORCases = {
     ;
 
     await browser.window.switchTo(player2Window).refresh()
-      .waitForElementPresent(com.AllyGroundUnit(1))
+      .waitForElementPresent(com.HandCard(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
-      .click(com.AllyGroundUnit(1))
-      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
-      .click(com.Base(1))
+      .click(com.HandCard(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.EnemyGroundUnit(2))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
@@ -111,7 +108,6 @@ export const SpecificSORCases = {
       .pause(p.WaitForEffect)
     ;
     //assert
-    await browser.assert.textEquals(com.MyBaseDamage, '6');
-    await browser.assert.textEquals(com.TheirBaseDamage, '11');
+    await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 1), '2');
   },
 }
