@@ -75,6 +75,8 @@ export class GameState {
     this._gameState[g.ChainLinkSummary] = "";
     this._gameState[g.UniqueIDCounter] = "200";
     this._gameState[g.InGameStatus] = "1";
+    this._gameState[g.InitiativePlayer] = "1";
+    this._gameState[g.InitiativeTaken] = "0";
 
     return this;
   }

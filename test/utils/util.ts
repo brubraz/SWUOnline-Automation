@@ -171,7 +171,9 @@ export const g = {
   UniqueIDCounter: 60,
   InGameStatus: 61,
   CurrentPlayerActivity: 63,
-  P1TotalTime: 68,
-  P2TotalTime: 71,
-  LastUpdateTime: 72,
+  P1TotalTime: 66,
+  P2TotalTime: 67,
+  LastUpdateTime: 68,
+  InitiativePlayer: 72,
+  InitiativeTaken: 73,
 }
