@@ -1,9 +1,12 @@
 import {
-    com, p, src,
-    LoadTestGameStateAsync,
-    player1Window, player2Window,
-    customAsserts
+  com, p, src,
+  LoadTestGameStateAsync,
+  player1Window, player2Window,
+  customAsserts,
+  gameName,
 } from '../../utils/util';
+import { GameState } from '../../utils/gamestate';
+import { card } from '../../utils/cards';
 
 export const LeaderAbilitySORCases = process.env.SKIP_FULL_REGRESSION !== "0" ? {} :{
   'Leader Ability: Director Krennic passive buff': async function () {
@@ -214,17 +217,7 @@ export const LeaderAbilitySORCases = process.env.SKIP_FULL_REGRESSION !== "0" ? 
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
         .click(com.EnemyGroundUnit(1))
         .pause(p.WaitForEffect)
-      ;
-
-      await browser.window.switchTo(player2Window).refresh()
-        .waitForElementPresent(com.MyHand)
-        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
-        .click(com.YesNoButton("NO")).pause(p.ButtonPress)
-      ;
-
-      await browser.window.switchTo(player1Window).refresh()
-        .waitForElementPresent(com.AllyGroundUnit(2))
-        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+        .pause(p.WaitToChooseTarget)
         .click(com.AllyGroundUnit(2))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
         .click(com.EnemyGroundUnit(1))
@@ -340,7 +333,17 @@ export const LeaderAbilitySORCases = process.env.SKIP_FULL_REGRESSION !== "0" ? 
       await browser.assert.elementsCount(com.MyHandDivs, 2);
     },
     'Leader Ability: Sabine ping': async function () {
-      await LoadTestGameStateAsync('leader-ability-sor/sabine-ping');
+      const gameState = new GameState(gameName);
+      await gameState.LoadGameStateLinesAsync()
+      await gameState
+        .ResetGameStateLines()
+        .AddBase(1, card.SOR.ECL)
+        .AddLeader(1, card.SOR.SabineLeader)
+        .AddBase(2, card.SOR.ECL)
+        .AddLeader(2, card.SOR.SabineLeader)
+        .SetBasesDamage("2 5")
+        .FlushAsync(async () => await browser.refresh())
+      ;
 
       await browser.waitForElementPresent(com.Leader(1))
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
