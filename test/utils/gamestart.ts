@@ -51,8 +51,8 @@ export const init: NightwatchTestHook = async (browser, done) => {
     .setValue(com.DeckInput, genericJangoDeck)
     .waitForElementPresent(com.JoinGameButton)
     .click(com.JoinGameButton).pause(p.ButtonPress)
-    .refresh().refresh().refresh().refresh().refresh()
     .pause(p.WaitToBegin)
+    .refresh().pause(p.WaitToBegin)
   ;
 
   let retries = 0;

@@ -1,12 +1,38 @@
+import { card } from '../utils/cards';
+import { GameState } from '../utils/gamestate';
 import {
     com, p,
     LoadTestGameStateAsync,
-    player1Window, player2Window
-} from '../../utils/util';
+    player1Window, player2Window,
+    gameName
+} from '../utils/util';
 
 export const WhenPlayedCases = {
     'When Played: U-Wing Many Played': async function () {
-        await LoadTestGameStateAsync('when-played/uwing-manyplayed');
+        //arrange
+        const gameState = new GameState(gameName);
+        await gameState.LoadGameStateLinesAsync();
+        await gameState.ResetGameStateLines()
+          .AddBase(1, card.SOR.EchoBase)
+          .AddLeader(1, card.SOR.SabineLeader)
+          .AddBase(2, card.SOR.EchoBase)
+          .AddLeader(2, card.SOR.SabineLeader)
+          .AddSameResourceTimes(1, card.SOR.BattlefieldMarine, 1, 7)
+          .AddCardToHand(1, card.SOR.UWing)
+          .AddCardToDeck(1, card.SOR.BattlefieldMarine, 2)
+          .AddCardToDeck(1, card.SOR.MonMothma)
+          .AddCardToDeck(1, card.SOR.BattlefieldMarine)
+          .AddCardToDeck(1, card.SOR.ModdedCohort)
+          .AddCardToDeck(1, card.SOR.BattlefieldMarine, 2)
+          .AddCardToDeck(1, card.SOR.R2D2)
+          .AddCardToDeck(1, card.SOR.BattlefieldMarine, 3)
+          .AddCardToDeck(1, card.SOR.AdmiralAckbar)
+          .AddUnit(2, card.SHD.Kuiil, 8)
+          .AddUnit(2, card.SOR.LukeSkywalker, 9)
+          .AddUnit(1, card.SOR.R2D2, 10)
+          .AddUnit(1, card.SOR.MonMothma, 11)
+          .FlushAsync(com.BeginTestCallback)
+          ;
 
         await browser
         .waitForElementPresent(com.MyHand)
@@ -37,10 +63,29 @@ export const WhenPlayedCases = {
 
         await browser.assert.not.elementPresent(com.EnemyGroundUnit(2));
         await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(3), 3), '2');
-        await browser.assert.attributeEquals(com.HandCardImg(4), 'alt', 'Admiral Ackbar');
+        await browser.assert.attributeEquals(com.HandCardImg(1), 'alt', 'Admiral Ackbar');
     },
     'When Played: Darth Vader multi then draw': async function () {
-        await LoadTestGameStateAsync('when-played/vader-bottom-deck');
+        //arrange
+        const gameState = new GameState(gameName);
+        await gameState.LoadGameStateLinesAsync();
+        await gameState.ResetGameStateLines()
+          .AddBase(1, card.SOR.EchoBase)
+          .AddLeader(1, card.SOR.MoffTarkinLeader)
+          .AddBase(2, card.SOR.TarkinTown)
+          .AddLeader(2, card.SOR.MoffTarkinLeader)
+          .AddSameResourceTimes(1, card.SOR.BattlefieldMarine, 1, 10)
+          .AddCardToHand(1, card.SOR.DarthVader)
+          .AddCardToHand(1, card.SHD.NoBargain)
+          .AddCardToDeck(1, card.SOR.FirstLegionSnowTrooper)
+          .AddCardToDeck(1, card.SOR.GideonHask, 7)
+          .AddCardToDeck(1, card.SOR.DeathStarStormTrooper)
+          .AddCardToDeck(1, card.SOR.BattlefieldMarine)
+          .AddCardToDeck(1, card.SHD.PhaseIIIDarkTrooper)
+          .AddUnit(2, card.SOR.DeathStarStormTrooper, 11)
+          .AddUnit(2, card.SOR.DeathStarStormTrooper, 12)
+          .FlushAsync(com.BeginTestCallback)
+        ;
 
         await browser.waitForElementPresent(com.MyHand)
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
@@ -73,8 +118,7 @@ export const WhenPlayedCases = {
         await browser.assert.not.elementPresent(com.EnemyGroundUnit(2));
         await browser.assert.elementPresent(com.AllyGroundUnit(2));
         await browser.assert.elementPresent(com.AllyGroundUnit(3));
-        await browser.assert.elementPresent(com.AllyGroundUnit(4));
-        await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(2), 3), '3');
+        await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 3), '3');
         await browser.assert.attributeEquals(com.HandCardImg(1), 'alt', 'Phase-III Dark Trooper');
     }
 }

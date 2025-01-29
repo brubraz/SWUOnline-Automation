@@ -2,7 +2,6 @@ import { card } from '../utils/cards';
 import { GameState } from '../utils/gamestate';
 import {
   com, p,
-  LoadTestGameStateAsync,
   player1Window, player2Window,
   gameName
 } from '../utils/util';
@@ -47,8 +46,8 @@ export const BounceCases = {
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
 
+    await browser.assert.elementPresent(com.TheirDiscardEmpty);
     await browser.assert.not.elementPresent(com.EnemyGroundUnit(1));
     await browser.assert.not.elementPresent(com.TheirHandDivs);
-    await browser.assert.elementPresent(com.TheirDiscardEmpty);
   },
 }

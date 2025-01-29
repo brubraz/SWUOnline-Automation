@@ -2,7 +2,6 @@ import { card } from '../utils/cards';
 import { GameState, SubcardBuilder } from '../utils/gamestate';
 import {
   com, src, p,
-  LoadTestGameStateAsync,
   player1Window, player2Window,
   gameName
 } from '../utils/util';
@@ -19,7 +18,7 @@ export const DamageCases = {
       .AddBase(2, card.SOR.ECL)
       .AddLeader(2, card.SOR.SabineLeader)
       .AddSameResourceTimes(1, card.SOR.BattlefieldMarine, 1, 5)
-      .AddCardToHand(1, card.SOR.OverwhelmingBarrage)
+      .AddCardToHand(1, card.SOR.OB)
       .AddUnit(1, card.SOR.DeathStarStormTrooper, 6, true, 0, threeXpTokens)
       .AddUnit(1, card.SOR.DeathStarStormTrooper, 7)
       .AddUnit(2, card.TWI.Malevolence, 8, true, 3)
