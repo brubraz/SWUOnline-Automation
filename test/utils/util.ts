@@ -1,5 +1,6 @@
 import {promises as fsp} from 'fs';
 import { browser, NightwatchAPI } from 'nightwatch';
+import { card } from './cards';
 
 export var player1Window = '';
 export var player2Window = '';
@@ -84,7 +85,8 @@ export const com = {
     //these count backwards where the last is subcards if any,
     //then Attack, then Defense, then damage if any,
     //then tokens like Sentinel, Shield, Clone if any
-    UnitDivPiece(uniqueIdSelector: string, index: number) { return `${uniqueIdSelector} div:nth-last-of-type(${index})`; },
+    UnitDivPiece(linkSelector: string, index: number) { return `${linkSelector} div:nth-last-of-type(${index})`; },
+    UnitImg(linkSelector: string) { return `${linkSelector} img`; },
     MyResources: 'div.my-resources div.resources span',
     TheirResources: 'div.their-resources div.resources span',
     ResourcePopupImgOption(index: number) { return `div#myResourcePopup div:nth-of-type(2) a:nth-of-type(${index}) img`; },
@@ -97,11 +99,12 @@ export const com = {
 export const p = {
   Move: 500,
   CheckBox: 350,
-  ButtonPress: 800,
-  WaitForEffect: 1_000,
+  ButtonPress: 850,
+  WaitForEffect: 1_250,
   WaitToBegin: 3_000,
   WaitToChooseTarget: 1_500,
   Debug: 300_000,
+  Indefinite: 1_000_000_000,
 }
 
 export const src = {
@@ -111,13 +114,22 @@ export const src = {
   DamageGradient: 'linear-gradient(90deg, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0.9) 50%, rgb(255, 0, 0) 100%), linear-gradient(270deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.9) 45%, rgba(0, 0, 0, 0) 100%)',
   NotPlayableBorderUnit: 'border: 2px solid transparent; height: 96px; width: 96px; position: relative; border-radius: 10px;',
   NotPlayableBorderHand: 'border-radius: 8px; border: 1px solid transparent; height: 96px; width: 96px; position: relative;',
+  Concat(cardID: string) { return 'http://localhost:8080/SWUOnline/concat/' + cardID + '.webp'; },
 }
 
 export const customAsserts = {
   AllyUnitDivPieceIsOverlay: (browser: NightwatchAPI, arena: 'GROUND'|'SPACE', unit: number, divPiece: number) =>
-    browser.assert.attributeEquals(com.UnitDivPiece(arena == 'GROUND' ? com.AllyGroundUnit(unit) : com.AllySpaceUnit(unit) , divPiece), 'class', 'overlay'),
+    browser.assert.attributeEquals(com.UnitDivPiece(arena == 'GROUND'
+      ? com.AllyGroundUnit(unit)
+      : com.AllySpaceUnit(unit) , divPiece), 'class', 'overlay'),
   EnemyUnitDivPieceIsOverlay: (browser: NightwatchAPI, arena: 'GROUND'|'SPACE', unit: number, divPiece: number) =>
-    browser.assert.attributeEquals(com.UnitDivPiece(arena == 'GROUND' ? com.EnemyGroundUnit(unit) : com.EnemySpaceUnit(unit) , divPiece), 'class', 'overlay'),
+    browser.assert.attributeEquals(com.UnitDivPiece(arena == 'GROUND'
+      ? com.EnemyGroundUnit(unit)
+      : com.EnemySpaceUnit(unit) , divPiece), 'class', 'overlay'),
+  AllyGroundUnitIsBattleDroid: (browser: NightwatchAPI, unit: number) =>
+    browser.assert.attributeEquals(com.UnitImg(com.AllyGroundUnit(unit)), 'src', src.Concat(card.TWI.BattleDroid)),
+  EnemyGroundUnitIsBattleDroid: (browser: NightwatchAPI, unit: number) =>
+    browser.assert.attributeEquals(com.UnitImg(com.EnemyGroundUnit(unit)), 'src', src.Concat(card.TWI.BattleDroid)),
 }
 
 export const g = {

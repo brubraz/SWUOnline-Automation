@@ -60,7 +60,7 @@ export class GameState {
     this._gameState[g.CurrentRound] = "1";
     this._gameState[g.Turn] = "M 1";
     this._gameState[g.CombatChain] = "";
-    this._gameState[g.CombatChainState] = "0 -1 0 0 0 GY NA 0 0 0 0 NA 0 0 -1 -1 NA 0 0 0 -1 0 0 0 0 - 0 0 0 0 0 NA -";
+    this._gameState[g.CombatChainState] = "0 -1 0 0 0 GY 0 GY NA 0 0 0 0 0 0 -1 NA 0 0 -1 -1 NA 0 0 0 -1 0 0 0 0 - 0 0 - NA 0 0 0";
     this._gameState[g.CurrentTurnEffects] = "";
     this._gameState[g.CurrentTurnEffectsFromCombat] = "";
     this._gameState[g.NextTurnEffects] = "";
