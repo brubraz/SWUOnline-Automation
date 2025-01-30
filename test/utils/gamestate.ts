@@ -22,10 +22,10 @@ export class GameState {
     this._gameState = data.split('\r\n');
   }
 
-  public async FlushAsync(cb: Function) {
+  public async FlushAsync(cb?: Function) {
     await fsp.writeFile(`${process.env.SWUONLINE_ROOT_PATH || '../SWUOnline'}/Games/${this._gameName}/gamestate.txt`, this._gameState.join('\r\n'), 'ascii');
 
-    cb();
+    if (cb) cb();
   }
 
   public ResetGameStateLines() {
@@ -169,6 +169,16 @@ export class GameState {
       throw new Error('Damage must be in the format "N N"');
     }
     this._gameState[g.BaseHealths] = damage;
+
+    return this;
+  }
+
+  public GetAuthKey(player: number) {
+    return this._gameState[player === 1 ? g.P1AuthKey : g.P2AuthKey];
+  }
+
+  public SetAuthKey(player: number, authKey: string) {
+    this._gameState[player === 1 ? g.P1AuthKey : g.P2AuthKey] = authKey;
 
     return this;
   }
