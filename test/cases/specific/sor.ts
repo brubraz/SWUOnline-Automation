@@ -15,11 +15,11 @@ const GideonHaskGameStateAsync = async () => {
     .AddLeader(1, cards.SOR.KrennicLeader, true)
     .AddBase(2, cards.SOR.ChopperBase)
     .AddLeader(2, cards.SOR.SabineLeader)
-    .AddResource(2, cards.SOR.CraftySmuggler, 1)
+    .AddResource(2, cards.SOR.CraftySmuggler)
     .AddCardToHand(2, cards.SHD.DaringRaid)
-    .AddUnit(1, cards.SOR.KrennicLeaderUnit, 2)
-    .AddUnit(1, cards.SOR.GideonHask, 3, false, 3)
-    .AddUnit(2, cards.SOR.DSStormTrooper, 4)
+    .AddUnit(1, cards.SOR.KrennicLeaderUnit)
+    .AddUnit(1, cards.SOR.GideonHask, false, 3)
+    .AddUnit(2, cards.SOR.DSStormTrooper)
     .FlushAsync(com.BeginTestCallback)
   ;
 }

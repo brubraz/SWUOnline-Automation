@@ -16,16 +16,16 @@ const LurkingTieGameStateAsync = async function() {
     .AddLeader(1, cards.SOR.MoffTarkinLeader)
     .AddBase(2, cards.SOR.ECL)
     .AddLeader(2, cards.SOR.SabineLeader)
-    .FillResources(1, cards.SOR.CraftySmuggler, 1,3)
+    .FillResources(1, cards.SOR.CraftySmuggler, 3)
     .AddCardToHand(1, cards.TWI.SanctioneerShuttle)
     .AddCardToHand(1, cards.TWI.EliteP)
     .AddCardToHand(1, cards.TWI.MercilessContest)
     .AddCardToHand(1, cards.SOR.Waylay)
     .AddCardToHand(2, cards.SOR.Waylay)
-    .AddUnit(1, cards.SHD.LurkingTie, 4)
-    .AddUnit(1, cards.SHD.LurkingTie, 5)
-    .AddUnit(2, cards.SHD.LurkingTie, 6)
-    .AddUnit(2, cards.SOR.Greedo, 7)
+    .AddUnit(1, cards.SHD.LurkingTie)
+    .AddUnit(1, cards.SHD.LurkingTie)
+    .AddUnit(2, cards.SHD.LurkingTie)
+    .AddUnit(2, cards.SOR.Greedo)
     .FlushAsync(com.BeginTestCallback)
   ;
 }
@@ -139,14 +139,14 @@ export const SpecificSHDCases = process.env.FULL_REGRESSION !== "true" ? {} :{
       .AddLeader(1, cards.SHD.CadBaneLeader)
       .AddBase(2, cards.SHD.RemnantScienceFacility)
       .AddLeader(2, cards.SOR.SabineLeader, true)
-      .FillResources(1, cards.SOR.CraftySmuggler, 1, 8)
+      .FillResources(1, cards.SOR.CraftySmuggler, 8)
       .AddCardToHand(1, cards.SHD.Snoke)
-      .AddUnit(2, cards.SOR.TieLnFighter, 9, true, 3,
+      .AddUnit(2, cards.SOR.TieLnFighter, true, 3,
         new SubcardBuilder().AddUpgrade(cards.JTL.AsajjLeaderUnit, 2, true).Build())
-      .AddUnit(2, cards.TWI.CloneTrooper, 10)
-      .AddUnit(2, cards.TWI.BattleDroid, 11)
-      .AddUnit(2, cards.SOR.SabineLeaderUnit, 12, true, 3)
-      .AddUnit(2, cards.TWI.WTTradeOfficial, 13, true, 1)
+      .AddUnit(2, cards.TWI.CloneTrooper)
+      .AddUnit(2, cards.TWI.BattleDroid)
+      .AddUnit(2, cards.SOR.SabineLeaderUnit, true, 3)
+      .AddUnit(2, cards.TWI.WTTradeOfficial, true, 1)
       .FlushAsync(com.BeginTestCallback)
     ;
     //pre-assert

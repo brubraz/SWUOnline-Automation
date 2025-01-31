@@ -17,7 +17,7 @@ export const WhenPlayedCases = {
           .AddLeader(1, cards.SOR.SabineLeader)
           .AddBase(2, cards.SOR.EchoBase)
           .AddLeader(2, cards.SOR.SabineLeader)
-          .FillResources(1, cards.SOR.BFMarine, 1, 7)
+          .FillResources(1, cards.SOR.BFMarine, 7)
           .AddCardToHand(1, cards.SOR.UWing)
           .AddCardToDeck(1, cards.SOR.BFMarine, 2)
           .AddCardToDeck(1, cards.SOR.MonMothma)
@@ -27,10 +27,10 @@ export const WhenPlayedCases = {
           .AddCardToDeck(1, cards.SOR.R2D2)
           .AddCardToDeck(1, cards.SOR.BFMarine, 3)
           .AddCardToDeck(1, cards.SOR.AdmiralAckbar)
-          .AddUnit(2, cards.SHD.Kuiil, 8)
-          .AddUnit(2, cards.SOR.LukeSkywalker, 9)
-          .AddUnit(1, cards.SOR.R2D2, 10)
-          .AddUnit(1, cards.SOR.MonMothma, 11)
+          .AddUnit(2, cards.SHD.Kuiil)
+          .AddUnit(2, cards.SOR.LukeSkywalker)
+          .AddUnit(1, cards.SOR.R2D2)
+          .AddUnit(1, cards.SOR.MonMothma)
           .FlushAsync(com.BeginTestCallback)
           ;
 
@@ -74,7 +74,7 @@ export const WhenPlayedCases = {
           .AddLeader(1, cards.SOR.MoffTarkinLeader)
           .AddBase(2, cards.SOR.TarkinTown)
           .AddLeader(2, cards.SOR.MoffTarkinLeader)
-          .FillResources(1, cards.SOR.BFMarine, 1, 10)
+          .FillResources(1, cards.SOR.BFMarine, 10)
           .AddCardToHand(1, cards.SOR.DarthVader)
           .AddCardToHand(1, cards.SHD.NoBargain)
           .AddCardToDeck(1, cards.SOR.FLSnowTrooper)
@@ -82,8 +82,8 @@ export const WhenPlayedCases = {
           .AddCardToDeck(1, cards.SOR.DSStormTrooper)
           .AddCardToDeck(1, cards.SOR.BFMarine)
           .AddCardToDeck(1, cards.SHD.PhaseIIIDarkTrooper)
-          .AddUnit(2, cards.SOR.DSStormTrooper, 11)
-          .AddUnit(2, cards.SOR.DSStormTrooper, 12)
+          .AddUnit(2, cards.SOR.DSStormTrooper)
+          .AddUnit(2, cards.SOR.DSStormTrooper)
           .FlushAsync(com.BeginTestCallback)
         ;
 

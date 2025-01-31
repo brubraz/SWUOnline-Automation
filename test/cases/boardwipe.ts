@@ -17,14 +17,14 @@ export const BoardWipeCases = {
       .AddLeader(1, cards.SOR.IdenLeader, true)
       .AddBase(2, cards.SOR.ECL)
       .AddLeader(2, cards.SOR.KrennicLeader)
-      .FillResources(1, cards.SOR.CraftySmuggler, 1, 8)
+      .FillResources(1, cards.SOR.CraftySmuggler, 8)
       .AddCardToHand(1, cards.SOR.SLB)
-      .AddUnit(1, cards.SOR.IdenLeaderUnit, 9)
-      .AddUnit(2, cards.SOR.DSStormTrooper, 10)
-      .AddUnit(2, cards.SOR.TieLnFighter, 11)
-      .AddUnit(2, cards.SOR.DSStormTrooper, 12)
-      .AddUnit(2, cards.SOR.TieLnFighter, 13)
-      .AddUnit(2, cards.SOR.AdmiralAckbar, 14, true, 0, `${cards.SHD.TopTarget},1,0`)
+      .AddUnit(1, cards.SOR.IdenLeaderUnit)
+      .AddUnit(2, cards.SOR.DSStormTrooper)
+      .AddUnit(2, cards.SOR.TieLnFighter)
+      .AddUnit(2, cards.SOR.DSStormTrooper)
+      .AddUnit(2, cards.SOR.TieLnFighter)
+      .AddUnit(2, cards.SOR.AdmiralAckbar, true, 0, `${cards.SHD.TopTarget},1,0`)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -51,13 +51,13 @@ export const BoardWipeCases = {
       .AddLeader(1, cards.SOR.IdenLeader, true)
       .AddBase(2, cards.SOR.ECL)
       .AddLeader(2, cards.SOR.IdenLeader, true)
-      .FillResources(1, cards.SOR.CraftySmuggler, 1, 8)
+      .FillResources(1, cards.SOR.CraftySmuggler, 8)
       .AddCardToHand(1, cards.SOR.SLB)
-      .AddUnit(1, cards.SOR.IdenLeaderUnit, 9)
-      .AddUnit(1, cards.SOR.DSStormTrooper, 10)
-      .AddUnit(2, cards.SOR.DSStormTrooper, 12)
-      .AddUnit(2, cards.SOR.TieLnFighter, 13)
-      .AddUnit(2, cards.SOR.IdenLeaderUnit, 14, true, 0, `${cards.SHD.TopTarget},1,0`)
+      .AddUnit(1, cards.SOR.IdenLeaderUnit)
+      .AddUnit(1, cards.SOR.DSStormTrooper)
+      .AddUnit(2, cards.SOR.DSStormTrooper)
+      .AddUnit(2, cards.SOR.TieLnFighter)
+      .AddUnit(2, cards.SOR.IdenLeaderUnit, true, 0, `${cards.SHD.TopTarget},1,0`)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -84,14 +84,14 @@ export const BoardWipeCases = {
       .AddLeader(1, cards.SOR.IdenLeader, true)
       .AddBase(2, cards.SOR.ECL)
       .AddLeader(2, cards.SOR.KrennicLeader)
-      .FillResources(1, cards.SOR.CraftySmuggler, 1, 15)
+      .FillResources(1, cards.SOR.CraftySmuggler, 15)
       .AddCardToHand(1, cards.TWI.Christophsis)
-      .AddUnit(1, cards.SOR.IdenLeaderUnit, 16)
-      .AddUnit(2, cards.SOR.DSStormTrooper, 17)
-      .AddUnit(2, cards.SOR.TieLnFighter, 18)
-      .AddUnit(2, cards.SOR.DSStormTrooper, 19)
-      .AddUnit(2, cards.SOR.TieLnFighter, 20)
-      .AddUnit(2, cards.SOR.AdmiralAckbar, 21, true, 0, `${cards.SHD.TopTarget},1,0`)
+      .AddUnit(1, cards.SOR.IdenLeaderUnit)
+      .AddUnit(2, cards.SOR.DSStormTrooper)
+      .AddUnit(2, cards.SOR.TieLnFighter)
+      .AddUnit(2, cards.SOR.DSStormTrooper)
+      .AddUnit(2, cards.SOR.TieLnFighter)
+      .AddUnit(2, cards.SOR.AdmiralAckbar, true, 0, `${cards.SHD.TopTarget},1,0`)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -120,13 +120,13 @@ export const BoardWipeCases = {
       .AddLeader(1, cards.SOR.IdenLeader, true)
       .AddBase(2, cards.SOR.ECL)
       .AddLeader(2, cards.SOR.IdenLeader, true)
-      .FillResources(1, cards.SOR.CraftySmuggler, 1, 15)
+      .FillResources(1, cards.SOR.CraftySmuggler, 15)
       .AddCardToHand(1, cards.TWI.Christophsis)
-      .AddUnit(1, cards.SOR.IdenLeaderUnit, 16)
-      .AddUnit(1, cards.SOR.DSStormTrooper, 17)
-      .AddUnit(2, cards.SOR.DSStormTrooper, 18)
-      .AddUnit(2, cards.SOR.TieLnFighter, 19)
-      .AddUnit(2, cards.SOR.IdenLeaderUnit, 20, true, 0, `${cards.SHD.TopTarget},1,0`)
+      .AddUnit(1, cards.SOR.IdenLeaderUnit)
+      .AddUnit(1, cards.SOR.DSStormTrooper)
+      .AddUnit(2, cards.SOR.DSStormTrooper)
+      .AddUnit(2, cards.SOR.TieLnFighter)
+      .AddUnit(2, cards.SOR.IdenLeaderUnit, true, 0, `${cards.SHD.TopTarget},1,0`)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -155,14 +155,14 @@ export const BoardWipeCases = {
       .AddLeader(1, cards.SOR.KrennicLeader)
       .AddBase(2, cards.SOR.ECL)
       .AddLeader(2, cards.SOR.KrennicLeader)
-      .FillResources(1, cards.SOR.CraftySmuggler, 1, 8)
+      .FillResources(1, cards.SOR.CraftySmuggler, 8)
       .AddCardToHand(1, cards.SOR.SLB)
-      .AddUnit(1, cards.SOR.DSStormTrooper, 9)
-      .AddUnit(1, cards.SOR.GideonHask, 10)
-      .AddUnit(2, cards.SOR.DSStormTrooper, 11)
-      .AddUnit(2, cards.SOR.TieLnFighter, 12, true, 0,
+      .AddUnit(1, cards.SOR.DSStormTrooper)
+      .AddUnit(1, cards.SOR.GideonHask)
+      .AddUnit(2, cards.SOR.DSStormTrooper)
+      .AddUnit(2, cards.SOR.TieLnFighter, true, 0,
         new SubcardBuilder().AddCaptive(cards.SOR.CraftySmuggler, 1).Build())
-      .AddUnit(2, cards.SOR.AdmiralAckbar, 15, true, 0,
+      .AddUnit(2, cards.SOR.AdmiralAckbar, true, 0,
         new SubcardBuilder().AddUpgrade(cards.SHD.TopTarget, 1).Build())
       .FlushAsync(com.BeginTestCallback)
     ;
@@ -198,18 +198,18 @@ export const BoardWipeCases = {
       .AddLeader(1, cards.SOR.KrennicLeader)
       .AddBase(2, cards.SOR.ECL)
       .AddLeader(2, cards.SOR.KrennicLeader)
-      .FillResources(1, cards.SOR.CraftySmuggler, 1, 8)
+      .FillResources(1, cards.SOR.CraftySmuggler, 8)
       .AddCardToHand(1, cards.SOR.SLB)
-      .AddUnit(1, cards.SOR.DSStormTrooper, 9)
-      .AddUnit(1, cards.SOR.GideonHask, 10)
-      .AddUnit(1, cards.SOR.DarthVader, 11, true, 0,
+      .AddUnit(1, cards.SOR.DSStormTrooper)
+      .AddUnit(1, cards.SOR.GideonHask)
+      .AddUnit(1, cards.SOR.DarthVader, true, 0,
         new SubcardBuilder().AddCaptive(cards.SOR.BFMarine, 2).Build())
-      .AddUnit(2, cards.SOR.DSStormTrooper, 12)
-      .AddUnit(2, cards.SOR.TieLnFighter, 13, true, 0,
+      .AddUnit(2, cards.SOR.DSStormTrooper)
+      .AddUnit(2, cards.SOR.TieLnFighter, true, 0,
         new SubcardBuilder().AddCaptive(cards.SOR.CraftySmuggler, 1).Build())
-      .AddUnit(2, cards.SOR.AdmiralAckbar, 14, true, 0,
+      .AddUnit(2, cards.SOR.AdmiralAckbar, true, 0,
         new SubcardBuilder().AddUpgrade(cards.SHD.TopTarget, 1).Build())
-      .AddUnit(2, cards.SOR.GideonHask, 15)
+      .AddUnit(2, cards.SOR.GideonHask)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act

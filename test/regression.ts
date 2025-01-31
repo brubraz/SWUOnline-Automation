@@ -22,9 +22,12 @@ import { ExploitCases } from './cases/exploit';
 import { SpecificTWICases } from './cases/specific/twi';
 import { PilotJTLCases } from './cases/pilots/jtl';
 
+import { LocalTestCase } from './cases/local';
+
 const home: NightwatchTests = {
   before: init,
 //regression suite
+  ...(process.env.LOCAL_RUN ? LocalTestCase : {}),
   ...WhenPlayedCases,
   ...WhenDefeatCases,
   ...OnAttackCases,

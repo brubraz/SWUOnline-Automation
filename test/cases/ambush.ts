@@ -16,10 +16,10 @@ export const AmbushCases = {
     .AddLeader(1, cards.SOR.SabineLeader)
     .AddBase(2, cards.SOR.ECL)
     .AddLeader(2, cards.SOR.SabineLeader)
-    .FillResources(1, cards.SOR.BFMarine, 1, 2)
+    .FillResources(1, cards.SOR.BFMarine, 2)
     .AddCardToHand(1, cards.SOR.SabineUnit)
-    .AddUnit(1, cards.SOR.SabineUnit, 3, false)
-    .AddUnit(2, cards.SOR.CraftySmuggler, 4, true, 0,
+    .AddUnit(1, cards.SOR.SabineUnit, false)
+    .AddUnit(2, cards.SOR.CraftySmuggler, true, 0,
       new SubcardBuilder().AddShield(2).Build())
     .FlushAsync(com.BeginTestCallback)
   ;
@@ -51,9 +51,9 @@ export const AmbushCases = {
       .AddLeader(1, cards.SOR.MoffTarkinLeader)
       .AddBase(2, cards.SOR.KestroCity)
       .AddLeader(2, cards.SOR.SabineLeader)
-      .FillResources(1, cards.SOR.BFMarine, 1, 5)
+      .FillResources(1, cards.SOR.BFMarine, 5)
       .AddCardToHand(1, cards.SOR.Rukh)
-      .AddUnit(2, cards.SHD.KraytDragon, 6)
+      .AddUnit(2, cards.SHD.KraytDragon)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -90,10 +90,10 @@ export const AmbushCases = {
       .AddLeader(1, cards.SOR.MoffTarkinLeader)
       .AddBase(2, cards.SOR.KestroCity)
       .AddLeader(2, cards.SOR.SabineLeader)
-      .FillResources(1, cards.SOR.BFMarine, 1, 6)
+      .FillResources(1, cards.SOR.BFMarine, 6)
       .AddCardToHand(1, cards.SOR.Rukh)
       .AddCardToHand(1, cards.SHD.TimelyIntervention)
-      .AddUnit(2, cards.SHD.KraytDragon, 7)
+      .AddUnit(2, cards.SHD.KraytDragon)
       .FlushAsync(com.BeginTestCallback)
 
     await browser.waitForElementPresent(com.MyHand)

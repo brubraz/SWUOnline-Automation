@@ -16,19 +16,19 @@ const ShadowedIntentionsGameStateAsync = async () =>{
     .AddLeader(1, cards.SOR.MoffTarkinLeader)
     .AddBase(2, cards.SOR.ChopperBase)
     .AddLeader(2, cards.SOR.SabineLeader)
-    .FillResources(1, cards.SOR.CraftySmuggler, 1, 3)
-    .FillResources(2, cards.SOR.CraftySmuggler, 4, 3)
+    .FillResources(1, cards.SOR.CraftySmuggler, 3)
+    .FillResources(2, cards.SOR.CraftySmuggler, 3)
     .AddCardToHand(1, cards.TWI.SanctioneerShuttle)
     .AddCardToHand(1, cards.TWI.EliteP)
     .AddCardToHand(1, cards.TWI.MercilessContest)
     .AddCardToHand(1, cards.SOR.Waylay)
-    .AddUnit(1, cards.SOR.Greedo, 7, true, 0,
+    .AddUnit(1, cards.SOR.Greedo, true, 0,
       new SubcardBuilder().AddExperience(1).AddUpgrade(cards.TWI.ShadowedIntentions, 1).Build())
-    .AddUnit(1, cards.SHD.LurkingTie, 8)
-    .AddUnit(2, cards.SOR.Greedo, 9, true, 0,
+    .AddUnit(1, cards.SHD.LurkingTie)
+    .AddUnit(2, cards.SOR.Greedo, true, 0,
       new SubcardBuilder().AddExperience(1).AddUpgrade(cards.TWI.ShadowedIntentions, 2).Build()
     )
-    .AddUnit(2, cards.SHD.LurkingTie, 10)
+    .AddUnit(2, cards.SHD.LurkingTie)
     .FlushAsync(com.BeginTestCallback)
 }
 
@@ -42,17 +42,17 @@ export const SpecificTWICases = {
       .AddLeader(1, cards.TWI.CountDookuLeader)
       .AddBase(2, cards.SOR.KestroCity)
       .AddLeader(2, cards.SHD.CadBaneLeader)
-      .FillResources(1, cards.SOR.CraftySmuggler, 1, 4)
-      .FillResources(2, cards.SOR.CraftySmuggler, 5, 4)
+      .FillResources(1, cards.SOR.CraftySmuggler, 4)
+      .FillResources(2, cards.SOR.CraftySmuggler, 4)
       .AddCardToHand(1, cards.TWI.DookuFallenJedi)
       .AddCardToDeck(1, cards.SOR.OB)
       .AddCardToHand(2, cards.SOR.ISBAgent)
       .AddCardToHand(2, cards.SHD.DaringRaid)
       .AddCardToDeck(2, cards.SOR.Waylay)
-      .AddUnit(1, cards.TWI.EliteP, 9)
-      .AddUnit(1, cards.SOR.Greedo, 10)
-      .AddUnit(2, cards.TWI.EliteP, 11)
-      .AddUnit(2, cards.SOR.Greedo, 12)
+      .AddUnit(1, cards.TWI.EliteP)
+      .AddUnit(1, cards.SOR.Greedo)
+      .AddUnit(2, cards.TWI.EliteP)
+      .AddUnit(2, cards.SOR.Greedo)
       .FlushAsync(com.BeginTestCallback)
     ;
 
@@ -119,9 +119,9 @@ export const SpecificTWICases = {
       .AddLeader(1, cards.SOR.SabineLeader)
       .AddBase(2, cards.SOR.DagobahSwamp)
       .AddLeader(2, cards.SOR.SabineLeader)
-      .AddUnit(1, cards.TWI.DarthMaul, 1)
-      .AddUnit(2, cards.TWI.WTTradeOfficial, 2)
-      .AddUnit(2, cards.TWI.WTTradeOfficial, 3)
+      .AddUnit(1, cards.TWI.DarthMaul)
+      .AddUnit(2, cards.TWI.WTTradeOfficial)
+      .AddUnit(2, cards.TWI.WTTradeOfficial)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -150,8 +150,8 @@ export const SpecificTWICases = {
       .AddLeader(1, cards.SOR.SabineLeader)
       .AddBase(2, cards.SOR.DagobahSwamp)
       .AddLeader(2, cards.SOR.SabineLeader)
-      .AddUnit(1, cards.TWI.DarthMaul, 1)
-      .AddUnit(2, cards.SOR.DSStormTrooper, 2)
+      .AddUnit(1, cards.TWI.DarthMaul)
+      .AddUnit(2, cards.SOR.DSStormTrooper)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -175,9 +175,9 @@ export const SpecificTWICases = {
      .AddLeader(1, cards.SOR.SabineLeader)
      .AddBase(2, cards.SOR.DagobahSwamp)
      .AddLeader(2, cards.SOR.SabineLeader)
-     .AddUnit(1, cards.TWI.DarthMaul, 1)
-     .AddUnit(2, cards.SOR.DSStormTrooper, 2)
-     .AddUnit(2, cards.SOR.DSStormTrooper, 3)
+     .AddUnit(1, cards.TWI.DarthMaul)
+     .AddUnit(2, cards.SOR.DSStormTrooper)
+     .AddUnit(2, cards.SOR.DSStormTrooper)
      .FlushAsync(com.BeginTestCallback)
    ;
    //act
@@ -205,10 +205,10 @@ export const SpecificTWICases = {
       .AddLeader(1, cards.SOR.SabineLeader)
       .AddBase(2, cards.SOR.DagobahSwamp)
       .AddLeader(2, cards.SOR.SabineLeader)
-      .AddUnit(1, cards.TWI.DarthMaul, 1)
-      .AddUnit(2, cards.SHD.PhaseIIIDarkTrooper, 2)
-      .AddUnit(2, cards.SHD.PhaseIIIDarkTrooper, 3)
-      .AddUnit(2, cards.TWI.WTTradeOfficial, 4)
+      .AddUnit(1, cards.TWI.DarthMaul)
+      .AddUnit(2, cards.SHD.PhaseIIIDarkTrooper)
+      .AddUnit(2, cards.SHD.PhaseIIIDarkTrooper)
+      .AddUnit(2, cards.TWI.WTTradeOfficial)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -234,9 +234,9 @@ export const SpecificTWICases = {
       .AddLeader(1, cards.SOR.SabineLeader)
       .AddBase(2, cards.SOR.DagobahSwamp)
       .AddLeader(2, cards.SOR.SabineLeader)
-      .AddUnit(1, cards.TWI.DarthMaul, 1)
-      .AddUnit(2, cards.SHD.PhaseIIIDarkTrooper, 2)
-      .AddUnit(2, cards.TWI.WTTradeOfficial, 3)
+      .AddUnit(1, cards.TWI.DarthMaul)
+      .AddUnit(2, cards.SHD.PhaseIIIDarkTrooper)
+      .AddUnit(2, cards.TWI.WTTradeOfficial)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act

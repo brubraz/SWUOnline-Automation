@@ -9,12 +9,14 @@ import {
 export class GameState {
   private _gameName: string = '';
   private _gameState: string[] = [];
+  private _uniqueIdCounter: number = 0;
 
   public constructor(gameName: string) {
     if(gameName === '') {
       throw new Error('Game name cannot be empty.');
     }
     this._gameName = gameName;
+    this._uniqueIdCounter = 1;
   }
 
   public async LoadGameStateLinesAsync() {
@@ -123,23 +125,23 @@ export class GameState {
     return this;
   }
 
-  public AddResource(player: number, cardID: string, uniqueId: number, ready: boolean = true, stealSource: number = -1) {
+  public AddResource(player: number, cardID: string, ready: boolean = true, stealSource: number = -1) {
     const index = player === 1 ? g.P1ResourcesArray : g.P2ResourcesArray;
     if(this._gameState[index] !== '') {
       this._gameState[index] += ' ';
     }
-    this._gameState[index] += `${cardID} DOWN 1 0 ${ready ? "0" : "1"} ${uniqueId} ${stealSource}`;
+    this._gameState[index] += `${cardID} DOWN 1 0 ${ready ? "0" : "1"} ${this._uniqueIdCounter++} ${stealSource}`;
 
     return this;
   }
 
-  public FillResources(player: number, cardID: string, uniqueIdStart: number, times: number) {
+  public FillResources(player: number, cardID: string, times: number) {
     const index = player === 1 ? g.P1ResourcesArray : g.P2ResourcesArray;
     if(this._gameState[index] !== '') {
       this._gameState[index] += ' ';
     }
     for(let i = 0; i < times; ++i) {
-      this._gameState[index] += `${cardID} DOWN 1 0 0 ${uniqueIdStart + i} -1`;
+      this._gameState[index] += `${cardID} DOWN 1 0 0 ${this._uniqueIdCounter++} -1`;
       if(i < times - 1) {
         this._gameState[index] += ' ';
       }
@@ -148,7 +150,7 @@ export class GameState {
     return this;
   }
 
-  public AddUnit(player: number, cardID: string, uniqueId: number, ready: boolean = true,
+  public AddUnit(player: number, cardID: string, ready: boolean = true,
       damage: number = 0, upgrades = "-", owner = player, carbonite = false, numUses = 1,
       turnsInPlay = 0, numAttacks = 0, cloned = false, healed = false, arenaOverride = "NA")
   {
@@ -157,7 +159,7 @@ export class GameState {
       this._gameState[index] += ' ';
     }
     this._gameState[index] += (
-      `${cardID} ${ready ? "2" : "1"} ${damage} ${carbonite ? "1" : "0"} ${upgrades} ${uniqueId} 0 0 `
+      `${cardID} ${ready ? "2" : "1"} ${damage} ${carbonite ? "1" : "0"} ${upgrades} ${this._uniqueIdCounter++} 0 0 `
       + `${numUses} 0 ${numAttacks} ${owner} ${turnsInPlay} ${cloned ? "1" : "0"} ${healed ? "1" : "0"} ${arenaOverride} 0`
     );
 

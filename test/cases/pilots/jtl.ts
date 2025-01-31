@@ -17,7 +17,7 @@ export const PilotJTLCases = {
       .AddLeader(1, cards.JTL.BobaFettLeader)
       .AddBase(2, cards.SOR.EchoBase)
       .AddLeader(2, cards.JTL.HanSoloLeader)
-      .AddUnit(1, cards.JTL.Dengar, 1)
+      .AddUnit(1, cards.JTL.Dengar)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -38,7 +38,7 @@ export const PilotJTLCases = {
       .AddLeader(1, cards.JTL.BobaFettLeader)
       .AddBase(2, cards.SOR.EchoBase)
       .AddLeader(2, cards.JTL.HanSoloLeader)
-      .AddUnit(1, cards.SOR.TieLnFighter, 1, true, 0, `${cards.JTL.Dengar},1,1`)
+      .AddUnit(1, cards.SOR.TieLnFighter, true, 0, `${cards.JTL.Dengar},1,1`)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -61,11 +61,11 @@ export const PilotJTLCases = {
       .AddLeader(1, cards.JTL.BobaFettLeader, true)
       .AddBase(2, cards.SOR.EchoBase)
       .AddLeader(2, cards.JTL.HanSoloLeader)
-      .AddUnit(1, cards.JTL.NienNunb, 1)
-      .AddUnit(1, cards.JTL.Chewbacca, 2)
-      .AddUnit(1, cards.SOR.TieLnFighter, 3, false, 0,
+      .AddUnit(1, cards.JTL.NienNunb)
+      .AddUnit(1, cards.JTL.Chewbacca)
+      .AddUnit(1, cards.SOR.TieLnFighter, false, 0,
           new SubcardBuilder().AddUpgrade(cards.JTL.Dengar, 1, true).Build())
-      .AddUnit(1, cards.SOR.TieLnFighter, 3, false, 0,
+      .AddUnit(1, cards.SOR.TieLnFighter, false, 0,
         new SubcardBuilder().AddUpgrade(cards.JTL.BobaFettLeader, 1, true).Build())
       .FlushAsync(com.BeginTestCallback)
     ;
@@ -83,10 +83,10 @@ export const PilotJTLCases = {
       .AddLeader(1, cards.JTL.BobaFettLeader, true)
       .AddBase(2, cards.SOR.EchoBase)
       .AddLeader(2, cards.JTL.HanSoloLeader)
-      .AddUnit(1, cards.JTL.Chewbacca, 2)
-      .AddUnit(1, cards.SOR.TieLnFighter, 3, false, 0,
+      .AddUnit(1, cards.JTL.Chewbacca)
+      .AddUnit(1, cards.SOR.TieLnFighter, false, 0,
           new SubcardBuilder().AddUpgrade(cards.JTL.NienNunb, 1, true).Build())
-      .AddUnit(1, cards.SOR.TieLnFighter, 3, false, 0,
+      .AddUnit(1, cards.SOR.TieLnFighter, false, 0,
         new SubcardBuilder().AddUpgrade(cards.JTL.BobaFettLeader, 1, true).Build())
       .FlushAsync(com.BeginTestCallback)
     ;
@@ -105,13 +105,13 @@ export const PilotJTLCases = {
       .AddLeader(1, cards.JTL.HanSoloLeader, true)
       .AddBase(2, cards.SHD.JabbasPalace)
       .AddLeader(2, cards.JTL.BobaFettLeader)
-      .FillResources(1, cards.SOR.BFMarine, 1, 2)
+      .FillResources(1, cards.SOR.BFMarine, 2)
       .AddCardToHand(1, cards.JTL.RedLeader)
       .AddCardToHand(1, cards.JTL.IndependentSmuggler)
-      .AddUnit(1, cards.JTL.Chewbacca, 3)
-      .AddUnit(1, cards.SOR.TieLnFighter, 4, false, 0,
+      .AddUnit(1, cards.JTL.Chewbacca)
+      .AddUnit(1, cards.SOR.TieLnFighter, false, 0,
           new SubcardBuilder().AddUpgrade(cards.JTL.NienNunb, 1, true).Build())
-      .AddUnit(1, cards.SOR.TieLnFighter, 5, false, 0,
+      .AddUnit(1, cards.SOR.TieLnFighter, false, 0,
         new SubcardBuilder().AddUpgrade(cards.JTL.HanSoloLeaderUnit, 1, true).Build())
       .FlushAsync(com.BeginTestCallback)
     ;

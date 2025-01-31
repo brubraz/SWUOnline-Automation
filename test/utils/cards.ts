@@ -35,6 +35,7 @@ export const cards = {
     FLSnowTrooper: '4619930426',
     Greedo: '0949648290',
     ISBAgent: '5154172446',
+    Snowspeeder: '1862616109',
     //upgrades
     //events
     Waylay: '7202133736',
@@ -100,8 +101,13 @@ export const cards = {
     Dengar: '3282713547',
     NienNunb: '6610553087',
     IndependentSmuggler: '0587196584',
+    Bossk: '4573745395',
+    Boshek: '5673100759',
+    Mandalorian: '6421006753',
+    BobaFettUnit: '7700932371',
     //vehicles
     RedLeader: '3711891756',
+    HoundsTooth: '3876470102',
     //events
     ItsATrap: '0964312065',
   }

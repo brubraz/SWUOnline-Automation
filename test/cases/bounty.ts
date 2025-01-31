@@ -17,9 +17,9 @@ export const BountyCases = {
       .AddLeader(1, cards.SOR.SabineLeader)
       .AddBase(2, cards.SOR.DagobahSwamp)
       .AddLeader(2, cards.SOR.SabineLeader)
-      .AddUnit(1, cards.SOR.DSStormTrooper, 1)
-      .AddUnit(1, cards.SHD.TheClient, 2)
-      .AddUnit(2, cards.SOR.DSStormTrooper, 3)
+      .AddUnit(1, cards.SOR.DSStormTrooper)
+      .AddUnit(1, cards.SHD.TheClient)
+      .AddUnit(2, cards.SOR.DSStormTrooper)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -61,9 +61,9 @@ export const BountyCases = {
       .AddLeader(1, cards.SOR.SabineLeader)
       .AddBase(2, cards.SOR.DagobahSwamp)
       .AddLeader(2, cards.SOR.SabineLeader)
-      .AddUnit(1, cards.SOR.DSStormTrooper, 1)
-      .AddUnit(1, cards.SHD.TheClient, 2)
-      .AddUnit(2, cards.SOR.DSStormTrooper, 3)
+      .AddUnit(1, cards.SOR.DSStormTrooper)
+      .AddUnit(1, cards.SHD.TheClient)
+      .AddUnit(2, cards.SOR.DSStormTrooper)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act

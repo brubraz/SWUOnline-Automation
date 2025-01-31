@@ -16,11 +16,11 @@ export const BounceCases = {
       .AddLeader(1, cards.SOR.SabineLeader)
       .AddBase(2, cards.SOR.DagobahSwamp)
       .AddLeader(2, cards.SOR.SabineLeader)
-      .FillResources(1, cards.SOR.Waylay, 1, 6)
+      .FillResources(1, cards.SOR.Waylay, 6)
       .AddCardToHand(1, cards.SOR.Waylay)
       .AddCardToHand(1, cards.SOR.Waylay)
-      .AddUnit(2, cards.TWI.BattleDroid, 7)
-      .AddUnit(2, cards.TWI.CloneTrooper, 8)
+      .AddUnit(2, cards.TWI.BattleDroid)
+      .AddUnit(2, cards.TWI.CloneTrooper)
       .FlushAsync(com.BeginTestCallback)
     ;
 
