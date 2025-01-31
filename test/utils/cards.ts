@@ -96,6 +96,8 @@ export const cards = {
     HanSoloLeader: '0616724418',
     HanSoloLeaderUnit: 'a015eb5c5e',
     BobaFettLeader: '9831674351',
+    //units
+    Leia: '7924461681',
     //pilots
     Chewbacca: '7208848194',
     Dengar: '3282713547',
