@@ -8,7 +8,7 @@ import {
 import { GameState } from '../../utils/gamestate';
 import { cards } from '../../utils/cards';
 
-export const LeaderAbilitySORCases = process.env.FULL_REGRESSION !== "true" ? {} :{
+export const LeaderAbilitySORCases = {
   'Leader Ability: Director Krennic passive buff': async function () {
     await LoadTestGameStateAsync('leader-ability-sor/krennic-passive');
 
@@ -29,7 +29,7 @@ export const LeaderAbilitySORCases = process.env.FULL_REGRESSION !== "true" ? {}
 
     await browser.assert.textEquals(com.MyBaseDamage, '4');
   },
-  'Leader Ability: Chewbacca taunt': async function () {
+  'Leader Ability: Chewbacca taunt': process.env.FULL_REGRESSION !== "true" ? '' : async function () {
     await LoadTestGameStateAsync('leader-ability-sor/chewbacca-taunt');
 
     await browser.waitForElementPresent(com.Leader(1))
@@ -44,7 +44,7 @@ export const LeaderAbilitySORCases = process.env.FULL_REGRESSION !== "true" ? {}
 
     await browser.assert.attributeContains(com.UnitDivPiece(com.AllySpaceUnit(1), 3), 'style', src.SentinelToken);
   },
-  'Leader Ability: Chirrut Imwe buff': async function () {
+  'Leader Ability: Chirrut Imwe buff': process.env.FULL_REGRESSION !== "true" ? '' : async function () {
     await LoadTestGameStateAsync('leader-ability-sor/chirrut-buff');
 
     await browser.waitForElementPresent(com.Leader(1))
@@ -138,7 +138,7 @@ export const LeaderAbilitySORCases = process.env.FULL_REGRESSION !== "true" ? {}
     await browser.assert.elementsCount(com.MyHandDivs, 6);
     await browser.assert.textEquals(com.MyResources, '3/4');
   },
-  'Leader Ability: Tarkin fails': async function () {
+  'Leader Ability: Tarkin fails': process.env.FULL_REGRESSION !== "true" ? '' : async function () {
     await LoadTestGameStateAsync('leader-ability-sor/tarkin-fails');
 
     await browser.waitForElementPresent(com.Leader(1))
@@ -151,7 +151,7 @@ export const LeaderAbilitySORCases = process.env.FULL_REGRESSION !== "true" ? {}
     await customAsserts.AllyUnitDivPieceIsOverlay(browser, 'SPACE', 1, 3);
     await browser.assert.textEquals(com.MyResources, '3/4');
   },
-  'Leader Ability: Tarkin xp': async function () {
+  'Leader Ability: Tarkin xp': process.env.FULL_REGRESSION !== "true" ? '' : async function () {
     await LoadTestGameStateAsync('leader-ability-sor/tarkin-xp');
 
     await browser.waitForElementPresent(com.Leader(1))
@@ -288,7 +288,7 @@ export const LeaderAbilitySORCases = process.env.FULL_REGRESSION !== "true" ? {}
       await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 3), '2');
       await browser.assert.not.elementPresent(com.AllyGroundUnit(1, true));
     },
-    'Leader Ability: IG-88 buff': async function () {
+    'Leader Ability: IG-88 buff': process.env.FULL_REGRESSION !== "true" ? '' : async function () {
       await LoadTestGameStateAsync('leader-ability-sor/ig88-buff');
 
       await browser.waitForElementPresent(com.Leader(1))
@@ -304,7 +304,7 @@ export const LeaderAbilitySORCases = process.env.FULL_REGRESSION !== "true" ? {}
 
       await browser.assert.textEquals(com.TheirBaseDamage, '2');
     },
-    'Leader Ability: Cassian Draw': async function () {
+    'Leader Ability: Cassian Draw': process.env.FULL_REGRESSION !== "true" ? '' : async function () {
       await LoadTestGameStateAsync('leader-ability-sor/cassian-draw');
 
       await browser.waitForElementPresent(com.MyHand)
@@ -369,7 +369,7 @@ export const LeaderAbilitySORCases = process.env.FULL_REGRESSION !== "true" ? {}
 
       await browser.assert.textEquals(com.MyResources, '5/7');
     },
-    'Leader Ability: Thrawn reveal exhaust': async function () {
+    'Leader Ability: Thrawn reveal exhaust': process.env.FULL_REGRESSION !== "true" ? '' : async function () {
       await LoadTestGameStateAsync('leader-ability-sor/thrawn-exhaust');
 
       await browser.waitForElementPresent(com.Leader(1))
@@ -420,7 +420,7 @@ export const LeaderAbilitySORCases = process.env.FULL_REGRESSION !== "true" ? {}
 
       await browser.assert.textEquals(com.MyResources, '7/7');
     },
-    'Leader Ability: Jyn Erso debuff': async function () {
+    'Leader Ability: Jyn Erso debuff': process.env.FULL_REGRESSION !== "true" ? '' : async function () {
       await LoadTestGameStateAsync('leader-ability-sor/jyn-erso-debuff');
 
       await browser.waitForElementPresent(com.Leader(1))

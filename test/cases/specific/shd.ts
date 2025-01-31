@@ -30,7 +30,7 @@ const LurkingTieGameStateAsync = async function() {
   ;
 }
 
-export const SpecificSHDCases = process.env.FULL_REGRESSION !== "true" ? {} :{
+export const SpecificSHDCases = {
   'Lurking TIE: avoids enemy capture': async function() {
     //arrange
     await LurkingTieGameStateAsync();
