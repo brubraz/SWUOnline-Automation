@@ -133,7 +133,6 @@ export const SpecificSHDCases = process.env.FULL_REGRESSION !== "true" ? {} :{
   'Snoke wipes non-leaders and token units': async function() {
     //arrange
     const gameState = new GameState(gameName);
-    const asajjLeaderPilot = new SubcardBuilder().AddUpgrade(cards.JTL.AsajjLeaderUnit, 2, true).Build();
     await gameState.LoadGameStateLinesAsync();
     await gameState.ResetGameStateLines()
       .AddBase(1, cards.SHD.RemnantScienceFacility)
@@ -142,7 +141,8 @@ export const SpecificSHDCases = process.env.FULL_REGRESSION !== "true" ? {} :{
       .AddLeader(2, cards.SOR.SabineLeader, true)
       .FillResources(1, cards.SOR.CraftySmuggler, 1, 8)
       .AddCardToHand(1, cards.SHD.Snoke)
-      .AddUnit(2, cards.SOR.TieLnFighter, 9, true, 3, asajjLeaderPilot)
+      .AddUnit(2, cards.SOR.TieLnFighter, 9, true, 3,
+        new SubcardBuilder().AddUpgrade(cards.JTL.AsajjLeaderUnit, 2, true).Build())
       .AddUnit(2, cards.TWI.CloneTrooper, 10)
       .AddUnit(2, cards.TWI.BattleDroid, 11)
       .AddUnit(2, cards.SOR.SabineLeaderUnit, 12, true, 3)

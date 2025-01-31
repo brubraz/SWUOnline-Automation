@@ -160,8 +160,10 @@ export const BoardWipeCases = {
       .AddUnit(1, cards.SOR.DSStormTrooper, 9)
       .AddUnit(1, cards.SOR.GideonHask, 10)
       .AddUnit(2, cards.SOR.DSStormTrooper, 11)
-      .AddUnit(2, cards.SOR.TieLnFighter, 12, true, 0, new SubcardBuilder().AddCaptive(cards.SOR.CraftySmuggler, 1).Build())
-      .AddUnit(2, cards.SOR.AdmiralAckbar, 15, true, 0, new SubcardBuilder().AddUpgrade(cards.SHD.TopTarget, 1).Build())
+      .AddUnit(2, cards.SOR.TieLnFighter, 12, true, 0,
+        new SubcardBuilder().AddCaptive(cards.SOR.CraftySmuggler, 1).Build())
+      .AddUnit(2, cards.SOR.AdmiralAckbar, 15, true, 0,
+        new SubcardBuilder().AddUpgrade(cards.SHD.TopTarget, 1).Build())
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -200,10 +202,13 @@ export const BoardWipeCases = {
       .AddCardToHand(1, cards.SOR.SLB)
       .AddUnit(1, cards.SOR.DSStormTrooper, 9)
       .AddUnit(1, cards.SOR.GideonHask, 10)
-      .AddUnit(1, cards.SOR.DarthVader, 11, true, 0, new SubcardBuilder().AddCaptive(cards.SOR.BFMarine, 2).Build())
+      .AddUnit(1, cards.SOR.DarthVader, 11, true, 0,
+        new SubcardBuilder().AddCaptive(cards.SOR.BFMarine, 2).Build())
       .AddUnit(2, cards.SOR.DSStormTrooper, 12)
-      .AddUnit(2, cards.SOR.TieLnFighter, 13, true, 0, new SubcardBuilder().AddCaptive(cards.SOR.CraftySmuggler, 1).Build())
-      .AddUnit(2, cards.SOR.AdmiralAckbar, 14, true, 0, new SubcardBuilder().AddUpgrade(cards.SHD.TopTarget, 1).Build())
+      .AddUnit(2, cards.SOR.TieLnFighter, 13, true, 0,
+        new SubcardBuilder().AddCaptive(cards.SOR.CraftySmuggler, 1).Build())
+      .AddUnit(2, cards.SOR.AdmiralAckbar, 14, true, 0,
+        new SubcardBuilder().AddUpgrade(cards.SHD.TopTarget, 1).Build())
       .AddUnit(2, cards.SOR.GideonHask, 15)
       .FlushAsync(com.BeginTestCallback)
     ;

@@ -87,12 +87,21 @@ export const cards = {
   },
   JTL: {
     //bases
+    //tokens
+    XWing: '9415311381',
+    TieFighter: '7268926664',
     //leaders and leader units
     AsajjLeaderUnit: '3f0b5622a7',
     HanSoloLeader: '0616724418',
+    HanSoloLeaderUnit: 'a015eb5c5e',
     BobaFettLeader: '9831674351',
     //pilots
+    Chewbacca: '7208848194',
     Dengar: '3282713547',
+    NienNunb: '6610553087',
+    IndependentSmuggler: '0587196584',
+    //vehicles
+    RedLeader: '3711891756',
     //events
     ItsATrap: '0964312065',
   }

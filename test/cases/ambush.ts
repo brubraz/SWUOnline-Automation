@@ -10,7 +10,6 @@ export const AmbushCases = {
   'Ambush: ECL Sabine Ping Shield': async function () {
   //arrange
   const gameState = new GameState(gameName);
-  const craftySmugglerShield = new SubcardBuilder().AddShield(2).Build();
   await gameState.LoadGameStateLinesAsync();
   await gameState.ResetGameStateLines()
     .AddBase(1, cards.SOR.ECL)
@@ -20,7 +19,8 @@ export const AmbushCases = {
     .FillResources(1, cards.SOR.BFMarine, 1, 2)
     .AddCardToHand(1, cards.SOR.SabineUnit)
     .AddUnit(1, cards.SOR.SabineUnit, 3, false)
-    .AddUnit(2, cards.SOR.CraftySmuggler, 4, true, 0, craftySmugglerShield)
+    .AddUnit(2, cards.SOR.CraftySmuggler, 4, true, 0,
+      new SubcardBuilder().AddShield(2).Build())
     .FlushAsync(com.BeginTestCallback)
   ;
   //act

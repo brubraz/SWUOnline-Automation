@@ -10,7 +10,6 @@ export const DamageCases = {
   'Overwhelming Barrage pings simultaneously': async function () {
     //arrange
     const gameState = new GameState(gameName);
-    const threeXpTokens = new SubcardBuilder().AddExperience(1,3).Build();
     await gameState.LoadGameStateLinesAsync();
     await gameState.ResetGameStateLines()
       .AddBase(1, cards.TWI.LairOfGrievous)
@@ -19,7 +18,8 @@ export const DamageCases = {
       .AddLeader(2, cards.SOR.SabineLeader)
       .FillResources(1, cards.SOR.BFMarine, 1, 5)
       .AddCardToHand(1, cards.SOR.OB)
-      .AddUnit(1, cards.SOR.DSStormTrooper, 6, true, 0, threeXpTokens)
+      .AddUnit(1, cards.SOR.DSStormTrooper, 6, true, 0,
+        new SubcardBuilder().AddExperience(1,3).Build())
       .AddUnit(1, cards.SOR.DSStormTrooper, 7)
       .AddUnit(2, cards.TWI.Malevolence, 8, true, 3)
       .AddUnit(2, cards.SOR.SLT, 9)

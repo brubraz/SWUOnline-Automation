@@ -126,10 +126,24 @@ export const customAsserts = {
     browser.assert.attributeEquals(com.UnitDivPiece(arena == 'GROUND'
       ? com.EnemyGroundUnit(unit)
       : com.EnemySpaceUnit(unit) , divPiece), 'class', 'overlay'),
+  //Twilight of the Republic
   AllyGroundUnitIsBattleDroid: (browser: NightwatchAPI, unit: number) =>
     browser.assert.attributeEquals(com.UnitImg(com.AllyGroundUnit(unit)), 'src', src.Concat(cards.TWI.BattleDroid)),
   EnemyGroundUnitIsBattleDroid: (browser: NightwatchAPI, unit: number) =>
     browser.assert.attributeEquals(com.UnitImg(com.EnemyGroundUnit(unit)), 'src', src.Concat(cards.TWI.BattleDroid)),
+  AllyGroundUnitIsCloneTrooper: (browser: NightwatchAPI, unit: number) =>
+    browser.assert.attributeEquals(com.UnitImg(com.AllyGroundUnit(unit)), 'src', src.Concat(cards.TWI.CloneTrooper)),
+  EnemyGroundUnitIsCloneTrooper: (browser: NightwatchAPI, unit: number) =>
+    browser.assert.attributeEquals(com.UnitImg(com.EnemyGroundUnit(unit)), 'src', src.Concat(cards.TWI.CloneTrooper)),
+  //Jump to Lightspeed
+  AllySpaceUnitIsXWing: (browser: NightwatchAPI, unit: number) =>
+    browser.assert.attributeEquals(com.UnitImg(com.AllySpaceUnit(unit)), 'src', src.Concat(cards.JTL.XWing)),
+  EnemySpaceUnitIsXWing: (browser: NightwatchAPI, unit: number) =>
+    browser.assert.attributeEquals(com.UnitImg(com.EnemySpaceUnit(unit)), 'src', src.Concat(cards.JTL.XWing)),
+  AllySpaceUnitIsTieFighter: (browser: NightwatchAPI, unit: number) =>
+    browser.assert.attributeEquals(com.UnitImg(com.AllySpaceUnit(unit)), 'src', src.Concat(cards.JTL.TieFighter)),
+  EnemySpaceUnitIsTieFighter: (browser: NightwatchAPI, unit: number) =>
+    browser.assert.attributeEquals(com.UnitImg(com.EnemySpaceUnit(unit)), 'src', src.Concat(cards.JTL.TieFighter)),
 }
 
 export const g = {

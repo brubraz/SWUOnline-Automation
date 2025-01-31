@@ -8,9 +8,6 @@ import {
     gameName
 } from '../../utils/util';
 
-const GreedoUpgrades = (owner: number) =>
-  new SubcardBuilder().AddExperience(1).AddUpgrade(cards.TWI.ShadowedIntentions, owner).Build();
-
 const ShadowedIntentionsGameStateAsync = async () =>{
   const gameState = new GameState(gameName);
   await gameState.LoadGameStateLinesAsync();
@@ -25,9 +22,12 @@ const ShadowedIntentionsGameStateAsync = async () =>{
     .AddCardToHand(1, cards.TWI.EliteP)
     .AddCardToHand(1, cards.TWI.MercilessContest)
     .AddCardToHand(1, cards.SOR.Waylay)
-    .AddUnit(1, cards.SOR.Greedo, 7, true, 0, GreedoUpgrades(1))
+    .AddUnit(1, cards.SOR.Greedo, 7, true, 0,
+      new SubcardBuilder().AddExperience(1).AddUpgrade(cards.TWI.ShadowedIntentions, 1).Build())
     .AddUnit(1, cards.SHD.LurkingTie, 8)
-    .AddUnit(2, cards.SOR.Greedo, 9, true, 0, GreedoUpgrades(2))
+    .AddUnit(2, cards.SOR.Greedo, 9, true, 0,
+      new SubcardBuilder().AddExperience(1).AddUpgrade(cards.TWI.ShadowedIntentions, 2).Build()
+    )
     .AddUnit(2, cards.SHD.LurkingTie, 10)
     .FlushAsync(com.BeginTestCallback)
 }
