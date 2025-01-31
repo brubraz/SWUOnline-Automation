@@ -1,4 +1,4 @@
-import { card } from '../../utils/cards';
+import { cards } from '../../utils/cards';
 import { GameState, SubcardBuilder } from '../../utils/gamestate';
 import {
     com, p,
@@ -9,26 +9,26 @@ import {
 } from '../../utils/util';
 
 const GreedoUpgrades = (owner: number) =>
-  new SubcardBuilder().AddExperience(1).AddUpgrade(card.TWI.ShadowedIntentions, owner).Build();
+  new SubcardBuilder().AddExperience(1).AddUpgrade(cards.TWI.ShadowedIntentions, owner).Build();
 
 const ShadowedIntentionsGameStateAsync = async () =>{
   const gameState = new GameState(gameName);
   await gameState.LoadGameStateLinesAsync();
   await gameState.ResetGameStateLines()
-    .AddBase(1, card.SOR.ChopperBase)
-    .AddLeader(1, card.SOR.MoffTarkinLeader)
-    .AddBase(2, card.SOR.ChopperBase)
-    .AddLeader(2, card.SOR.SabineLeader)
-    .FillResources(1, card.SOR.CraftySmuggler, 1, 3)
-    .FillResources(2, card.SOR.CraftySmuggler, 4, 3)
-    .AddCardToHand(1, card.TWI.SanctioneerShuttle)
-    .AddCardToHand(1, card.TWI.EliteP)
-    .AddCardToHand(1, card.TWI.MercilessContest)
-    .AddCardToHand(1, card.SOR.Waylay)
-    .AddUnit(1, card.SOR.Greedo, 7, true, 0, GreedoUpgrades(1))
-    .AddUnit(1, card.SHD.LurkingTie, 8)
-    .AddUnit(2, card.SOR.Greedo, 9, true, 0, GreedoUpgrades(2))
-    .AddUnit(2, card.SHD.LurkingTie, 10)
+    .AddBase(1, cards.SOR.ChopperBase)
+    .AddLeader(1, cards.SOR.MoffTarkinLeader)
+    .AddBase(2, cards.SOR.ChopperBase)
+    .AddLeader(2, cards.SOR.SabineLeader)
+    .FillResources(1, cards.SOR.CraftySmuggler, 1, 3)
+    .FillResources(2, cards.SOR.CraftySmuggler, 4, 3)
+    .AddCardToHand(1, cards.TWI.SanctioneerShuttle)
+    .AddCardToHand(1, cards.TWI.EliteP)
+    .AddCardToHand(1, cards.TWI.MercilessContest)
+    .AddCardToHand(1, cards.SOR.Waylay)
+    .AddUnit(1, cards.SOR.Greedo, 7, true, 0, GreedoUpgrades(1))
+    .AddUnit(1, cards.SHD.LurkingTie, 8)
+    .AddUnit(2, cards.SOR.Greedo, 9, true, 0, GreedoUpgrades(2))
+    .AddUnit(2, cards.SHD.LurkingTie, 10)
     .FlushAsync(com.BeginTestCallback)
 }
 
@@ -38,21 +38,21 @@ export const SpecificTWICases = {
     const gameState = new GameState(gameName);
     await gameState.LoadGameStateLinesAsync();
     await gameState.ResetGameStateLines()
-      .AddBase(1, card.SOR.KestroCity)
-      .AddLeader(1, card.TWI.CountDookuLeader)
-      .AddBase(2, card.SOR.KestroCity)
-      .AddLeader(2, card.SHD.CadBaneLeader)
-      .FillResources(1, card.SOR.CraftySmuggler, 1, 4)
-      .FillResources(2, card.SOR.CraftySmuggler, 5, 4)
-      .AddCardToHand(1, card.TWI.DookuFallenJedi)
-      .AddCardToDeck(1, card.SOR.OB)
-      .AddCardToHand(2, card.SOR.ISBAgent)
-      .AddCardToHand(2, card.SHD.DaringRaid)
-      .AddCardToDeck(2, card.SOR.Waylay)
-      .AddUnit(1, card.TWI.EliteP, 9)
-      .AddUnit(1, card.SOR.Greedo, 10)
-      .AddUnit(2, card.TWI.EliteP, 11)
-      .AddUnit(2, card.SOR.Greedo, 12)
+      .AddBase(1, cards.SOR.KestroCity)
+      .AddLeader(1, cards.TWI.CountDookuLeader)
+      .AddBase(2, cards.SOR.KestroCity)
+      .AddLeader(2, cards.SHD.CadBaneLeader)
+      .FillResources(1, cards.SOR.CraftySmuggler, 1, 4)
+      .FillResources(2, cards.SOR.CraftySmuggler, 5, 4)
+      .AddCardToHand(1, cards.TWI.DookuFallenJedi)
+      .AddCardToDeck(1, cards.SOR.OB)
+      .AddCardToHand(2, cards.SOR.ISBAgent)
+      .AddCardToHand(2, cards.SHD.DaringRaid)
+      .AddCardToDeck(2, cards.SOR.Waylay)
+      .AddUnit(1, cards.TWI.EliteP, 9)
+      .AddUnit(1, cards.SOR.Greedo, 10)
+      .AddUnit(2, cards.TWI.EliteP, 11)
+      .AddUnit(2, cards.SOR.Greedo, 12)
       .FlushAsync(com.BeginTestCallback)
     ;
 
@@ -115,13 +115,13 @@ export const SpecificTWICases = {
     const gameState = new GameState(gameName);
     await gameState.LoadGameStateLinesAsync();
     await gameState.ResetGameStateLines()
-      .AddBase(1, card.SOR.ChopperBase)
-      .AddLeader(1, card.SOR.SabineLeader)
-      .AddBase(2, card.SOR.DagobahSwamp)
-      .AddLeader(2, card.SOR.SabineLeader)
-      .AddUnit(1, card.TWI.DarthMaul, 1)
-      .AddUnit(2, card.TWI.WTTradeOfficial, 2)
-      .AddUnit(2, card.TWI.WTTradeOfficial, 3)
+      .AddBase(1, cards.SOR.ChopperBase)
+      .AddLeader(1, cards.SOR.SabineLeader)
+      .AddBase(2, cards.SOR.DagobahSwamp)
+      .AddLeader(2, cards.SOR.SabineLeader)
+      .AddUnit(1, cards.TWI.DarthMaul, 1)
+      .AddUnit(2, cards.TWI.WTTradeOfficial, 2)
+      .AddUnit(2, cards.TWI.WTTradeOfficial, 3)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -146,12 +146,12 @@ export const SpecificTWICases = {
     const gameState = new GameState(gameName);
     await gameState.LoadGameStateLinesAsync();
     await gameState.ResetGameStateLines()
-      .AddBase(1, card.SOR.ChopperBase)
-      .AddLeader(1, card.SOR.SabineLeader)
-      .AddBase(2, card.SOR.DagobahSwamp)
-      .AddLeader(2, card.SOR.SabineLeader)
-      .AddUnit(1, card.TWI.DarthMaul, 1)
-      .AddUnit(2, card.SOR.DSStormTrooper, 2)
+      .AddBase(1, cards.SOR.ChopperBase)
+      .AddLeader(1, cards.SOR.SabineLeader)
+      .AddBase(2, cards.SOR.DagobahSwamp)
+      .AddLeader(2, cards.SOR.SabineLeader)
+      .AddUnit(1, cards.TWI.DarthMaul, 1)
+      .AddUnit(2, cards.SOR.DSStormTrooper, 2)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -171,13 +171,13 @@ export const SpecificTWICases = {
    const gameState = new GameState(gameName);
    await gameState.LoadGameStateLinesAsync();
    await gameState.ResetGameStateLines()
-     .AddBase(1, card.SOR.ChopperBase)
-     .AddLeader(1, card.SOR.SabineLeader)
-     .AddBase(2, card.SOR.DagobahSwamp)
-     .AddLeader(2, card.SOR.SabineLeader)
-     .AddUnit(1, card.TWI.DarthMaul, 1)
-     .AddUnit(2, card.SOR.DSStormTrooper, 2)
-     .AddUnit(2, card.SOR.DSStormTrooper, 3)
+     .AddBase(1, cards.SOR.ChopperBase)
+     .AddLeader(1, cards.SOR.SabineLeader)
+     .AddBase(2, cards.SOR.DagobahSwamp)
+     .AddLeader(2, cards.SOR.SabineLeader)
+     .AddUnit(1, cards.TWI.DarthMaul, 1)
+     .AddUnit(2, cards.SOR.DSStormTrooper, 2)
+     .AddUnit(2, cards.SOR.DSStormTrooper, 3)
      .FlushAsync(com.BeginTestCallback)
    ;
    //act
@@ -201,14 +201,14 @@ export const SpecificTWICases = {
     const gameState = new GameState(gameName);
     await gameState.LoadGameStateLinesAsync();
     await gameState.ResetGameStateLines()
-      .AddBase(1, card.SOR.ChopperBase)
-      .AddLeader(1, card.SOR.SabineLeader)
-      .AddBase(2, card.SOR.DagobahSwamp)
-      .AddLeader(2, card.SOR.SabineLeader)
-      .AddUnit(1, card.TWI.DarthMaul, 1)
-      .AddUnit(2, card.SHD.PhaseIIIDarkTrooper, 2)
-      .AddUnit(2, card.SHD.PhaseIIIDarkTrooper, 3)
-      .AddUnit(2, card.TWI.WTTradeOfficial, 4)
+      .AddBase(1, cards.SOR.ChopperBase)
+      .AddLeader(1, cards.SOR.SabineLeader)
+      .AddBase(2, cards.SOR.DagobahSwamp)
+      .AddLeader(2, cards.SOR.SabineLeader)
+      .AddUnit(1, cards.TWI.DarthMaul, 1)
+      .AddUnit(2, cards.SHD.PhaseIIIDarkTrooper, 2)
+      .AddUnit(2, cards.SHD.PhaseIIIDarkTrooper, 3)
+      .AddUnit(2, cards.TWI.WTTradeOfficial, 4)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -230,13 +230,13 @@ export const SpecificTWICases = {
     const gameState = new GameState(gameName);
     await gameState.LoadGameStateLinesAsync();
     await gameState.ResetGameStateLines()
-      .AddBase(1, card.SOR.ChopperBase)
-      .AddLeader(1, card.SOR.SabineLeader)
-      .AddBase(2, card.SOR.DagobahSwamp)
-      .AddLeader(2, card.SOR.SabineLeader)
-      .AddUnit(1, card.TWI.DarthMaul, 1)
-      .AddUnit(2, card.SHD.PhaseIIIDarkTrooper, 2)
-      .AddUnit(2, card.TWI.WTTradeOfficial, 3)
+      .AddBase(1, cards.SOR.ChopperBase)
+      .AddLeader(1, cards.SOR.SabineLeader)
+      .AddBase(2, cards.SOR.DagobahSwamp)
+      .AddLeader(2, cards.SOR.SabineLeader)
+      .AddUnit(1, cards.TWI.DarthMaul, 1)
+      .AddUnit(2, cards.SHD.PhaseIIIDarkTrooper, 2)
+      .AddUnit(2, cards.TWI.WTTradeOfficial, 3)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act

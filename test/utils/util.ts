@@ -1,6 +1,6 @@
 import {promises as fsp} from 'fs';
 import { browser, NightwatchAPI } from 'nightwatch';
-import { card } from './cards';
+import { cards } from './cards';
 
 export var player1Window = '';
 export var player2Window = '';
@@ -127,9 +127,9 @@ export const customAsserts = {
       ? com.EnemyGroundUnit(unit)
       : com.EnemySpaceUnit(unit) , divPiece), 'class', 'overlay'),
   AllyGroundUnitIsBattleDroid: (browser: NightwatchAPI, unit: number) =>
-    browser.assert.attributeEquals(com.UnitImg(com.AllyGroundUnit(unit)), 'src', src.Concat(card.TWI.BattleDroid)),
+    browser.assert.attributeEquals(com.UnitImg(com.AllyGroundUnit(unit)), 'src', src.Concat(cards.TWI.BattleDroid)),
   EnemyGroundUnitIsBattleDroid: (browser: NightwatchAPI, unit: number) =>
-    browser.assert.attributeEquals(com.UnitImg(com.EnemyGroundUnit(unit)), 'src', src.Concat(card.TWI.BattleDroid)),
+    browser.assert.attributeEquals(com.UnitImg(com.EnemyGroundUnit(unit)), 'src', src.Concat(cards.TWI.BattleDroid)),
 }
 
 export const g = {

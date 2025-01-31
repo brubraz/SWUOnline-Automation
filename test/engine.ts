@@ -6,7 +6,7 @@ import { com, p,
   gameName,
 } from "./utils/util";
 import { GameState } from "./utils/gamestate";
-import { card } from "./utils/cards";
+import { cards } from "./utils/cards";
 
 const engine: NightwatchTests = {
   before: init,
@@ -15,10 +15,10 @@ const engine: NightwatchTests = {
     const gameState = new GameState(gameName);
     await gameState.LoadGameStateLinesAsync();
     await gameState.ResetGameStateLines()
-      .AddBase(1, card.SOR.ECL)
-      .AddLeader(1, card.SOR.SabineLeader)
-      .AddBase(2, card.SOR.ECL)
-      .AddLeader(2, card.SOR.SabineLeader)
+      .AddBase(1, cards.SOR.ECL)
+      .AddLeader(1, cards.SOR.SabineLeader)
+      .AddBase(2, cards.SOR.ECL)
+      .AddLeader(2, cards.SOR.SabineLeader)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act

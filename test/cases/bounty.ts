@@ -1,4 +1,4 @@
-import { card } from '../utils/cards';
+import { cards } from '../utils/cards';
 import { GameState } from '../utils/gamestate';
 import {
     com, p,
@@ -13,13 +13,13 @@ export const BountyCases = {
     await gameState.LoadGameStateLinesAsync();
     await gameState.ResetGameStateLines()
       .SetBasesDamage("12 10")
-      .AddBase(1, card.SOR.ChopperBase)
-      .AddLeader(1, card.SOR.SabineLeader)
-      .AddBase(2, card.SOR.DagobahSwamp)
-      .AddLeader(2, card.SOR.SabineLeader)
-      .AddUnit(1, card.SOR.DSStormTrooper, 1)
-      .AddUnit(1, card.SHD.TheClient, 2)
-      .AddUnit(2, card.SOR.DSStormTrooper, 3)
+      .AddBase(1, cards.SOR.ChopperBase)
+      .AddLeader(1, cards.SOR.SabineLeader)
+      .AddBase(2, cards.SOR.DagobahSwamp)
+      .AddLeader(2, cards.SOR.SabineLeader)
+      .AddUnit(1, cards.SOR.DSStormTrooper, 1)
+      .AddUnit(1, cards.SHD.TheClient, 2)
+      .AddUnit(2, cards.SOR.DSStormTrooper, 3)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -57,13 +57,13 @@ export const BountyCases = {
     await gameState.LoadGameStateLinesAsync();
     await gameState.ResetGameStateLines()
       .SetBasesDamage("12 10")
-      .AddBase(1, card.SOR.ChopperBase)
-      .AddLeader(1, card.SOR.SabineLeader)
-      .AddBase(2, card.SOR.DagobahSwamp)
-      .AddLeader(2, card.SOR.SabineLeader)
-      .AddUnit(1, card.SOR.DSStormTrooper, 1)
-      .AddUnit(1, card.SHD.TheClient, 2)
-      .AddUnit(2, card.SOR.DSStormTrooper, 3)
+      .AddBase(1, cards.SOR.ChopperBase)
+      .AddLeader(1, cards.SOR.SabineLeader)
+      .AddBase(2, cards.SOR.DagobahSwamp)
+      .AddLeader(2, cards.SOR.SabineLeader)
+      .AddUnit(1, cards.SOR.DSStormTrooper, 1)
+      .AddUnit(1, cards.SHD.TheClient, 2)
+      .AddUnit(2, cards.SOR.DSStormTrooper, 3)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act

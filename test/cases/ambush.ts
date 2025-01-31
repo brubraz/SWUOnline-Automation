@@ -1,4 +1,4 @@
-import { card } from '../utils/cards';
+import { cards } from '../utils/cards';
 import { GameState, SubcardBuilder } from '../utils/gamestate';
 import {
   com, p,
@@ -13,14 +13,14 @@ export const AmbushCases = {
   const craftySmugglerShield = new SubcardBuilder().AddShield(2).Build();
   await gameState.LoadGameStateLinesAsync();
   await gameState.ResetGameStateLines()
-    .AddBase(1, card.SOR.ECL)
-    .AddLeader(1, card.SOR.SabineLeader)
-    .AddBase(2, card.SOR.ECL)
-    .AddLeader(2, card.SOR.SabineLeader)
-    .FillResources(1, card.SOR.BFMarine, 1, 2)
-    .AddCardToHand(1, card.SOR.SabineUnit)
-    .AddUnit(1, card.SOR.SabineUnit, 3, false)
-    .AddUnit(2, card.SOR.CraftySmuggler, 4, true, 0, craftySmugglerShield)
+    .AddBase(1, cards.SOR.ECL)
+    .AddLeader(1, cards.SOR.SabineLeader)
+    .AddBase(2, cards.SOR.ECL)
+    .AddLeader(2, cards.SOR.SabineLeader)
+    .FillResources(1, cards.SOR.BFMarine, 1, 2)
+    .AddCardToHand(1, cards.SOR.SabineUnit)
+    .AddUnit(1, cards.SOR.SabineUnit, 3, false)
+    .AddUnit(2, cards.SOR.CraftySmuggler, 4, true, 0, craftySmugglerShield)
     .FlushAsync(com.BeginTestCallback)
   ;
   //act
@@ -47,13 +47,13 @@ export const AmbushCases = {
     const gameState = new GameState(gameName);
     await gameState.LoadGameStateLinesAsync();
     await gameState.ResetGameStateLines()
-      .AddBase(1, card.SOR.ECL)
-      .AddLeader(1, card.SOR.MoffTarkinLeader)
-      .AddBase(2, card.SOR.KestroCity)
-      .AddLeader(2, card.SOR.SabineLeader)
-      .FillResources(1, card.SOR.BFMarine, 1, 5)
-      .AddCardToHand(1, card.SOR.Rukh)
-      .AddUnit(2, card.SHD.KraytDragon, 6)
+      .AddBase(1, cards.SOR.ECL)
+      .AddLeader(1, cards.SOR.MoffTarkinLeader)
+      .AddBase(2, cards.SOR.KestroCity)
+      .AddLeader(2, cards.SOR.SabineLeader)
+      .FillResources(1, cards.SOR.BFMarine, 1, 5)
+      .AddCardToHand(1, cards.SOR.Rukh)
+      .AddUnit(2, cards.SHD.KraytDragon, 6)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
@@ -86,14 +86,14 @@ export const AmbushCases = {
     const gameState = new GameState(gameName);
     await gameState.LoadGameStateLinesAsync();
     await gameState.ResetGameStateLines()
-      .AddBase(1, card.SOR.ECL)
-      .AddLeader(1, card.SOR.MoffTarkinLeader)
-      .AddBase(2, card.SOR.KestroCity)
-      .AddLeader(2, card.SOR.SabineLeader)
-      .FillResources(1, card.SOR.BFMarine, 1, 6)
-      .AddCardToHand(1, card.SOR.Rukh)
-      .AddCardToHand(1, card.SHD.TimelyIntervention)
-      .AddUnit(2, card.SHD.KraytDragon, 7)
+      .AddBase(1, cards.SOR.ECL)
+      .AddLeader(1, cards.SOR.MoffTarkinLeader)
+      .AddBase(2, cards.SOR.KestroCity)
+      .AddLeader(2, cards.SOR.SabineLeader)
+      .FillResources(1, cards.SOR.BFMarine, 1, 6)
+      .AddCardToHand(1, cards.SOR.Rukh)
+      .AddCardToHand(1, cards.SHD.TimelyIntervention)
+      .AddUnit(2, cards.SHD.KraytDragon, 7)
       .FlushAsync(com.BeginTestCallback)
 
     await browser.waitForElementPresent(com.MyHand)

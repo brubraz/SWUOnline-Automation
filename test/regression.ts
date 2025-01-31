@@ -1,22 +1,26 @@
 import {NightwatchTests} from 'nightwatch';
 
 import { player1Window, player2Window } from './utils/util';
+import { init } from './utils/gamestart';
+
 import { WhenPlayedCases } from './cases/when-played';
 import { WhenDefeatCases } from './cases/when-defeat';
 import { OnAttackCases } from './cases/on-attack';
 import { AmbushCases } from './cases/ambush';
 import { BounceCases } from './cases/bounce';
 import { DamageCases } from './cases/damage';
+import { ReadyCases } from './cases/ready';
+import { BoardWipeCases } from './cases/boardwipe';
 import { LeaderAbilitySORCases } from './cases/leader-ability-sor';
 import { LeaderUnitSORCases } from './cases/leader-unit-sor';
 import { LeaderUnitSHDCases } from './cases/leader-unit-shd';
 import { LeaderUnitTWICases } from './cases/leader-unit-twi';
-import { BountyCases } from './cases/bounty';
-import { ExploitCases } from './cases/exploit';
 import { SpecificSORCases } from './cases/specific/sor';
+import { BountyCases } from './cases/bounty';
 import { SpecificSHDCases } from './cases/specific/shd';
+import { ExploitCases } from './cases/exploit';
 import { SpecificTWICases } from './cases/specific/twi';
-import { init } from './utils/gamestart';
+import { PilotJTLCases } from './cases/pilots/jtl';
 
 const home: NightwatchTests = {
   before: init,
@@ -27,6 +31,8 @@ const home: NightwatchTests = {
   ...AmbushCases,
   ...BounceCases,
   ...DamageCases,
+  ...ReadyCases,
+  ...BoardWipeCases,
   ...LeaderAbilitySORCases,
   ...LeaderUnitSORCases,
   ...LeaderUnitSHDCases,
@@ -36,6 +42,7 @@ const home: NightwatchTests = {
   ...SpecificSHDCases,
   ...ExploitCases,
   ...SpecificTWICases,
+  ...PilotJTLCases,
 //end regression suite
   after: async (browser, done) => {
     await browser.window.switchTo(player2Window).window.close();

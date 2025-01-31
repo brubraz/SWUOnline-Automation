@@ -1,4 +1,4 @@
-import { card } from '../utils/cards';
+import { cards } from '../utils/cards';
 import { GameState } from '../utils/gamestate';
 import {
   com, p,
@@ -12,15 +12,15 @@ export const BounceCases = {
     const gameState = new GameState(gameName);
     await gameState.LoadGameStateLinesAsync();
     await gameState.ResetGameStateLines()
-      .AddBase(1, card.SOR.ChopperBase)
-      .AddLeader(1, card.SOR.SabineLeader)
-      .AddBase(2, card.SOR.DagobahSwamp)
-      .AddLeader(2, card.SOR.SabineLeader)
-      .FillResources(1, card.SOR.Waylay, 1, 6)
-      .AddCardToHand(1, card.SOR.Waylay)
-      .AddCardToHand(1, card.SOR.Waylay)
-      .AddUnit(2, card.TWI.BattleDroid, 7)
-      .AddUnit(2, card.TWI.CloneTrooper, 8)
+      .AddBase(1, cards.SOR.ChopperBase)
+      .AddLeader(1, cards.SOR.SabineLeader)
+      .AddBase(2, cards.SOR.DagobahSwamp)
+      .AddLeader(2, cards.SOR.SabineLeader)
+      .FillResources(1, cards.SOR.Waylay, 1, 6)
+      .AddCardToHand(1, cards.SOR.Waylay)
+      .AddCardToHand(1, cards.SOR.Waylay)
+      .AddUnit(2, cards.TWI.BattleDroid, 7)
+      .AddUnit(2, cards.TWI.CloneTrooper, 8)
       .FlushAsync(com.BeginTestCallback)
     ;
 

@@ -1,4 +1,4 @@
-import { card } from '../../utils/cards';
+import { cards } from '../../utils/cards';
 import { GameState } from '../../utils/gamestate';
 import {
   com, p,
@@ -11,15 +11,15 @@ const GideonHaskGameStateAsync = async () => {
   await gameState.LoadGameStateLinesAsync();
   await gameState.ResetGameStateLines()
     .SetBasesDamage("4 9")
-    .AddBase(1, card.SOR.ECL)
-    .AddLeader(1, card.SOR.KrennicLeader, true)
-    .AddBase(2, card.SOR.ChopperBase)
-    .AddLeader(2, card.SOR.SabineLeader)
-    .AddResource(2, card.SOR.CraftySmuggler, 1)
-    .AddCardToHand(2, card.SHD.DaringRaid)
-    .AddUnit(1, card.SOR.KrennicLeaderUnit, 2)
-    .AddUnit(1, card.SOR.GideonHask, 3, false, 3)
-    .AddUnit(2, card.SOR.DSStormTrooper, 4)
+    .AddBase(1, cards.SOR.ECL)
+    .AddLeader(1, cards.SOR.KrennicLeader, true)
+    .AddBase(2, cards.SOR.ChopperBase)
+    .AddLeader(2, cards.SOR.SabineLeader)
+    .AddResource(2, cards.SOR.CraftySmuggler, 1)
+    .AddCardToHand(2, cards.SHD.DaringRaid)
+    .AddUnit(1, cards.SOR.KrennicLeaderUnit, 2)
+    .AddUnit(1, cards.SOR.GideonHask, 3, false, 3)
+    .AddUnit(2, cards.SOR.DSStormTrooper, 4)
     .FlushAsync(com.BeginTestCallback)
   ;
 }

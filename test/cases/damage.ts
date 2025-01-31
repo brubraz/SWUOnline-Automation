@@ -1,4 +1,4 @@
-import { card } from '../utils/cards';
+import { cards } from '../utils/cards';
 import { GameState, SubcardBuilder } from '../utils/gamestate';
 import {
   com, src, p,
@@ -13,17 +13,17 @@ export const DamageCases = {
     const threeXpTokens = new SubcardBuilder().AddExperience(1,3).Build();
     await gameState.LoadGameStateLinesAsync();
     await gameState.ResetGameStateLines()
-      .AddBase(1, card.TWI.LairOfGrievous)
-      .AddLeader(1, card.SHD.BosskLeader)
-      .AddBase(2, card.SOR.ECL)
-      .AddLeader(2, card.SOR.SabineLeader)
-      .FillResources(1, card.SOR.BFMarine, 1, 5)
-      .AddCardToHand(1, card.SOR.OB)
-      .AddUnit(1, card.SOR.DSStormTrooper, 6, true, 0, threeXpTokens)
-      .AddUnit(1, card.SOR.DSStormTrooper, 7)
-      .AddUnit(2, card.TWI.Malevolence, 8, true, 3)
-      .AddUnit(2, card.SOR.SLT, 9)
-      .AddUnit(2, card.TWI.WTTradeOfficial, 10)
+      .AddBase(1, cards.TWI.LairOfGrievous)
+      .AddLeader(1, cards.SHD.BosskLeader)
+      .AddBase(2, cards.SOR.ECL)
+      .AddLeader(2, cards.SOR.SabineLeader)
+      .FillResources(1, cards.SOR.BFMarine, 1, 5)
+      .AddCardToHand(1, cards.SOR.OB)
+      .AddUnit(1, cards.SOR.DSStormTrooper, 6, true, 0, threeXpTokens)
+      .AddUnit(1, cards.SOR.DSStormTrooper, 7)
+      .AddUnit(2, cards.TWI.Malevolence, 8, true, 3)
+      .AddUnit(2, cards.SOR.SLT, 9)
+      .AddUnit(2, cards.TWI.WTTradeOfficial, 10)
       .FlushAsync(com.BeginTestCallback)
     ;
     //act

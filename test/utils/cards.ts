@@ -1,20 +1,22 @@
-export const card = {
+export const cards = {
   SOR: {
     //bases
     ChopperBase: '6093792814',//30HP yellow base
     EchoBase: '2055904747',//30HP green base
     DagobahSwamp: '3810584393',//30HP blue base
     KestroCity: '0461841375',//30HP red base
-    ECL: '8327910265',
-    TarkinTown: '1393827469',
-    SecurityComplex: '2429341052',
-    JedhaCity: '2569134232',
+    ECL: '8327910265',//25HP green base, gives Ambush to unit played that cost <= 6
+    TarkinTown: '1393827469',//25HP red base, deals 3 damage to damaged non-leader unit
+    SecurityComplex: '2429341052',//25HP blue base, gives 1 shield to a non-leader unit
+    JedhaCity: '2569134232',//25HP yellow base, gives -4/0 to a non-leader unit
     //leaders and leader units
     SabineLeader: '4841169874',
     SabineLeaderUnit: '51e8757e4c',
     MoffTarkinLeader: '2912358777',
     KrennicLeader: '8560666697',
     KrennicLeaderUnit: 'e2c6231b35',
+    IdenLeader: '2048866729',
+    IdenLeaderUnit: 'b0dbca5c05',
     //units
     TieLnFighter: '5562575456',
     DSStormTrooper: '2383321298',
@@ -38,10 +40,12 @@ export const card = {
     Waylay: '7202133736',
     OB: '1900571801',
     UWing: '8968669390',
+    SLB: '1353201082',
   },
   SHD: {
     //bases
     RemnantScienceFacility: '3488958204',//30HP blue base
+    JabbasPalace: '9617095664',//30HP yellow base
     //leaders and leader units
     BosskLeader: '2526288781',
     CadBaneLeader: '1384530409',
@@ -53,6 +57,7 @@ export const card = {
     LurkingTie: '1810342362',
     Snoke: '3731235174',
     //upgrades
+    TopTarget: '4282425335',
     //events
     TimelyIntervention: '6847268098',
     NoBargain: '7354795397',
@@ -78,8 +83,17 @@ export const card = {
     ShadowedIntentions: '9003830954',
     //events
     MercilessContest: '4412828936',
+    Christophsis: '2565830105',
   },
   JTL: {
+    //bases
+    //leaders and leader units
     AsajjLeaderUnit: '3f0b5622a7',
+    HanSoloLeader: '0616724418',
+    BobaFettLeader: '9831674351',
+    //pilots
+    Dengar: '3282713547',
+    //events
+    ItsATrap: '0964312065',
   }
 }

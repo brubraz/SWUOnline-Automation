@@ -1,7 +1,7 @@
 import {
-    com, p, src, customAsserts,
-    LoadTestGameStateAsync,
-    player1Window, player2Window
+  com, p, src, customAsserts,
+  LoadTestGameStateAsync,
+  player1Window, player2Window
 } from '../../utils/util'
 
 export const LeaderUnitSHDCases = {
@@ -22,11 +22,11 @@ export const LeaderUnitSHDCases = {
     await customAsserts.EnemyUnitDivPieceIsOverlay(browser, "GROUND", 4, 3);
     //Qi'Ra flip
     await browser.waitForElementPresent(com.Leader(1))
-    .moveToElement(com.GameChat, 0, 0).pause(p.Move)
-    .click(com.Leader(1))
-    .moveToElement(com.GameChat, 0, 0).pause(p.Move)
-    .click(com.ButtonInputChoice(2)).pause(p.ButtonPress)
-    .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.Leader(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.ButtonInputChoice(2)).pause(p.ButtonPress)
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
     //Qi'Ra pings everyone
     await customAsserts.AllyUnitDivPieceIsOverlay(browser, "SPACE", 1, 3);

@@ -1,4 +1,4 @@
-import { card } from '../utils/cards';
+import { cards } from '../utils/cards';
 import { GameState } from '../utils/gamestate';
 import {
     com, p,
@@ -13,24 +13,24 @@ export const WhenPlayedCases = {
         const gameState = new GameState(gameName);
         await gameState.LoadGameStateLinesAsync();
         await gameState.ResetGameStateLines()
-          .AddBase(1, card.SOR.EchoBase)
-          .AddLeader(1, card.SOR.SabineLeader)
-          .AddBase(2, card.SOR.EchoBase)
-          .AddLeader(2, card.SOR.SabineLeader)
-          .FillResources(1, card.SOR.BFMarine, 1, 7)
-          .AddCardToHand(1, card.SOR.UWing)
-          .AddCardToDeck(1, card.SOR.BFMarine, 2)
-          .AddCardToDeck(1, card.SOR.MonMothma)
-          .AddCardToDeck(1, card.SOR.BFMarine)
-          .AddCardToDeck(1, card.SOR.ModdedCohort)
-          .AddCardToDeck(1, card.SOR.BFMarine, 2)
-          .AddCardToDeck(1, card.SOR.R2D2)
-          .AddCardToDeck(1, card.SOR.BFMarine, 3)
-          .AddCardToDeck(1, card.SOR.AdmiralAckbar)
-          .AddUnit(2, card.SHD.Kuiil, 8)
-          .AddUnit(2, card.SOR.LukeSkywalker, 9)
-          .AddUnit(1, card.SOR.R2D2, 10)
-          .AddUnit(1, card.SOR.MonMothma, 11)
+          .AddBase(1, cards.SOR.EchoBase)
+          .AddLeader(1, cards.SOR.SabineLeader)
+          .AddBase(2, cards.SOR.EchoBase)
+          .AddLeader(2, cards.SOR.SabineLeader)
+          .FillResources(1, cards.SOR.BFMarine, 1, 7)
+          .AddCardToHand(1, cards.SOR.UWing)
+          .AddCardToDeck(1, cards.SOR.BFMarine, 2)
+          .AddCardToDeck(1, cards.SOR.MonMothma)
+          .AddCardToDeck(1, cards.SOR.BFMarine)
+          .AddCardToDeck(1, cards.SOR.ModdedCohort)
+          .AddCardToDeck(1, cards.SOR.BFMarine, 2)
+          .AddCardToDeck(1, cards.SOR.R2D2)
+          .AddCardToDeck(1, cards.SOR.BFMarine, 3)
+          .AddCardToDeck(1, cards.SOR.AdmiralAckbar)
+          .AddUnit(2, cards.SHD.Kuiil, 8)
+          .AddUnit(2, cards.SOR.LukeSkywalker, 9)
+          .AddUnit(1, cards.SOR.R2D2, 10)
+          .AddUnit(1, cards.SOR.MonMothma, 11)
           .FlushAsync(com.BeginTestCallback)
           ;
 
@@ -70,20 +70,20 @@ export const WhenPlayedCases = {
         const gameState = new GameState(gameName);
         await gameState.LoadGameStateLinesAsync();
         await gameState.ResetGameStateLines()
-          .AddBase(1, card.SOR.EchoBase)
-          .AddLeader(1, card.SOR.MoffTarkinLeader)
-          .AddBase(2, card.SOR.TarkinTown)
-          .AddLeader(2, card.SOR.MoffTarkinLeader)
-          .FillResources(1, card.SOR.BFMarine, 1, 10)
-          .AddCardToHand(1, card.SOR.DarthVader)
-          .AddCardToHand(1, card.SHD.NoBargain)
-          .AddCardToDeck(1, card.SOR.FLSnowTrooper)
-          .AddCardToDeck(1, card.SOR.GideonHask, 7)
-          .AddCardToDeck(1, card.SOR.DSStormTrooper)
-          .AddCardToDeck(1, card.SOR.BFMarine)
-          .AddCardToDeck(1, card.SHD.PhaseIIIDarkTrooper)
-          .AddUnit(2, card.SOR.DSStormTrooper, 11)
-          .AddUnit(2, card.SOR.DSStormTrooper, 12)
+          .AddBase(1, cards.SOR.EchoBase)
+          .AddLeader(1, cards.SOR.MoffTarkinLeader)
+          .AddBase(2, cards.SOR.TarkinTown)
+          .AddLeader(2, cards.SOR.MoffTarkinLeader)
+          .FillResources(1, cards.SOR.BFMarine, 1, 10)
+          .AddCardToHand(1, cards.SOR.DarthVader)
+          .AddCardToHand(1, cards.SHD.NoBargain)
+          .AddCardToDeck(1, cards.SOR.FLSnowTrooper)
+          .AddCardToDeck(1, cards.SOR.GideonHask, 7)
+          .AddCardToDeck(1, cards.SOR.DSStormTrooper)
+          .AddCardToDeck(1, cards.SOR.BFMarine)
+          .AddCardToDeck(1, cards.SHD.PhaseIIIDarkTrooper)
+          .AddUnit(2, cards.SOR.DSStormTrooper, 11)
+          .AddUnit(2, cards.SOR.DSStormTrooper, 12)
           .FlushAsync(com.BeginTestCallback)
         ;
 

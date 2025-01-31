@@ -1,4 +1,4 @@
-import { card } from '../../utils/cards';
+import { cards } from '../../utils/cards';
 import { GameState, SubcardBuilder } from '../../utils/gamestate';
 import {
     com, p,
@@ -12,20 +12,20 @@ const LurkingTieGameStateAsync = async function() {
   const gameState = new GameState(gameName);
   await gameState.LoadGameStateLinesAsync();
   await gameState.ResetGameStateLines()
-    .AddBase(1, card.SOR.ChopperBase)
-    .AddLeader(1, card.SOR.MoffTarkinLeader)
-    .AddBase(2, card.SOR.ECL)
-    .AddLeader(2, card.SOR.SabineLeader)
-    .FillResources(1, card.SOR.CraftySmuggler, 1,3)
-    .AddCardToHand(1, card.TWI.SanctioneerShuttle)
-    .AddCardToHand(1, card.TWI.EliteP)
-    .AddCardToHand(1, card.TWI.MercilessContest)
-    .AddCardToHand(1, card.SOR.Waylay)
-    .AddCardToHand(2, card.SOR.Waylay)
-    .AddUnit(1, card.SHD.LurkingTie, 4)
-    .AddUnit(1, card.SHD.LurkingTie, 5)
-    .AddUnit(2, card.SHD.LurkingTie, 6)
-    .AddUnit(2, card.SOR.Greedo, 7)
+    .AddBase(1, cards.SOR.ChopperBase)
+    .AddLeader(1, cards.SOR.MoffTarkinLeader)
+    .AddBase(2, cards.SOR.ECL)
+    .AddLeader(2, cards.SOR.SabineLeader)
+    .FillResources(1, cards.SOR.CraftySmuggler, 1,3)
+    .AddCardToHand(1, cards.TWI.SanctioneerShuttle)
+    .AddCardToHand(1, cards.TWI.EliteP)
+    .AddCardToHand(1, cards.TWI.MercilessContest)
+    .AddCardToHand(1, cards.SOR.Waylay)
+    .AddCardToHand(2, cards.SOR.Waylay)
+    .AddUnit(1, cards.SHD.LurkingTie, 4)
+    .AddUnit(1, cards.SHD.LurkingTie, 5)
+    .AddUnit(2, cards.SHD.LurkingTie, 6)
+    .AddUnit(2, cards.SOR.Greedo, 7)
     .FlushAsync(com.BeginTestCallback)
   ;
 }
@@ -133,20 +133,20 @@ export const SpecificSHDCases = process.env.FULL_REGRESSION !== "true" ? {} :{
   'Snoke wipes non-leaders and token units': async function() {
     //arrange
     const gameState = new GameState(gameName);
-    const asajjLeaderPilot = new SubcardBuilder().AddUpgrade(card.JTL.AsajjLeaderUnit, 2, true).Build();
+    const asajjLeaderPilot = new SubcardBuilder().AddUpgrade(cards.JTL.AsajjLeaderUnit, 2, true).Build();
     await gameState.LoadGameStateLinesAsync();
     await gameState.ResetGameStateLines()
-      .AddBase(1, card.SHD.RemnantScienceFacility)
-      .AddLeader(1, card.SHD.CadBaneLeader)
-      .AddBase(2, card.SHD.RemnantScienceFacility)
-      .AddLeader(2, card.SOR.SabineLeader, true)
-      .FillResources(1, card.SOR.CraftySmuggler, 1, 8)
-      .AddCardToHand(1, card.SHD.Snoke)
-      .AddUnit(2, card.SOR.TieLnFighter, 9, true, 3, asajjLeaderPilot)
-      .AddUnit(2, card.TWI.CloneTrooper, 10)
-      .AddUnit(2, card.TWI.BattleDroid, 11)
-      .AddUnit(2, card.SOR.SabineLeaderUnit, 12, true, 3)
-      .AddUnit(2, card.TWI.WTTradeOfficial, 13, true, 1)
+      .AddBase(1, cards.SHD.RemnantScienceFacility)
+      .AddLeader(1, cards.SHD.CadBaneLeader)
+      .AddBase(2, cards.SHD.RemnantScienceFacility)
+      .AddLeader(2, cards.SOR.SabineLeader, true)
+      .FillResources(1, cards.SOR.CraftySmuggler, 1, 8)
+      .AddCardToHand(1, cards.SHD.Snoke)
+      .AddUnit(2, cards.SOR.TieLnFighter, 9, true, 3, asajjLeaderPilot)
+      .AddUnit(2, cards.TWI.CloneTrooper, 10)
+      .AddUnit(2, cards.TWI.BattleDroid, 11)
+      .AddUnit(2, cards.SOR.SabineLeaderUnit, 12, true, 3)
+      .AddUnit(2, cards.TWI.WTTradeOfficial, 13, true, 1)
       .FlushAsync(com.BeginTestCallback)
     ;
     //pre-assert

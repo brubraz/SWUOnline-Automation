@@ -6,7 +6,7 @@ import {
   gameName,
 } from '../../utils/util';
 import { GameState } from '../../utils/gamestate';
-import { card } from '../../utils/cards';
+import { cards } from '../../utils/cards';
 
 export const LeaderAbilitySORCases = process.env.FULL_REGRESSION !== "true" ? {} :{
   'Leader Ability: Director Krennic passive buff': async function () {
@@ -337,10 +337,10 @@ export const LeaderAbilitySORCases = process.env.FULL_REGRESSION !== "true" ? {}
       await gameState.LoadGameStateLinesAsync()
       await gameState
         .ResetGameStateLines()
-        .AddBase(1, card.SOR.ECL)
-        .AddLeader(1, card.SOR.SabineLeader)
-        .AddBase(2, card.SOR.ECL)
-        .AddLeader(2, card.SOR.SabineLeader)
+        .AddBase(1, cards.SOR.ECL)
+        .AddLeader(1, cards.SOR.SabineLeader)
+        .AddBase(2, cards.SOR.ECL)
+        .AddLeader(2, cards.SOR.SabineLeader)
         .SetBasesDamage("2 5")
         .FlushAsync(async () => await browser.refresh())
       ;
