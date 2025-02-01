@@ -11,6 +11,7 @@ import { BounceCases } from './cases/bounce';
 import { DamageCases } from './cases/damage';
 import { ReadyCases } from './cases/ready';
 import { BoardWipeCases } from './cases/boardwipe';
+import { ControlCases } from './cases/control';
 import { LeaderAbilitySORCases } from './cases/leader-ability-sor';
 import { LeaderUnitSORCases } from './cases/leader-unit-sor';
 import { LeaderUnitSHDCases } from './cases/leader-unit-shd';
@@ -36,6 +37,7 @@ const home: NightwatchTests = {
   ...DamageCases,
   ...ReadyCases,
   ...BoardWipeCases,
+  ...ControlCases,
   ...LeaderAbilitySORCases,
   ...LeaderUnitSORCases,
   ...LeaderUnitSHDCases,

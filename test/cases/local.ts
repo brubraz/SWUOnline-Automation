@@ -13,24 +13,23 @@ export const LocalTestCase = {
       .AddLeader(1, cards.JTL.BobaFettLeader)
       .AddBase(2, cards.SOR.EchoBase)
       .AddLeader(2, cards.JTL.HanSoloLeader)
-      .FillResources(1, cards.SOR.CraftySmuggler, 5)
+      .FillResources(1, cards.SOR.CraftySmuggler, 2)
       //.FillResources(2, cards.SOR.BFMarine, 7)
-      .AddCardToHand(1, cards.JTL.BobaFettUnit)
+      //.AddCardToHand(1, cards.JTL.TandemAssault)
       //.AddCardToHand(2, cards.SOR.AdmiralAckbar)
       //.AddCardToDeck(1, cards.SOR.CraftySmuggler, 10)
       //.AddCardToDeck(2, cards.SOR.BFMarine, 10)
-      .AddUnit(1, cards.JTL.XWing)
-      .AddUnit(1, cards.SOR.Snowspeeder)
-      .AddUnit(2, cards.SOR.TieLnFighter)
-      .AddUnit(2, cards.SOR.BFMarine)
-      .AddUnit(2, cards.SOR.BFMarine)
+      // .AddUnit(1, cards.JTL.XWing, true, 1,
+      //   new SubcardBuilder().AddUpgrade(cards.JTL.Chewbacca, 1, true).Build())
+      // .AddUnit(1, cards.SOR.Snowspeeder)
+      // .AddUnit(2, cards.SOR.TieLnFighter)
       // .AddUnit(2, cards.JTL.XWing, false, 1,//player, card, ready, damage
       //   new SubcardBuilder().AddUpgrade(cards.JTL.Chewbacca, 2, true).Build(),
       //   2, false, 1, 1)//owner, carbonite, numUses, turns in play
       .FlushAsync(com.BeginTestCallback)
     ;
     //act
-    await browser.pause(p.Debug); //uncomment to pause locally for debug
+    //await browser.pause(p.Debug); //uncomment to pause locally for debug
     //await browser.pause(p.Indefinite); //uncomment to pause locally for longer debug
   }
 }

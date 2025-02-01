@@ -37,11 +37,14 @@ export const cards = {
     ISBAgent: '5154172446',
     Snowspeeder: '1862616109',
     //upgrades
+    Traitorous: '8055390529',
     //events
     Waylay: '7202133736',
     OB: '1900571801',
     UWing: '8968669390',
     SLB: '1353201082',
+    Confiscate: '5950125325',
+    ChangeOfHeart: '1626462639',
   },
   SHD: {
     //bases
@@ -112,5 +115,7 @@ export const cards = {
     HoundsTooth: '3876470102',
     //events
     ItsATrap: '0964312065',
+    Commandeer: '8105698374',
+    TandemAssault: '4334684518',
   }
 }
