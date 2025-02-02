@@ -112,8 +112,77 @@ export const ControlCases = {
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
     //assert
-    //assert
     await browser.assert.elementPresent(com.EnemyGroundUnit(1));
     await browser.assert.not.elementPresent(com.AllyGroundUnit(2));
+  },
+  'Control: Mercenary Gunship both players can take control': async function () {
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .AddBase(1, cards.SOR.ECL)
+      .AddLeader(1, cards.SOR.SabineLeader)
+      .AddBase(2, cards.SOR.ECL)
+      .AddLeader(2, cards.SOR.SabineLeader)
+      .FillResources(1, cards.SOR.BFMarine, 4)
+      .FillResources(2, cards.SOR.BFMarine, 4)
+      .AddUnit(2, cards.SHD.MercenaryGunship)
+      .FlushAsync(com.BeginTestCallback)
+    ;
+    //act
+    await browser
+      .waitForElementPresent(com.EnemySpaceUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.EnemySpaceUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+    ;
+    //assert
+    await browser.assert.not.elementPresent(com.EnemySpaceUnit(1));
+    await browser.assert.elementPresent(com.AllySpaceUnit(1));
+    //act
+    await browser.window.switchTo(player2Window).refresh()
+      .waitForElementPresent(com.EnemySpaceUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.EnemySpaceUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+    ;
+    //assert
+    await browser.assert.not.elementPresent(com.EnemySpaceUnit(1));
+    await browser.assert.elementPresent(com.AllySpaceUnit(1));
+  },
+  'Control: Choose Sides on opponent': async function () {
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .AddBase(1, cards.SOR.ECL)
+      .AddLeader(1, cards.SOR.SabineLeader)
+      .AddBase(2, cards.SOR.ECL)
+      .AddLeader(2, cards.SOR.SabineLeader)
+      .FillResources(1, cards.SOR.BFMarine, 7)
+      .AddCardToHand(1, cards.SHD.ChooseSides)
+      .AddUnit(1, cards.SOR.DSStormTrooper)
+      .AddUnit(1, cards.SOR.DSStormTrooper)
+      .AddUnit(2, cards.SOR.DarthVader)
+      .FlushAsync(com.BeginTestCallback)
+    ;
+    //act
+    await browser
+      .waitForElementPresent(com.MyHand)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.HandCard(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+      .click(com.AllyGroundUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+      .click(com.EnemyGroundUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+    ;
+    //assert
+    await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 1), '3');
+    await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(1), 2), '1');
+    await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(2), 1), '5');
+    await browser.assert.textEquals(com.UnitDivPiece(com.AllyGroundUnit(2), 2), '7');
+    await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(1), 1), '3');
+    await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(1), 2), '1');
   },
 }

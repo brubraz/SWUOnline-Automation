@@ -60,12 +60,14 @@ export const cards = {
     PhaseIIIDarkTrooper: '4843225228',
     LurkingTie: '1810342362',
     Snoke: '3731235174',
+    MercenaryGunship: '3577961001',
     //upgrades
     TopTarget: '4282425335',
     //events
     TimelyIntervention: '6847268098',
     NoBargain: '7354795397',
     DaringRaid: '7826408293',
+    ChooseSides: '2346145249',
   },
   TWI: {
     //bases
