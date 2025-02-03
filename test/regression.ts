@@ -7,6 +7,7 @@ import { WhenPlayedCases } from './cases/when-played';
 import { WhenDefeatCases } from './cases/when-defeat';
 import { OnAttackCases } from './cases/on-attack';
 import { AmbushCases } from './cases/ambush';
+import { WhenTheyPlayCases } from './cases/when-they-play';
 import { BounceCases } from './cases/bounce';
 import { DamageCases } from './cases/damage';
 import { ReadyCases } from './cases/ready';
@@ -38,6 +39,7 @@ const home: NightwatchTests = {
   ...WhenDefeatCases,
   ...OnAttackCases,
   ...AmbushCases,
+  ...WhenTheyPlayCases,
   ...BounceCases,
   ...DamageCases,
   ...ReadyCases,

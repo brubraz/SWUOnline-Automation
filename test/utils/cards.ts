@@ -46,6 +46,7 @@ export const cards = {
     Confiscate: '5950125325',
     ChangeOfHeart: '1626462639',
     DisablingFF: '2668056720',
+    POTDS: '0176921487',
   },
   SHD: {
     //bases
