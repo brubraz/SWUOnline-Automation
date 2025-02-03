@@ -5,7 +5,6 @@ import { init } from './utils/gamestart';
 
 import { WhenPlayedCases } from './cases/when-played';
 import { WhenDefeatCases } from './cases/when-defeat';
-import { OnAttackCases } from './cases/on-attack';
 import { AmbushCases } from './cases/ambush';
 import { WhenTheyPlayCases } from './cases/when-they-play';
 import { BounceCases } from './cases/bounce';
@@ -27,7 +26,7 @@ import { BountyCases } from './cases/bounty';
 import { SpecificSHDCases } from './cases/specific/shd';
 import { ExploitCases } from './cases/exploit';
 import { SpecificTWICases } from './cases/specific/twi';
-import { PilotJTLCases } from './cases/pilots/jtl';
+import { PilotJTLCases } from './cases/pilots';
 
 import { LocalTestCase } from './cases/local';
 
@@ -37,7 +36,6 @@ const home: NightwatchTests = {
   ...(process.env.LOCAL_RUN ? LocalTestCase : {}),
   ...WhenPlayedCases,
   ...WhenDefeatCases,
-  ...OnAttackCases,
   ...AmbushCases,
   ...WhenTheyPlayCases,
   ...BounceCases,

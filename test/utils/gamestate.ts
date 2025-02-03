@@ -125,6 +125,21 @@ export class GameState {
     return this;
   }
 
+  public AddCardToDiscard(player: number, cardID: string, from: string = 'PLAY', roundDiscarded: number = 0, modififer = '-', times: number = 1) {
+    const index = player === 1 ? g.P1Discard : g.P2Discard;
+    if(this._gameState[index] !== '') {
+      this._gameState[index] += ' ';
+      for(let i = 0; i < times; ++i) {
+        this._gameState[index] += `${cardID} ${modififer} ${from} ${roundDiscarded}`;
+        if(i < times - 1) {
+          this._gameState[index] += ' ';
+        }
+      }
+
+      return this;
+    }
+  }
+
   public AddResource(player: number, cardID: string, ready: boolean = true, stealSource: number = -1) {
     const index = player === 1 ? g.P1ResourcesArray : g.P2ResourcesArray;
     if(this._gameState[index] !== '') {
@@ -162,6 +177,15 @@ export class GameState {
       `${cardID} ${ready ? "2" : "1"} ${damage} ${carbonite ? "1" : "0"} ${upgrades} ${this._uniqueIdCounter++} 0 0 `
       + `${numUses} 0 ${numAttacks} ${owner} ${turnsInPlay} ${cloned ? "1" : "0"} ${healed ? "1" : "0"} ${arenaOverride} 0`
     );
+
+    return this;
+  }
+
+  public SetClassStatePiece(player: number, piece: number, value: string) {
+    const index = player === 1 ? g.P1ClassState : g.P2ClassState;
+    const pieces = this._gameState[index].split(' ');
+    pieces[piece] = value;
+    this._gameState[index] = pieces.join(' ');
 
     return this;
   }

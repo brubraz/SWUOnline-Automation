@@ -1,12 +1,39 @@
+import { cards } from '../utils/cards';
+import { GameState, SubcardBuilder } from '../utils/gamestate';
 import {
   com, p, src, customAsserts,
-  LoadTestGameStateAsync,
-  player1Window, player2Window
-} from '../../utils/util'
+  player1Window, player2Window,
+  gameName
+} from '../utils/util'
 
 export const LeaderUnitSHDCases = {
   'SHD: Blue and Green Leader Units': async function () {
-    await LoadTestGameStateAsync('leader-unit-shd/leaders-mass-test1');
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .SetBasesDamage("5 10")
+      .AddBase(1, cards.SOR.ECL)
+      .AddLeader(1, cards.SHD.QiRaLeader)
+      .AddBase(2, cards.SOR.DagobahSwamp)
+      .AddLeader(2, cards.SHD.JabbaLeader)
+      .FillResources(1, cards.SOR.InfernoFour, 5)
+      .FillResources(2, cards.SHD.CollectionsStarhopper, 7)
+      .AddUnit(1, cards.SOR.TieLnFighter)
+      .AddUnit(1, cards.TWI.DevGunship, true, 5,
+        new SubcardBuilder().AddUpgrade(cards.TWI.DroidCohort, 1).Build())
+      .AddUnit(1, cards.SHD.GarSaxonLeaderUnit)
+      .AddUnit(1, cards.SHD.FinnLeaderUnit)
+      .AddUnit(1, cards.SHD.ReyLeaderUnit)
+      .AddUnit(2, cards.SOR.TieLnFighter)
+      .AddUnit(2, cards.SOR.TieLnFighter)
+      .AddUnit(2, cards.SOR.InfernoFour)
+      .AddUnit(2, cards.SHD.HondoLeaderUnit)
+      .AddUnit(2, cards.SHD.GideonLeaderUnit)
+      .AddUnit(2, cards.SHD.HunterLeaderUnit)
+      .AddUnit(2, cards.SHD.BobaDaimyoLeaderUnit)
+      .FlushAsync(com.BeginTestCallback)
+    ;
     //pre-assert
     await customAsserts.AllyUnitDivPieceIsOverlay(browser, "SPACE", 1, 3);
     await browser.assert.textEquals(com.UnitDivPiece(com.AllySpaceUnit(2), 4), '5')

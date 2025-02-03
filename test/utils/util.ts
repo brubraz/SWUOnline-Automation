@@ -17,32 +17,6 @@ export function setGameName(name: string) {
   gameName = name;
 }
 
-export async function LoadTestGameStateAsync(filename: string) {
-  if(player1Window === '' || player2Window === '') {
-    throw new Error('player1Window and player2Window must be set before calling LoadTestGameStateAsync');
-  }
-
-  if(gameName === '') {
-    throw new Error('gameName must be set before calling LoadTestGameStateAsync');
-  }
-
-  const gameStatePath = `${process.env.SWUONLINE_ROOT_PATH || '../SWUOnline'}/Games/${gameName}/gamestate.txt`;
-  const testState = await fsp.readFile(`./test/cases/${filename}`, 'ascii');
-  const originalState = await fsp.readFile(gameStatePath, 'ascii');
-  const originalStateModified = originalState.split('\r\n').slice(57);
-  originalStateModified[3] = '200';
-  originalStateModified[13] = '';
-  originalStateModified[14] = '';
-  originalStateModified[15] = '2';
-  originalStateModified[16] = '0';
-  const newGameState = testState.split('\n').join('\r\n') + originalStateModified.join('\r\n');
-  await fsp.writeFile(gameStatePath, newGameState, 'ascii');
-  await browser.window.switchTo(player2Window).refresh();
-  await browser.pause(p.WaitForEffect);
-  await browser.window.switchTo(player1Window).refresh();
-  await browser.pause(p.WaitToBegin);
-}
-
 export const com = {
     BeginTestCallback: async () => await browser.window.switchTo(player1Window).refresh(),
     GameLog: 'div#gamelog',
@@ -98,11 +72,11 @@ export const com = {
   }
 
 export const p = {
-  Move: 500,
-  CheckBox: 350,
-  ButtonPress: 850,
-  WaitForEffect: 1_250,
-  WaitToBegin: 3_000,
+  Move: 600,
+  CheckBox: 400,
+  ButtonPress: 1_000,
+  WaitForEffect: 1_500,
+  WaitToBegin: 2_500,
   WaitToChooseTarget: 1_500,
   Debug: 300_000,
   Indefinite: 1_000_000_000,
@@ -203,4 +177,82 @@ export const g = {
   LastUpdateTime: 68,
   InitiativePlayer: 72,
   InitiativeTaken: 73,
+}
+
+export const cs = {//copied from Constants.php
+  NumVillainyPlayed: 0,
+  PlayedAsUpgrade: 1,
+  AtksWWeapon: 2,
+  HitsWDawnblade: 3,
+  DamagePrevention: 4,
+  CardsDrawn: 5,
+  DamageTaken: 6,
+  NumActionsPlayed: 7,
+  //ArsenalFacing: 8,//Deprecated
+  CharacterIndex: 9,
+  PlayIndex: 10,
+  NumNonAttackCards: 11,
+  CachedCharacterLevel: 12,
+  PreparationCounters: 13,
+  NextNAACardGoAgain: 14,
+  NumAlliesDestroyed: 15,
+  NumWhenDefeatedPlayed: 16,
+  ResolvingLayerUniqueID: 17,
+  NextWizardNAAInstant: 18,
+  ArcaneDamageTaken: 19,
+  NextNAAInstant: 20,
+  NextDamagePrevented: 21,
+  LastAttack: 22,
+  NumLeftPlay: 23,
+  NumMaterializations: 24,
+  NumFusedLightning: 25,
+  AfterPlayedBy: 26,
+  PlayCCIndex: 27,
+  NumAttackCards: 28, //Played or blocked
+  NumPlayedFromBanish: 29,
+  NumAttacks: 30,
+  DieRoll: 31,
+  NumMandalorianAttacks: 32,
+  NumWizardNonAttack: 33,
+  LayerTarget: 34,
+  NumSwordAttacks: 35,
+  HitsWithWeapon: 36,
+  ArcaneDamagePrevention: 37,
+  DynCostResolved: 38,
+  CardsEnteredGY: 39,
+  HighestRoll: 40,
+  NumMelodyPlayed: 41,
+  NumAuras: 42,
+  AbilityIndex: 43,
+  AdditionalCosts: 44,
+  NumRedPlayed: 45,
+  PlayUniqueID: 46,
+  NumPhantasmAADestroyed: 47,
+  NumEventsPlayed: 48,
+  AlluvionUsed: 49,
+  MaxQuellUsed: 50,
+  DamageDealt: 51, //Only includes damage dealt by the hero. CR 2.1 8.2.8f If an ally deals damage, the controlling player and their hero are not considered to have dealt damage.
+  ArcaneTargetsSelected: 52,
+  NumDragonAttacks: 53,
+  NumIllusionistAttacks: 54,
+  LastDynCost: 55,
+  NumIllusionistActionCardAttacks: 56,
+  ArcaneDamageDealt: 57,
+  LayerPlayIndex: 58,
+  NumCardsPlayed: 59, //Amulet of Ignition
+  NamesOfCardsPlayed: 60, //Amulet of Echoes
+  NumBoostPlayed: 61, //Hanabi Blaster
+  PlayedAsInstant: 62, //If the card was played as an instant -- some things like banish we lose memory of as soon as it is removed from the zone
+  AnotherWeaponGainedGoAgain: 63,
+  NumContractsCompleted: 64,
+  HitsWithSword: 65,
+  NumClonesPlayed: 66,
+  UnitsThatAttackedBase: 67,
+  OppIndex: 68,
+  OppCardActive: 69,
+  PlayedWithExploit: 70,
+  SeparatistUnitsThatAttacked: 71,
+  AlliesDestroyed: 72, // List of allies (CardID) destroyed concatenated with a comma
+  NumBountyHuntersPlayed: 73,
+  NumPilotsPlayed: 74,
 }

@@ -1,0 +1,42 @@
+
+import { cards } from '../utils/cards';
+import { GameState } from '../utils/gamestate';
+import {
+  com, p,
+  player1Window, player2Window,
+  gameName,
+  customAsserts
+} from '../utils/util';
+
+export const WhenDefeatCases = {
+  'When Defeat: SLT w Clone Cohort Pinged by Dengar': process.env.FULL_REGRESSION !== "true" ? '' : async function () {
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .AddBase(1, cards.SHD.JabbasPalace)
+      .AddLeader(1, cards.SHD.BosskLeader)
+      .AddBase(2, cards.SOR.EchoBase)
+      .AddLeader(2, cards.SOR.MoffTarkinLeader)
+      .FillResources(1, cards.SOR.CraftySmuggler, 2)
+      .AddCardToHand(1, cards.TWI.CloneCohort)
+      .AddUnit(1, cards.SOR.SLT)
+      .AddUnit(1, cards.SHD.Dengar)
+      .FlushAsync(com.BeginTestCallback)
+    ;
+    await browser
+    .waitForElementPresent(com.MyHand)
+    .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+    .click(com.HandCard(1))
+    .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+    .click(com.AllyGroundUnit(1))
+    .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+    .click(com.YesNoButton('YES'))
+    .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+    ;
+
+    await browser.assert.not.elementPresent(com.AllyGroundUnit(3));
+    await customAsserts.AllyGroundUnitIsCloneTrooper(browser, 2);
+    await browser.assert.textEquals(com.MyResources, '1/3');
+  },
+}

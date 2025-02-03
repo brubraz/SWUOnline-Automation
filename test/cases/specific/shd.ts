@@ -2,7 +2,6 @@ import { cards } from '../../utils/cards';
 import { GameState, SubcardBuilder } from '../../utils/gamestate';
 import {
     com, p,
-    LoadTestGameStateAsync,
     player1Window, player2Window,
     customAsserts,
     gameName
