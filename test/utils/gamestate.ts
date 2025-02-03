@@ -90,9 +90,9 @@ export class GameState {
     return this;
   }
 
-  public AddLeader(player: number, cardID: string, deployed: boolean = false) {
+  public AddLeader(player: number, cardID: string, deployed: boolean = false, exhaustedLeaderSide: boolean = false) {
     if(!deployed) {
-      this._gameState[player === 1 ? g.P1CharArray : g.P2CharArray] += ` ${cardID} 2 0 0 0 1 0 0 0 2 0`;
+      this._gameState[player === 1 ? g.P1CharArray : g.P2CharArray] += ` ${cardID} ${exhaustedLeaderSide ? "1" : "2"} 0 0 0 1 0 0 0 2 0`;
     }
 
     this._gameState[player === 1 ? g.P1CharDisplay : g.P2CharDisplay] += (' ' + cardID);
