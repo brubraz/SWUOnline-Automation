@@ -63,7 +63,7 @@ export const ControlCases = {
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.EnemyGroundUnit(2))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
-      .click(com.TopBottomButton(2, 1))
+      .click(com.ChooseButton(2, 1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
     //assert

@@ -13,7 +13,7 @@ export const LeaderUnitSORCases = {
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.Leader(1)).pause(p.ButtonPress)
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
-          .click(com.ButtonInputChoice(2)).pause(p.ButtonPress)
+          .click(com.ButtonMultiChoice(2)).pause(p.ButtonPress)
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         ;
         //Iden Versio deploys shielded
@@ -25,7 +25,7 @@ export const LeaderUnitSORCases = {
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
           .click(com.Leader(2)).pause(p.ButtonPress)
           .moveToElement(com.GameChat, 0, 0).pause(p.Move)
-          .click(com.ButtonInputChoice(2)).pause(p.ButtonPress)
+          .click(com.ButtonMultiChoice(2)).pause(p.ButtonPress)
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
           .click(com.EnemySpaceUnit(1))
           .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
@@ -226,7 +226,7 @@ export const LeaderUnitSORCases = {
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
         .click(com.EnemyGroundUnit(2))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
-        .click(com.ButtonInputChoice(1)).pause(p.ButtonPress)
+        .click(com.ButtonMultiChoice(1)).pause(p.ButtonPress)
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
         .click(com.EnemyGroundUnit(5))
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)

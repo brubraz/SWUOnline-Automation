@@ -129,7 +129,7 @@ export const SpecificTWICases = {
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.AllyGroundUnit(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
-      .click(com.ButtonInputChoice(2)).pause(p.ButtonPress)
+      .click(com.ButtonMultiChoice(2)).pause(p.ButtonPress)
       .click(com.Checkbox(1)).pause(p.CheckBox)
       .click(com.Checkbox(2)).pause(p.CheckBox)
       .click(com.SubmitButton).pause(p.ButtonPress)
@@ -159,7 +159,7 @@ export const SpecificTWICases = {
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.AllyGroundUnit(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
-      .click(com.ButtonInputChoice(2)).pause(p.ButtonPress)
+      .click(com.ButtonMultiChoice(2)).pause(p.ButtonPress)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
     //assert
@@ -185,7 +185,7 @@ export const SpecificTWICases = {
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.AllyGroundUnit(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
-      .click(com.ButtonInputChoice(2)).pause(p.ButtonPress)
+      .click(com.ButtonMultiChoice(2)).pause(p.ButtonPress)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .click(com.Checkbox(1)).pause(p.CheckBox)
       .click(com.SubmitButton).pause(p.ButtonPress)

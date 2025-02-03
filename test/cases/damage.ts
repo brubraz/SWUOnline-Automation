@@ -39,14 +39,14 @@ export const DamageCases = {
       .click(com.Checkbox(3)).pause(p.CheckBox)
       .click(com.SubmitButton).pause(p.ButtonPress)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
-      .click(com.ButtonInputChoice(4)).pause(p.ButtonPress)
+      .click(com.ButtonMultiChoice(4)).pause(p.ButtonPress)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
-      .click(com.ButtonInputChoice(2)).pause(p.ButtonPress)
+      .click(com.ButtonMultiChoice(2)).pause(p.ButtonPress)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .assert.textEquals(com.TheirResources, '0/0')
       .assert.not.elementPresent(com.EnemyGroundUnit(1))
       //when defeated triggers after damage
-      .click(com.ButtonInputChoice(5)).pause(p.ButtonPress)
+      .click(com.ButtonMultiChoice(5)).pause(p.ButtonPress)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .click(com.PassButton).pause(p.ButtonPress)
     ;

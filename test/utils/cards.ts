@@ -45,6 +45,7 @@ export const cards = {
     SLB: '1353201082',
     Confiscate: '5950125325',
     ChangeOfHeart: '1626462639',
+    DisablingFF: '2668056720',
   },
   SHD: {
     //bases
@@ -61,13 +62,16 @@ export const cards = {
     LurkingTie: '1810342362',
     Snoke: '3731235174',
     MercenaryGunship: '3577961001',
+    HylobonEnforcer: '6878039039',
     //upgrades
     TopTarget: '4282425335',
+    Darksaber: '3141660491',
     //events
     TimelyIntervention: '6847268098',
     NoBargain: '7354795397',
     DaringRaid: '7826408293',
     ChooseSides: '2346145249',
+    Evacuate: '8261033110',
   },
   TWI: {
     //bases

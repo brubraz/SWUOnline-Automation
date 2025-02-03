@@ -52,7 +52,7 @@ export const WhenDefeatCases = {
         await browser.window.switchTo(player2Window).refresh()
         .waitForElementPresent(com.MyHand)
         .moveToElement(com.GameChat, 0, 0).pause(p.Move)
-        .click(com.TopBottomButton(1, 1)).pause(p.ButtonPress)
+        .click(com.ChooseButton(1, 1)).pause(p.ButtonPress)
         .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
         ;
 

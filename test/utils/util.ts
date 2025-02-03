@@ -70,8 +70,8 @@ export const com = {
     ClaimButton: 'button.claimButton',
     SubmitButton: 'input[type="button"]',
     YesNoButton(choice: "YES"|"NO") { return `div#mainDiv button:nth-of-type(${choice === "YES" ? 1 : 2})`; },
-    TopBottomButton(index: number, choice: number) { return `div > table > tbody > tr > td:nth-of-type(${index}) button:nth-of-type(${choice})`; },
-    ButtonInputChoice(index: number) { return `div#BUTTONINPUT div button:nth-of-type(${index})`; },
+    ChooseButton(index: number, choice: number) { return `div > table > tbody > tr > td:nth-of-type(${index}) button:nth-of-type(${choice})`; },
+    ButtonMultiChoice(index: number) { return `div#BUTTONINPUT div button:nth-of-type(${index})`; },
     TriggerLayerButton(index: number) { return `div#INSTANT div div.tiles-wrapper div:nth-of-type(${index + 1}) span input`},
     MultizoneImage(index: number) { return `div#CHOOSEMULTIZONE div div a:nth-of-type(${index}) img`; },
     Base(player: number) { return `span#P${player}BASE a`; },
@@ -87,6 +87,7 @@ export const com = {
     //then tokens like Sentinel, Shield, Clone if any
     UnitDivPiece(linkSelector: string, index: number) { return `${linkSelector} div:nth-last-of-type(${index})`; },
     UnitImg(linkSelector: string) { return `${linkSelector} img`; },
+    PlayerPickSpan: 'span.playerpick-span',
     MyResources: 'div.my-resources div.resources span',
     TheirResources: 'div.their-resources div.resources span',
     ResourcePopupImgOption(index: number) { return `div#myResourcePopup div:nth-of-type(2) a:nth-of-type(${index}) img`; },

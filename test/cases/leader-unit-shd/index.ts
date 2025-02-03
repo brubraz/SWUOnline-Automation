@@ -25,7 +25,7 @@ export const LeaderUnitSHDCases = {
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.Leader(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
-      .click(com.ButtonInputChoice(2)).pause(p.ButtonPress)
+      .click(com.ButtonMultiChoice(2)).pause(p.ButtonPress)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
     //Qi'Ra pings everyone
@@ -48,7 +48,7 @@ export const LeaderUnitSHDCases = {
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
       .click(com.Leader(2))
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
-      .click(com.ButtonInputChoice(2)).pause(p.ButtonPress)
+      .click(com.ButtonMultiChoice(2)).pause(p.ButtonPress)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.AllySpaceUnit(1))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
@@ -147,7 +147,7 @@ export const LeaderUnitSHDCases = {
     await browser.window.switchTo(player1Window).refresh()
       .waitForElementPresent(com.AllyGroundUnit(4))
       .moveToElement(com.GameChat, 0, 0).pause(p.Move)
-      .click(com.TopBottomButton(1, 1)).pause(p.ButtonPress)
+      .click(com.ChooseButton(1, 1)).pause(p.ButtonPress)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
     //upgrade bounced to hand
@@ -162,7 +162,7 @@ export const LeaderUnitSHDCases = {
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
       .click(com.AllyGroundUnit(3))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
-      .click(com.TopBottomButton(1, 1)).pause(p.ButtonPress)
+      .click(com.ChooseButton(1, 1)).pause(p.ButtonPress)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
 

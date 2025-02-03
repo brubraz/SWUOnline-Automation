@@ -9,20 +9,20 @@ export const LocalTestCase = {
     await gameState.LoadGameStateLinesAsync();
     await gameState.ResetGameStateLines()
       .SetBasesDamage("9 16")
-      .AddBase(1, cards.SHD.JabbasPalace)
+      .AddBase(1, cards.SOR.EchoBase)
       .AddLeader(1, cards.JTL.BobaFettLeader)
       .AddBase(2, cards.SOR.EchoBase)
       .AddLeader(2, cards.JTL.HanSoloLeader)
-      .FillResources(1, cards.SOR.CraftySmuggler, 2)
+      .FillResources(1, cards.SOR.CraftySmuggler, 5)
       //.FillResources(2, cards.SOR.BFMarine, 7)
-      //.AddCardToHand(1, cards.JTL.TandemAssault)
+      .AddCardToHand(1,"9985638644")
       //.AddCardToHand(2, cards.SOR.AdmiralAckbar)
       //.AddCardToDeck(1, cards.SOR.CraftySmuggler, 10)
       //.AddCardToDeck(2, cards.SOR.BFMarine, 10)
       // .AddUnit(1, cards.JTL.XWing, true, 1,
       //   new SubcardBuilder().AddUpgrade(cards.JTL.Chewbacca, 1, true).Build())
-      // .AddUnit(1, cards.SOR.Snowspeeder)
-      // .AddUnit(2, cards.SOR.TieLnFighter)
+      .AddUnit(1, cards.SHD.HylobonEnforcer)
+      .AddUnit(2, cards.SHD.HylobonEnforcer)
       // .AddUnit(2, cards.JTL.XWing, false, 1,//player, card, ready, damage
       //   new SubcardBuilder().AddUpgrade(cards.JTL.Chewbacca, 2, true).Build(),
       //   2, false, 1, 1)//owner, carbonite, numUses, turns in play

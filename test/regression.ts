@@ -12,10 +12,15 @@ import { DamageCases } from './cases/damage';
 import { ReadyCases } from './cases/ready';
 import { BoardWipeCases } from './cases/boardwipe';
 import { ControlCases } from './cases/control';
+import { DefeatUpgradeCases } from './cases/defeat-upgrade';
+
 import { LeaderAbilitySORCases } from './cases/leader-ability-sor';
 import { LeaderUnitSORCases } from './cases/leader-unit-sor';
+
 import { LeaderUnitSHDCases } from './cases/leader-unit-shd';
+
 import { LeaderUnitTWICases } from './cases/leader-unit-twi';
+
 import { SpecificSORCases } from './cases/specific/sor';
 import { BountyCases } from './cases/bounty';
 import { SpecificSHDCases } from './cases/specific/shd';
@@ -38,6 +43,7 @@ const home: NightwatchTests = {
   ...ReadyCases,
   ...BoardWipeCases,
   ...ControlCases,
+  ...DefeatUpgradeCases,
   ...LeaderAbilitySORCases,
   ...LeaderUnitSORCases,
   ...LeaderUnitSHDCases,

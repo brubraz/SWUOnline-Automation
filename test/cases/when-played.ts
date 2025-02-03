@@ -50,7 +50,7 @@ export const WhenPlayedCases = {
       .click(com.AllyGroundUnit(4))
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .click(com.PassButton).pause(p.ButtonPress)
-      .click(com.TopBottomButton(1, 2)).pause(p.ButtonPress)
+      .click(com.ChooseButton(1, 2)).pause(p.ButtonPress)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
       .click(com.YesNoButton("YES")).pause(p.ButtonPress)
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
