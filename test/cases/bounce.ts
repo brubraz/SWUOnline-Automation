@@ -106,5 +106,63 @@ export const BounceCases = {
     ;
     //assert
     await browser.assert.attributeEquals(com.UnitImg(com.EnemySpaceUnit(2)), 'style', src.NotPlayableBorderUnit);
+  },
+  'Bounce: Bright Hope cant bounce piloted leader unit': async function () {
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .AddBase(1, cards.SOR.EchoBase)
+      .AddLeader(1, cards.JTL.HanSoloLeader, true)
+      .AddBase(2, cards.SOR.DagobahSwamp)
+      .AddLeader(2, cards.JTL.HanSoloLeader)
+      .FillResources(1, cards.SOR.Waylay, 4)
+      .AddCardToHand(1, cards.SOR.BrightHope)
+      .AddUnit(1, cards.SOR.Snowspeeder)
+      .AddUnit(1, cards.SOR.Snowspeeder, false, 0,
+        new SubcardBuilder().AddUpgrade(cards.JTL.HanSoloLeaderUnit, 1, true).Build())
+      .FlushAsync(com.BeginTestCallback)
+    ;
+    //act
+    await browser.waitForElementPresent(com.MyHand)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.HandCard(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+    ;
+    //assert
+    await browser.assert.attributeEquals(com.UnitImg(com.AllyGroundUnit(2)), 'style', src.NotPlayableBorderUnit);
+  },
+  'Bounce: Cunning cant bounce piloted leader unit': async function () {
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .AddBase(1, cards.SOR.ChopperBase)
+      .AddLeader(1, cards.JTL.HanSoloLeader)
+      .AddBase(2, cards.SOR.DagobahSwamp)
+      .AddLeader(2, cards.JTL.HanSoloLeader, true)
+      .FillResources(1, cards.SOR.Waylay, 4)
+      .AddCardToHand(1, cards.SOR.Cunning)
+      .AddUnit(2, cards.SOR.Snowspeeder)
+      .AddUnit(2, cards.SOR.Snowspeeder, true, 0,
+        new SubcardBuilder()
+          .AddUpgrade(cards.JTL.HanSoloLeaderUnit, 2, true)
+          .AddUpgrade(cards.TWI.PerilousPosition, 1)
+          .Build())
+      .AddUnit(2, cards.SOR.Snowspeeder)
+      .FlushAsync(com.BeginTestCallback)
+    ;
+    //act
+    await browser.waitForElementPresent(com.MyHand)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.HandCard(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+      .click(com.ModalOption(1)).pause(p.ButtonPress)
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+      .click(com.ModalOption(2)).pause(p.ButtonPress)
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+    ;
+    //assert
+    await browser.assert.attributeEquals(com.UnitImg(com.EnemyGroundUnit(2)), 'style', src.NotPlayableBorderUnit);
   }
 }

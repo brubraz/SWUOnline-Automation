@@ -64,5 +64,32 @@ export const OnAttackCases = {
     await browser.assert.textEquals(com.TheirBaseDamage, '6');
     await browser.assert.elementPresent(com.EnemySpaceUnit(1));
     await browser.assert.elementsCount(com.TheirHandDivs, 1);
+  },
+  'OnAttack: Avenger cant defeat piloted leader unit': async function () {
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .AddBase(1, cards.SOR.ECL)
+      .AddLeader(1, cards.SOR.KrennicLeader)
+      .AddBase(2, cards.SOR.ChopperBase)
+      .AddLeader(2, cards.JTL.HanSoloLeader, true)
+      .AddUnit(1, cards.SOR.Avenger)
+      .AddUnit(2, cards.SOR.AllianceXWing, false, 0,
+        new SubcardBuilder().AddUpgrade(cards.JTL.HanSoloLeaderUnit, 2, true).Build())
+      .FlushAsync(com.BeginTestCallback)
+    ;
+    //act
+    await browser
+      .waitForElementPresent(com.AllySpaceUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.AllySpaceUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+      .click(com.Base(2))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+    ;
+    //assert
+    await browser.assert.textEquals(com.TheirBaseDamage, '8');
+    await browser.assert.elementPresent(com.EnemySpaceUnit(1));
   }
 }

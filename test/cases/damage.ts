@@ -59,5 +59,5 @@ export const DamageCases = {
       .assert.not.elementPresent(com.EnemyGroundUnit(2))
       .assert.not.elementPresent(com.EnemySpaceUnit(1))
     ;
-  }
+  },
 }

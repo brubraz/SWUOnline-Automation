@@ -10,6 +10,7 @@ import { WhenTheyPlayCases } from './cases/when-they-play';
 import { OnAttackCases } from './cases/on-attack';
 import { BounceCases } from './cases/bounce';
 import { DamageCases } from './cases/damage';
+import { RemovalCases } from './cases/removal';
 import { ReadyCases } from './cases/ready';
 import { BoardWipeCases } from './cases/boardwipe';
 import { ControlCases } from './cases/control';
@@ -42,6 +43,7 @@ const home: NightwatchTests = {
   ...OnAttackCases,
   ...BounceCases,
   ...DamageCases,
+  ...RemovalCases,
   ...ReadyCases,
   ...BoardWipeCases,
   ...ControlCases,

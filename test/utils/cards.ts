@@ -173,6 +173,7 @@ export const cards = {
     ShadowedIntentions: '9003830954',
     CloneCohort: '2007876522',
     DroidCohort: '7547538214',
+    PerilousPosition: '8061497086',
     //events
     MercilessContest: '4412828936',
     Christophsis: '2565830105',

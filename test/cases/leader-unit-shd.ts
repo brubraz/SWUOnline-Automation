@@ -266,5 +266,37 @@ export const LeaderUnitSHDCases = {
     ;
     //assert
     await browser.assert.attributeEquals(com.EnemySpaceUnit(2) + ' img', 'style', src.NotPlayableBorderUnit);
+  },
+  'SHD: Jabba cant capture piloted leader unit': async function () {
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .AddBase(1, cards.SOR.EchoBase)
+      .AddLeader(1, cards.SHD.JabbaLeader)
+      .AddBase(2, cards.SOR.ECL)
+      .AddLeader(2, cards.JTL.HanSoloLeader, true)
+      .FillResources(1, cards.SHD.CollectionsStarhopper, 7)
+      .AddUnit(1, cards.SOR.GILeaderUnit)//Twin Suns prep
+      .AddUnit(1, cards.SOR.TieLnFighter)
+      .AddUnit(2, cards.SOR.TieLnFighter)
+      .AddUnit(2, cards.SOR.TieLnFighter, true, 0,
+        new SubcardBuilder().AddUpgrade(cards.JTL.HanSoloLeaderUnit, 2, true).Build())
+      .AddUnit(2, cards.SOR.TieLnFighter, false)
+      .FlushAsync(com.BeginTestCallback)
+    ;
+    //act
+    await browser
+      .waitForElementPresent(com.Leader(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.Leader(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.ButtonMultiChoice(2)).pause(p.ButtonPress)
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+      .click(com.AllyGroundUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+    ;
+    //assert
+    await browser.assert.attributeEquals(com.UnitImg(com.EnemySpaceUnit(2)), 'style', src.NotPlayableBorderUnit);
   }
 }

@@ -3,7 +3,8 @@ import { GameState, SubcardBuilder } from '../utils/gamestate';
 import {
   com, p,
   player1Window, player2Window,
-  gameName
+  gameName,
+  src
 } from '../utils/util';
 
 export const WhenPlayedCases = {
@@ -185,5 +186,5 @@ export const WhenPlayedCases = {
     //assert
     await browser.assert.textEquals(com.MyBaseDamage, '8');
     await browser.assert.textEquals(com.TheirBaseDamage, '22');
-  }
+  },
 }

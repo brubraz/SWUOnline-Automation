@@ -48,6 +48,7 @@ export const com = {
     ButtonMultiChoice(index: number) { return `div#BUTTONINPUT div button:nth-of-type(${index})`; },
     TriggerLayerButton(index: number) { return `div#INSTANT div div.tiles-wrapper div:nth-of-type(${index + 1}) span input`},
     MultizoneImage(index: number) { return `div#CHOOSEMULTIZONE div div a:nth-of-type(${index}) img`; },
+    ModalOption(index: number) { return `div#CHOOSEOPTION div div.card-container div:nth-of-type(${index})`; },
     Base(player: number) { return `span#P${player}BASE a`; },
     Leader(player: number) { return `span#P${player}LEADER a`; },
     AllyGroundUnit(index: number, exhausted: boolean = false) { return `div.groundAlliesContainer div:nth-of-type(${index})${exhausted ? '.exhausted' : ''} a`; },
