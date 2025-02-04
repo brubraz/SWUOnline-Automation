@@ -3,7 +3,8 @@ import { GameState, SubcardBuilder } from '../utils/gamestate';
 import {
   com, p,
   player1Window, player2Window,
-  gameName
+  gameName,
+  src
 } from '../utils/util';
 
 export const BounceCases = {
@@ -79,5 +80,31 @@ export const BounceCases = {
     await browser.assert.elementPresent(com.EnemyGroundUnit(1));
     await browser.assert.elementPresent(com.EnemySpaceUnit(1));
     await browser.assert.textEquals(com.PlayerPickSpan, 'You have two of this unique unit; choose one to destroy ')
+  },
+  'Bounce: cant bounce piloted leader unit': async function () {
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .AddBase(1, cards.SOR.ChopperBase)
+      .AddLeader(1, cards.SOR.SabineLeader)
+      .AddBase(2, cards.SOR.DagobahSwamp)
+      .AddLeader(2, cards.JTL.HanSoloLeader, true)
+      .FillResources(1, cards.SOR.Waylay, 3)
+      .AddCardToHand(1, cards.SOR.Waylay)
+      .AddUnit(2, cards.SOR.TieLnFighter)
+      .AddUnit(2, cards.SOR.TieLnFighter, false, 0,
+        new SubcardBuilder().AddUpgrade(cards.JTL.HanSoloLeaderUnit, 2, true).Build())
+      .AddUnit(2, cards.SOR.TieLnFighter)
+      .FlushAsync(com.BeginTestCallback)
+    ;
+    //act
+    await browser.waitForElementPresent(com.MyHand)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.HandCard(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+    ;
+    //assert
+    await browser.assert.attributeEquals(com.UnitImg(com.EnemySpaceUnit(2)), 'style', src.NotPlayableBorderUnit);
   }
 }

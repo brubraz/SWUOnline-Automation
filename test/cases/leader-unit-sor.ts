@@ -1,5 +1,5 @@
 import { cards } from '../utils/cards';
-import { GameState } from '../utils/gamestate';
+import { GameState, SubcardBuilder } from '../utils/gamestate';
 import {
   com, p, src,
   player1Window, player2Window,
@@ -297,4 +297,30 @@ export const LeaderUnitSORCases = {
     //IG-88 does not give self Raid 1
     await browser.assert.textEquals(com.TheirBaseDamage, '12');
   },
+  'Palp cant steal piloted leader unit': async function () {
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .AddBase(1, cards.SOR.ECL)
+      .AddLeader(1, cards.SOR.PalpLeader)
+      .AddBase(2, cards.SOR.ChopperBase)
+      .AddLeader(2, cards.JTL.AsajjLeaderUnit, true)
+      .FillResources(1, cards.SOR.InfernoFour, 8)
+      .AddUnit(2, cards.SOR.TieLnFighter, false, 1,
+        new SubcardBuilder().AddUpgrade(cards.JTL.AsajjLeaderUnit, 2, true).Build())
+      .AddUnit(2, cards.SOR.Avenger, false, 1)
+      .AddUnit(2, cards.SOR.CraftySmuggler, false, 1)
+      .FlushAsync(com.BeginTestCallback)
+    ;
+    //act
+    await browser
+      .waitForElementPresent(com.Leader(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.Leader(1)).pause(p.ButtonPress)
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+    ;
+    //assert
+    await browser.assert.attributeEquals(com.UnitImg(com.EnemySpaceUnit(1)), 'style', src.NotPlayableBorderUnit);
+  }
 }

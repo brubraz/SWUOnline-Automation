@@ -232,5 +232,39 @@ export const LeaderUnitSHDCases = {
       .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
     ;
     //await browser.pause(p.Debug);
+  },
+  'SHD: Mando cant capture piloted leader unit w Rifle': async function () {
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .AddBase(1, cards.SOR.ECL)
+      .AddLeader(1, cards.SHD.MandoLeader, true)
+      .AddBase(2, cards.SOR.ECL)
+      .AddLeader(2, cards.JTL.HanSoloLeader, true)
+      .FillResources(1, cards.SHD.MandosRifle, 3)
+      .AddCardToHand(1, cards.SHD.MandosRifle)
+      .AddUnit(1, cards.SHD.MandoLeaderUnit)
+      .AddUnit(2, cards.SOR.TieLnFighter, false)
+      .AddUnit(2, cards.SOR.TieLnFighter, true, 0,
+        new SubcardBuilder().AddUpgrade(cards.JTL.HanSoloLeaderUnit, 2, true).Build())
+      .AddUnit(2, cards.SOR.TieLnFighter, false)
+      .FlushAsync(com.BeginTestCallback)
+    ;
+    //act
+    await browser
+      .waitForElementPresent(com.MyHand)
+      .moveToElement(com.MyHand, 0, 0).pause(p.Move)
+      .click(com.HandCard(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.PassButton).pause(p.ButtonPress)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.PassButton).pause(p.ButtonPress)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.EnemySpaceUnit(2))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+    ;
+    //assert
+    await browser.assert.attributeEquals(com.EnemySpaceUnit(2) + ' img', 'style', src.NotPlayableBorderUnit);
   }
 }

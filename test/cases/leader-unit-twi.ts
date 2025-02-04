@@ -1,10 +1,11 @@
 
 import { cards } from '../utils/cards';
-import { GameState } from '../utils/gamestate';
+import { GameState, SubcardBuilder } from '../utils/gamestate';
 import {
     com, p,
     player1Window, player2Window,
-    gameName
+    gameName,
+    src
 } from '../utils/util';
 
 export const LeaderUnitTWICases = {
@@ -31,4 +32,35 @@ export const LeaderUnitTWICases = {
 
       await browser.assert.textEquals(com.MyResources, '0/2');
     },
+    'Leader Unit: Yoda flip cant defeat piloted leader unit': async function () {
+      //arrange
+      const gameState = new GameState(gameName);
+      await gameState.LoadGameStateLinesAsync();
+      await gameState.ResetGameStateLines()
+        .AddBase(1, cards.SOR.ChopperBase)
+        .AddLeader(1, cards.TWI.YodaLeader)
+        .AddBase(2, cards.SOR.EchoBase)
+        .AddLeader(2, cards.JTL.HanSoloLeader, true)
+        .FillResources(1, cards.TWI.EliteP, 7)
+        .AddCardToDeck(1, cards.TWI.EliteP)
+        .AddUnit(2, cards.SOR.TieLnFighter)
+        .AddUnit(2, cards.SOR.TieLnFighter, true, 0,
+          new SubcardBuilder().AddUpgrade(cards.JTL.HanSoloLeaderUnit, 2, true).Build())
+        .AddUnit(2, cards.SOR.TieLnFighter)
+        .FlushAsync(com.BeginTestCallback)
+      ;
+      //act
+      await browser
+        .waitForElementPresent(com.Leader(1))
+        .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+        .click(com.Leader(1))
+        .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+        .click(com.ButtonMultiChoice(2)).pause(p.ButtonPress)
+        .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+        .click(com.YesNoButton("YES")).pause(p.ButtonPress)
+        .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+      ;
+      //assert
+      await browser.assert.attributeEquals(com.UnitImg(com.EnemySpaceUnit(2)), 'style', src.NotPlayableBorderUnit);
+    }
 }
