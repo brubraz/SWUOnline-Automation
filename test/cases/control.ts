@@ -3,7 +3,8 @@ import { GameState, SubcardBuilder } from '../utils/gamestate';
 import {
   com, p,
   player1Window, player2Window,
-  gameName
+  gameName,
+  src
 } from '../utils/util';
 
 export const ControlCases = {
@@ -185,4 +186,41 @@ export const ControlCases = {
     await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(1), 1), '3');
     await browser.assert.textEquals(com.UnitDivPiece(com.EnemyGroundUnit(1), 2), '1');
   },
+  'Control: Choose Sides cant choose piloted leader units': async function () {
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .AddBase(1, cards.SOR.ECL)
+      .AddLeader(1, cards.JTL.HanSoloLeader, true)
+      .AddBase(2, cards.SOR.ECL)
+      .AddLeader(2, cards.JTL.AsajjLeader, true)
+      .FillResources(1, cards.SOR.BFMarine, 7)
+      .AddCardToHand(1, cards.SHD.ChooseSides)
+      .AddUnit(1, cards.SOR.Snowspeeder)
+      .AddUnit(1, cards.SOR.Snowspeeder, false, 0,
+        new SubcardBuilder().AddUpgrade(cards.SOR.SabineLeaderUnit, 1, true).Build())
+      .AddUnit(1, cards.SOR.Snowspeeder)
+      .AddUnit(2, cards.SOR.TieLnFighter)
+      .AddUnit(2, cards.SOR.TieLnFighter, false, 0,
+        new SubcardBuilder().AddUpgrade(cards.JTL.AsajjLeaderUnit, 1, true).Build())
+      .AddUnit(2, cards.SOR.TieLnFighter)
+      .FlushAsync(com.BeginTestCallback)
+    ;
+    //act
+    await browser
+      .waitForElementPresent(com.MyHand)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.HandCard(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+    ;
+    //assert
+    await browser.assert.attributeEquals(com.UnitImg(com.AllyGroundUnit(2)), 'style', src.NotPlayableBorderUnit);
+    //act
+    await browser.click(com.AllyGroundUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+    ;
+    //assert
+    await browser.assert.attributeEquals(com.UnitImg(com.EnemySpaceUnit(2)), 'style', src.NotPlayableBorderUnit);
+  }
 }

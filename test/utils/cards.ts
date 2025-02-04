@@ -71,6 +71,8 @@ export const cards = {
     CantinaBouncer: '1021495802',
     OuterRimeHH: '3613174521',
     Avenger: '8240629990',
+    GreenSquadAWing: '7495752423',
+    EscortSkiff: '2027289177',
     //upgrades
     Traitorous: '8055390529',
     //events
@@ -190,6 +192,7 @@ export const cards = {
     XWing: '9415311381',
     TieFighter: '7268926664',
     //leaders and leader units
+    AsajjLeader: '4179470615',
     AsajjLeaderUnit: '3f0b5622a7',
     HanSoloLeader: '0616724418',
     HanSoloLeaderUnit: 'a015eb5c5e',

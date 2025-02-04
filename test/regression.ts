@@ -15,18 +15,15 @@ import { ReadyCases } from './cases/ready';
 import { BoardWipeCases } from './cases/boardwipe';
 import { ControlCases } from './cases/control';
 import { DefeatUpgradeCases } from './cases/defeat-upgrade';
-
 import { LeaderAbilitySORCases } from './cases/leader-ability-sor';
 import { LeaderUnitSORCases } from './cases/leader-unit-sor';
-
 import { LeaderUnitSHDCases } from './cases/leader-unit-shd';
-
 import { LeaderUnitTWICases } from './cases/leader-unit-twi';
-
 import { SpecificSORCases } from './cases/specific/sor';
 import { BountyCases } from './cases/bounty';
 import { SpecificSHDCases } from './cases/specific/shd';
 import { ExploitCases } from './cases/exploit';
+import { CloneCases } from './cases/clone';
 import { SpecificTWICases } from './cases/specific/twi';
 import { PilotJTLCases } from './cases/pilots';
 
@@ -56,6 +53,7 @@ const home: NightwatchTests = {
   ...BountyCases,
   ...SpecificSHDCases,
   ...ExploitCases,
+  ...CloneCases,
   ...SpecificTWICases,
   ...PilotJTLCases,
 //end regression suite

@@ -81,7 +81,7 @@ export const BounceCases = {
     await browser.assert.elementPresent(com.EnemySpaceUnit(1));
     await browser.assert.textEquals(com.PlayerPickSpan, 'You have two of this unique unit; choose one to destroy ')
   },
-  'Bounce: cant bounce piloted leader unit': async function () {
+  'Bounce: Waylay cant bounce piloted leader unit': async function () {
     //arrange
     const gameState = new GameState(gameName);
     await gameState.LoadGameStateLinesAsync();
@@ -164,5 +164,92 @@ export const BounceCases = {
     ;
     //assert
     await browser.assert.attributeEquals(com.UnitImg(com.EnemyGroundUnit(2)), 'style', src.NotPlayableBorderUnit);
-  }
+  },
+  'Bounce: Cantina Bouncer cant bounce piloted leader unit': async function () {
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .AddBase(1, cards.SOR.ChopperBase)
+      .AddLeader(1, cards.JTL.HanSoloLeader)
+      .AddBase(2, cards.SOR.DagobahSwamp)
+      .AddLeader(2, cards.JTL.HanSoloLeader, true)
+      .FillResources(1, cards.SOR.Waylay, 5)
+      .AddCardToHand(1, cards.SOR.CantinaBouncer)
+      .AddUnit(2, cards.SOR.Snowspeeder)
+      .AddUnit(2, cards.SOR.Snowspeeder, false, 0,
+        new SubcardBuilder().AddUpgrade(cards.JTL.HanSoloLeaderUnit, 1, true).Build())
+      .AddUnit(2, cards.SOR.Snowspeeder)
+      .FlushAsync(com.BeginTestCallback)
+    ;
+    //act
+    await browser.waitForElementPresent(com.MyHand)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.HandCard(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+    ;
+    //assert
+    await browser.assert.attributeEquals(com.UnitImg(com.EnemyGroundUnit(2)), 'style', src.NotPlayableBorderUnit);
+  },
+  'Bounce: Enfys Nest cant bounce piloted leader unit': async function () {
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .AddBase(1, cards.SOR.ChopperBase)
+      .AddLeader(1, cards.JTL.HanSoloLeader)
+      .AddBase(2, cards.SOR.DagobahSwamp)
+      .AddLeader(2, cards.JTL.HanSoloLeader, true)
+      .FillResources(1, cards.SOR.Waylay, 7)
+      .AddCardToHand(1, cards.TWI.EnfysNest)
+      .AddUnit(2, cards.SOR.Snowspeeder)
+      .AddUnit(2, cards.SOR.GreenSquadAWing, false, 0,
+        new SubcardBuilder().AddUpgrade(cards.JTL.HanSoloLeaderUnit, 1, true).Build())
+      .AddUnit(2, cards.SOR.Snowspeeder)
+      .FlushAsync(com.BeginTestCallback)
+    ;
+    //act
+    await browser.waitForElementPresent(com.MyHand)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.HandCard(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+    ;
+    //assert
+    await browser.assert.attributeEquals(com.UnitImg(com.EnemySpaceUnit(1)), 'style', src.NotPlayableBorderUnit);
+  },
+  'Bounce: Clear the Field cant bounce piloted leader unit': async function () {
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .AddBase(1, cards.SOR.ChopperBase)
+      .AddLeader(1, cards.SOR.SabineLeader)
+      .AddBase(2, cards.SOR.DagobahSwamp)
+      .AddLeader(2, cards.JTL.HanSoloLeader, true)
+      .FillResources(1, cards.SOR.Waylay, 2)
+      .AddCardToHand(1, cards.TWI.ClearTheField)
+      .AddUnit(2, cards.SOR.TieLnFighter)
+      .AddUnit(2, cards.SOR.TieLnFighter, false, 0,
+        new SubcardBuilder().AddUpgrade(cards.JTL.AsajjLeaderUnit, 2, true).Build())
+      .AddUnit(2, cards.SOR.TieLnFighter)
+      .FlushAsync(com.BeginTestCallback)
+    ;
+    //act
+    await browser.waitForElementPresent(com.MyHand)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.HandCard(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+    ;
+    //assert
+    await browser.assert.attributeEquals(com.UnitImg(com.EnemySpaceUnit(2)), 'style', src.NotPlayableBorderUnit);
+    //act
+    await browser
+      .click(com.EnemySpaceUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+    ;
+    //assert
+    await browser.assert.elementPresent(com.EnemySpaceUnit(1));
+    await browser.assert.elementsCount(com.TheirHandDivs, 2);
+    await browser.assert.textEquals(com.UnitDivPiece(com.EnemySpaceUnit(1), 1), 'ASAJJ VENTRESS I WORK ALONE');
+  },
 }
