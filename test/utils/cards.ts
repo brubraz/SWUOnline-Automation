@@ -67,9 +67,17 @@ export const cards = {
     InfernoFour: '9133080458',
     AllianceXWing: '0494601180',
     KananJarrus: '1662196707',
+    BrightHope: '6253392993',
+    CantinaBouncer: '1021495802',
+    OuterRimeHH: '3613174521',
+    Avenger: '8240629990',
     //upgrades
     Traitorous: '8055390529',
     //events
+    Vigilance: '8615772965',
+    Command: '0073206444',
+    Aggression: '3736081333',
+    Cunning: '3789633661',
     Waylay: '7202133736',
     OB: '1900571801',
     UWing: '8968669390',
@@ -78,6 +86,7 @@ export const cards = {
     ChangeOfHeart: '1626462639',
     DisablingFF: '2668056720',
     POTDS: '0176921487',
+    Vanquish: '6472095064',
   },
   SHD: {
     //bases
@@ -111,16 +120,27 @@ export const cards = {
     QiRaUnit: '7964782056',
     CollectionsStarhopper: '5171970586',
     Dengar: '8031540027',
+    EphantMon: '9734237871',
+    Finalizer: '9752523457',
     //upgrades
     TopTarget: '4282425335',
     Darksaber: '3141660491',
     VambraceFlameThrower: '6471336466',
+    MandosRifle: '0754286363',
+    LegalAuthority: '8877249477',
     //events
     TimelyIntervention: '6847268098',
     NoBargain: '7354795397',
     DaringRaid: '7826408293',
     ChooseSides: '2346145249',
     Evacuate: '8261033110',
+    SpareTheTarget: '5283722046',
+    MaKlounkee: '0931441928',
+    CalculatedLethality: '0302968596',
+    DiscerningVeteran: '9765804063',
+    TakeCaptive: '3765912000',
+    ANewAdventure: '4717189843',
+    RelentlessPursuit: '5778949819',
   },
   TWI: {
     //bases
@@ -131,6 +151,7 @@ export const cards = {
     //leaders and leader units
     CountDookuLeader: '5683908835',
     NalaSeLeader: '2742665601',
+    YodaLeader: '2847868671',
     //units
     Malevolence: '3381931079',
     WTTradeOfficial: '0677558416',
@@ -141,6 +162,11 @@ export const cards = {
     DookuFallenJedi: '8655450523',
     DevGunship: '2761325938',
     PhaseIStormTrooper: '9209567613',
+    EnfysNest: '8414572243',
+    GeonosisPatrolFighter: '3348783048',
+    WolfpackEscort: '1882027961',
+    OsiSobeck: '2041344712',
+    CadBane: '0693815329',
     //upgrades
     ShadowedIntentions: '9003830954',
     CloneCohort: '2007876522',
@@ -148,6 +174,12 @@ export const cards = {
     //events
     MercilessContest: '4412828936',
     Christophsis: '2565830105',
+    Clone: '0345124206',
+    PrisonerOfWar: '3799780905',
+    ClearTheField: '9620454519',
+    LethalCrackdown: '1389085256',
+    GrimResolve: '6669050232',
+    ImpAmongThieves: '1302133998',
   },
   JTL: {
     //bases
