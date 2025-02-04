@@ -69,7 +69,7 @@ export const cards = {
     KananJarrus: '1662196707',
     BrightHope: '6253392993',
     CantinaBouncer: '1021495802',
-    OuterRimeHH: '3613174521',
+    OuterRimHH: '3613174521',
     Avenger: '8240629990',
     GreenSquadAWing: '7495752423',
     EscortSkiff: '2027289177',

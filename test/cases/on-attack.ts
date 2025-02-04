@@ -4,7 +4,8 @@ import {
   com, p,
   player1Window, player2Window,
   gameName,
-  cs
+  cs,
+  src
 } from '../utils/util';
 
 export const OnAttackCases = {
@@ -91,5 +92,34 @@ export const OnAttackCases = {
     //assert
     await browser.assert.textEquals(com.TheirBaseDamage, '8');
     await browser.assert.elementPresent(com.EnemySpaceUnit(1));
+  },
+  'OnAttack: Outer Rim Headhunter cant exhaust piloted leader unit': async function () {
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .AddBase(1, cards.SOR.ECL)
+      .AddLeader(1, cards.JTL.HanSoloLeader, true)
+      .AddBase(2, cards.SOR.ECL)
+      .AddLeader(2, cards.JTL.HanSoloLeader, true)
+      .AddUnit(1, cards.SOR.OuterRimHH, true, 0,
+        new SubcardBuilder().AddUpgrade(cards.JTL.HanSoloLeaderUnit, 1, true).Build())
+      .AddUnit(2, cards.SOR.BFMarine)
+      .AddUnit(2, cards.JTL.XWing, true, 0,
+        new SubcardBuilder().AddUpgrade(cards.JTL.HanSoloLeaderUnit, 2, true).Build())
+      .AddUnit(2, cards.JTL.XWing)
+      .FlushAsync(com.BeginTestCallback)
+    ;
+    //act
+    await browser
+      .waitForElementPresent(com.AllySpaceUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.AllySpaceUnit(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+      .click(com.Base(2))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitForEffect)
+    ;
+    //assert
+    await browser.assert.attributeEquals(com.UnitImg(com.EnemySpaceUnit(1)), 'style', src.NotPlayableBorderUnit);
   }
 }
