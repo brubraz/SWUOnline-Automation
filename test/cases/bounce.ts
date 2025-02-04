@@ -252,4 +252,30 @@ export const BounceCases = {
     await browser.assert.elementsCount(com.TheirHandDivs, 2);
     await browser.assert.textEquals(com.UnitDivPiece(com.EnemySpaceUnit(1), 1), 'ASAJJ VENTRESS I WORK ALONE');
   },
+  'Spare the Target cant bounce piloted leader unit': async function () {
+    //arrange
+    const gameState = new GameState(gameName);
+    await gameState.LoadGameStateLinesAsync();
+    await gameState.ResetGameStateLines()
+      .AddBase(1, cards.SOR.EchoBase)
+      .AddLeader(1, cards.JTL.HanSoloLeader)
+      .AddBase(2, cards.SOR.DagobahSwamp)
+      .AddLeader(2, cards.JTL.HanSoloLeader, true)
+      .FillResources(1, cards.SOR.Waylay, 3)
+      .AddCardToHand(1, cards.SHD.SpareTheTarget)
+      .AddUnit(2, cards.SHD.CartelTurncoat)
+      .AddUnit(2, cards.SHD.CartelTurncoat, false, 0,
+        new SubcardBuilder().AddUpgrade(cards.JTL.HanSoloLeaderUnit, 2, true).Build())
+      .AddUnit(2, cards.SHD.CartelTurncoat)
+      .FlushAsync(com.BeginTestCallback)
+    ;
+    //act
+    await browser.waitForElementPresent(com.MyHand)
+      .moveToElement(com.GameChat, 0, 0).pause(p.Move)
+      .click(com.HandCard(1))
+      .moveToElement(com.GameChat, 0, 0).pause(p.WaitToChooseTarget)
+    ;
+    //assert
+    await browser.assert.attributeEquals(com.UnitImg(com.EnemySpaceUnit(2)), 'style', src.NotPlayableBorderUnit);
+  }
 }

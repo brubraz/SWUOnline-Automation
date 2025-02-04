@@ -126,6 +126,7 @@ export const cards = {
     Dengar: '8031540027',
     EphantMon: '9734237871',
     Finalizer: '9752523457',
+    CartelTurncoat: '9108611319',
     //upgrades
     TopTarget: '4282425335',
     Darksaber: '3141660491',
