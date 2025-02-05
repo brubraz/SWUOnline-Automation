@@ -8,7 +8,7 @@ import {
 } from "./util";
 import { GameState } from "./gamestate";
 
-const genericJangoDeck = 'https://swudb.com/deck/nwETxCRed';
+const genericJangoDeck = 'https://swustats.net/TCGEngine/NextTurn.php?gameName=6128&playerID=1&folderPath=SWUDeck';
 const maxRetries = 5;
 
 export const init: NightwatchTestHook = async (browser, done) => {
