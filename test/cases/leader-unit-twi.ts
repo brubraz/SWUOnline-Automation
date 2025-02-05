@@ -15,11 +15,12 @@ export const LeaderUnitTWICases = {
       await gameState.LoadGameStateLinesAsync();
       await gameState.ResetGameStateLines()
         .AddBase(1, cards.SOR.ECL)
-        .AddLeader(1, cards.TWI.NalaSeLeader)
+        .AddLeader(1, cards.TWI.NalaSeLeader, true)
         .AddBase(2, cards.SOR.EchoBase)
         .AddLeader(2, cards.SOR.MoffTarkinLeader)
         .FillResources(1, cards.TWI.EliteP, 2)
         .AddCardToHand(1, cards.TWI.PhaseIStormTrooper)
+        .AddUnit(1, cards.TWI.NalaSeLeaderUnit)
         .FlushAsync(com.BeginTestCallback)
       ;
 
