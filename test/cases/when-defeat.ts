@@ -27,6 +27,13 @@ export const WhenDefeatCases = {
       .AddUnit(1, cards.SOR.InfernoFour)
       .FlushAsync(com.BeginTestCallback)
     ;
+    //pre-assert
+    const prevTopDeck = gameState.GetTopDeck(1);
+    const prevTopDeck2 = gameState.GetTopDeck(1, 2);
+    const prevBottomDeck = gameState.GetBottomDeck(1);
+    await browser.assert.equal(prevTopDeck, cards.SHD.TopTarget);
+    await browser.assert.equal(prevTopDeck2, cards.SOR.Waylay);
+    await browser.assert.equal(prevBottomDeck, cards.SOR.Avenger);
     //act
     await browser
       .waitForElementPresent(com.MyHand)
@@ -43,6 +50,13 @@ export const WhenDefeatCases = {
     const secondLastLog = (await browser.getText(com.GameLog)).split('\n').slice(-2)[0];
     await browser.assert.equal(secondLastLog, 'Player 1 put a card on the bottom of the deck.');
     await browser.assert.equal(lastLog, 'Player 1 put a card on top of the deck.');
+    await gameState.LoadGameStateLinesAsync();
+    const newTopDeck = gameState.GetTopDeck(1);
+    const newTopDeck2 = gameState.GetTopDeck(1, 2);
+    const newBottomDeck = gameState.GetBottomDeck(1);
+    await browser.assert.equal(newTopDeck, cards.SHD.TopTarget);
+    await browser.assert.equal(newTopDeck2, cards.SOR.Vanquish);
+    await browser.assert.equal(newBottomDeck, cards.SOR.Waylay);
   },
   'When Defeat: SLT w Clone Cohort Pinged by Dengar': process.env.FULL_REGRESSION !== "true" ? '' : async function () {
     //arrange

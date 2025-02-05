@@ -199,6 +199,15 @@ export class GameState {
     return this;
   }
 
+  public GetTopDeck(player: number, position: number = 1) {
+    return this._gameState[player === 1 ? g.P1Deck : g.P2Deck].split(' ')[position - 1];
+  }
+
+  public GetBottomDeck(player: number, position: number = 1) {
+    const deck = this._gameState[player === 1 ? g.P1Deck : g.P2Deck].split(' ');
+    return deck[deck.length - position];
+  }
+
   public GetAuthKey(player: number) {
     return this._gameState[player === 1 ? g.P1AuthKey : g.P2AuthKey];
   }
