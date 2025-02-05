@@ -18,6 +18,7 @@ export const cards = {
     IdenLeader: '2048866729',
     IdenLeaderUnit: 'b0dbca5c05',
     //units
+    C3PO: '8009713136',
     TieLnFighter: '5562575456',
     DSStormTrooper: '2383321298',
     BFMarine: '4317911650',
@@ -36,9 +37,11 @@ export const cards = {
     Greedo: '0949648290',
     ISBAgent: '5154172446',
     Snowspeeder: '1862616109',
+    Yoda: '4405415770',
     //upgrades
     Traitorous: '8055390529',
     //events
+    YMOH: '3509161777',
     Waylay: '7202133736',
     OB: '1900571801',
     UWing: '8968669390',
@@ -82,6 +85,7 @@ export const cards = {
     CloneTrooper: '3941784506',
     //leaders and leader units
     CountDookuLeader: '5683908835',
+    YodaLeader: '2847868671',
     //units
     Malevolence: '3381931079',
     WTTradeOfficial: '0677558416',
@@ -92,6 +96,7 @@ export const cards = {
     DookuFallenJedi: '8655450523',
     //upgrades
     ShadowedIntentions: '9003830954',
+    GeneralsBlade: '0414253215',
     //events
     MercilessContest: '4412828936',
     Christophsis: '2565830105',

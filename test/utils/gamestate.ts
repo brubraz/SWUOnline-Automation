@@ -1,31 +1,36 @@
-import fsp from 'fs/promises';
-import { NightwatchAPI } from 'nightwatch';
+import fsp from "fs/promises";
+import { NightwatchAPI } from "nightwatch";
 
-import {
-  g
-} from './util';
-
+import { g } from "./util";
+import { cards } from "./cards";
 
 export class GameState {
-  private _gameName: string = '';
+  private _gameName: string = "";
   private _gameState: string[] = [];
   private _uniqueIdCounter: number = 0;
 
   public constructor(gameName: string) {
-    if(gameName === '') {
-      throw new Error('Game name cannot be empty.');
+    if (gameName === "") {
+      throw new Error("Game name cannot be empty.");
     }
     this._gameName = gameName;
     this._uniqueIdCounter = 1;
   }
 
   public async LoadGameStateLinesAsync() {
-    const data = await fsp.readFile(`${process.env.SWUONLINE_ROOT_PATH || '../SWUOnline'}/Games/${this._gameName}/gamestate.txt`, 'ascii');
-    this._gameState = data.split('\r\n');
+    const data = await fsp.readFile(
+      `${process.env.SWUONLINE_ROOT_PATH || "../SWUOnline"}/Games/${this._gameName}/gamestate.txt`,
+      "ascii",
+    );
+    this._gameState = data.split("\r\n");
   }
 
   public async FlushAsync(cb?: Function) {
-    await fsp.writeFile(`${process.env.SWUONLINE_ROOT_PATH || '../SWUOnline'}/Games/${this._gameName}/gamestate.txt`, this._gameState.join('\r\n'), 'ascii');
+    await fsp.writeFile(
+      `${process.env.SWUONLINE_ROOT_PATH || "../SWUOnline"}/Games/${this._gameName}/gamestate.txt`,
+      this._gameState.join("\r\n"),
+      "ascii",
+    );
 
     if (cb) cb();
   }
@@ -38,7 +43,8 @@ export class GameState {
     this._gameState[g.P1ResourcesState] = "0 0";
     this._gameState[g.P1ResourcesArray] = "";
     this._gameState[g.P1Discard] = "";
-    this._gameState[g.P1ClassState] = "0 0 0 0 0 0 0 0 DOWN 0 -1 0 0 0 0 0 0 -1 0 0 0 0 NA 0 0 0 - -1 0 0 0 0 0 0 - 0 0 0 0 0 0 0 0 - - 0 -1 0 0 0 0 0 - 0 0 0 0 0 -1 0 - 0 0 - 0 0 0 - -1 0 0 -";
+    this._gameState[g.P1ClassState] =
+      "0 0 0 0 0 0 0 0 DOWN 0 -1 0 0 0 0 0 0 -1 0 0 0 0 NA 0 0 0 - -1 0 0 0 0 0 0 - 0 0 0 0 0 0 0 0 - - 0 -1 0 0 0 0 0 - 0 0 0 0 0 -1 0 - 0 0 - 0 0 0 - -1 0 0 -";
     this._gameState[g.P1CharDisplay] = "";
     this._gameState[g.P1CardStats] = "";
     this._gameState[g.P1TurnStats] = "0 0 0 0 0 0 0 0 0 0 0 0";
@@ -50,7 +56,8 @@ export class GameState {
     this._gameState[g.P2ResourcesState] = "0 0";
     this._gameState[g.P2ResourcesArray] = "";
     this._gameState[g.P2Discard] = "";
-    this._gameState[g.P2ClassState] = "0 0 0 0 0 0 0 0 DOWN 0 -1 0 0 0 0 0 0 -1 0 0 0 0 NA 0 0 0 - -1 0 0 0 0 0 0 - 0 0 0 0 0 0 0 0 - - 0 -1 0 0 0 0 0 - 0 0 0 0 0 -1 0 - 0 0 - 0 0 0 - -1 0 0 -";
+    this._gameState[g.P2ClassState] =
+      "0 0 0 0 0 0 0 0 DOWN 0 -1 0 0 0 0 0 0 -1 0 0 0 0 NA 0 0 0 - -1 0 0 0 0 0 0 - 0 0 0 0 0 0 0 0 - - 0 -1 0 0 0 0 0 - 0 0 0 0 0 -1 0 - 0 0 - 0 0 0 - -1 0 0 -";
     this._gameState[g.P2CharDisplay] = "";
     this._gameState[g.P2CardStats] = "";
     this._gameState[g.P2TurnStats] = "0 0 0 0 0 0 0 0 0 0 0 0";
@@ -62,7 +69,8 @@ export class GameState {
     this._gameState[g.CurrentRound] = "1";
     this._gameState[g.Turn] = "M 1";
     this._gameState[g.CombatChain] = "";
-    this._gameState[g.CombatChainState] = "0 -1 0 0 0 0 0 GY NA 0 0 0 0 0 0 0 NA 0 0 -1 -1 NA 0 0 0 -1 0 0 0 0 - 0 0 0 0 0 NA -";
+    this._gameState[g.CombatChainState] =
+      "0 -1 0 0 0 0 0 GY NA 0 0 0 0 0 0 0 NA 0 0 -1 -1 NA 0 0 0 -1 0 0 0 0 - 0 0 0 0 0 NA -";
     this._gameState[g.CurrentTurnEffects] = "";
     this._gameState[g.CurrentTurnEffectsFromCombat] = "";
     this._gameState[g.NextTurnEffects] = "";
@@ -91,19 +99,20 @@ export class GameState {
   }
 
   public AddLeader(player: number, cardID: string, deployed: boolean = false, exhaustedLeaderSide: boolean = false) {
-    if(!deployed) {
-      this._gameState[player === 1 ? g.P1CharArray : g.P2CharArray] += ` ${cardID} ${exhaustedLeaderSide ? "1" : "2"} 0 0 0 1 0 0 0 2 0`;
+    if (!deployed) {
+      this._gameState[player === 1 ? g.P1CharArray : g.P2CharArray] +=
+        ` ${cardID} ${exhaustedLeaderSide ? "1" : "2"} 0 0 0 1 0 0 0 2 0`;
     }
 
-    this._gameState[player === 1 ? g.P1CharDisplay : g.P2CharDisplay] += (' ' + cardID);
+    this._gameState[player === 1 ? g.P1CharDisplay : g.P2CharDisplay] += " " + cardID;
 
     return this;
   }
 
   public AddCardToHand(player: number, cardID: string) {
     const index = player === 1 ? g.P1Hand : g.P2Hand;
-    if(this._gameState[index] !== '') {
-      this._gameState[index] += ' ';
+    if (this._gameState[index] !== "") {
+      this._gameState[index] += " ";
     }
     this._gameState[index] += cardID;
 
@@ -112,13 +121,13 @@ export class GameState {
 
   public AddCardToDeck(player: number, cardID: string, times: number = 1) {
     const index = player === 1 ? g.P1Deck : g.P2Deck;
-    if(this._gameState[index] !== '') {
-      this._gameState[index] += ' ';
+    if (this._gameState[index] !== "") {
+      this._gameState[index] += " ";
     }
-    for(let i = 0; i < times; ++i) {
+    for (let i = 0; i < times; ++i) {
       this._gameState[index] += cardID;
-      if(i < times - 1) {
-        this._gameState[index] += ' ';
+      if (i < times - 1) {
+        this._gameState[index] += " ";
       }
     }
 
@@ -127,47 +136,64 @@ export class GameState {
 
   public AddResource(player: number, cardID: string, ready: boolean = true, stealSource: number = -1) {
     const index = player === 1 ? g.P1ResourcesArray : g.P2ResourcesArray;
-    if(this._gameState[index] !== '') {
-      this._gameState[index] += ' ';
+    if (this._gameState[index] !== "") {
+      this._gameState[index] += " ";
     }
     this._gameState[index] += `${cardID} DOWN 1 0 ${ready ? "0" : "1"} ${this._uniqueIdCounter++} ${stealSource}`;
 
     return this;
   }
 
-  public FillResources(player: number, cardID: string, times: number) {
+  public FillResources(player: number, totalResources: number, totalExhausted: number = 0) {
     const index = player === 1 ? g.P1ResourcesArray : g.P2ResourcesArray;
-    if(this._gameState[index] !== '') {
-      this._gameState[index] += ' ';
+    if (this._gameState[index] !== "") {
+      this._gameState[index] += " ";
     }
-    for(let i = 0; i < times; ++i) {
-      this._gameState[index] += `${cardID} DOWN 1 0 0 ${this._uniqueIdCounter++} -1`;
-      if(i < times - 1) {
-        this._gameState[index] += ' ';
+    const cardID = cards.SOR.BFMarine;
+    for (let i = 0; i < totalResources; ++i) {
+      let ready = true;
+      if (totalExhausted > 0) {
+        ready = false;
+        totalExhausted--;
+      }
+
+      this._gameState[index] += `${cardID} DOWN 1 0 ${ready ? "0" : "1"} ${this._uniqueIdCounter++} -1`;
+      if (i < totalResources - 1) {
+        this._gameState[index] += " ";
       }
     }
 
     return this;
   }
 
-  public AddUnit(player: number, cardID: string, ready: boolean = true,
-      damage: number = 0, upgrades = "-", owner = player, carbonite = false, numUses = 1,
-      turnsInPlay = 0, numAttacks = 0, cloned = false, healed = false, arenaOverride = "NA")
-  {
+  public AddUnit(
+    player: number,
+    cardID: string,
+    ready: boolean = true,
+    damage: number = 0,
+    upgrades = "-",
+    owner = player,
+    carbonite = false,
+    numUses = 1,
+    turnsInPlay = 0,
+    numAttacks = 0,
+    cloned = false,
+    healed = false,
+    arenaOverride = "NA",
+  ) {
     const index = player === 1 ? g.P1AlliesArray : g.P2AlliesArray;
-    if(this._gameState[index] !== '') {
-      this._gameState[index] += ' ';
+    if (this._gameState[index] !== "") {
+      this._gameState[index] += " ";
     }
-    this._gameState[index] += (
-      `${cardID} ${ready ? "2" : "1"} ${damage} ${carbonite ? "1" : "0"} ${upgrades} ${this._uniqueIdCounter++} 0 0 `
-      + `${numUses} 0 ${numAttacks} ${owner} ${turnsInPlay} ${cloned ? "1" : "0"} ${healed ? "1" : "0"} ${arenaOverride} 0`
-    );
+    this._gameState[index] +=
+      `${cardID} ${ready ? "2" : "1"} ${damage} ${carbonite ? "1" : "0"} ${upgrades} ${this._uniqueIdCounter++} 0 0 ` +
+      `${numUses} 0 ${numAttacks} ${owner} ${turnsInPlay} ${cloned ? "1" : "0"} ${healed ? "1" : "0"} ${arenaOverride} 0`;
 
     return this;
   }
 
   public SetBasesDamage(damage: string) {
-    if(damage.split(' ').length !== 2) {
+    if (damage.split(" ").length !== 2) {
       throw new Error('Damage must be in the format "N N"');
     }
     this._gameState[g.BaseHealths] = damage;
@@ -187,11 +213,11 @@ export class GameState {
 }
 
 export class SubcardBuilder {
-  private _subcard: string = '';
+  private _subcard: string = "";
 
   public AddUpgrade(cardID: string, owner: number, isPilot: boolean = false) {
-    if(this._subcard !== '') {
-      this._subcard += ',';
+    if (this._subcard !== "") {
+      this._subcard += ",";
     }
     this._subcard += `${cardID},${owner},${isPilot ? "1" : "0"}`;
 
@@ -199,13 +225,13 @@ export class SubcardBuilder {
   }
 
   public AddShield(owner: number, number: number = 1) {
-    if(this._subcard !== '') {
-      this._subcard += ',';
+    if (this._subcard !== "") {
+      this._subcard += ",";
     }
-    for(let i = 0; i < number; ++i) {
+    for (let i = 0; i < number; ++i) {
       this._subcard += `8752877738,${owner},0`;
-      if(i < number - 1) {
-        this._subcard += ',';
+      if (i < number - 1) {
+        this._subcard += ",";
       }
     }
 
@@ -213,13 +239,13 @@ export class SubcardBuilder {
   }
 
   public AddExperience(owner: number, number: number = 1) {
-    if(this._subcard !== '') {
-      this._subcard += ',';
+    if (this._subcard !== "") {
+      this._subcard += ",";
     }
-    for(let i = 0; i < number; ++i) {
+    for (let i = 0; i < number; ++i) {
       this._subcard += `2007868442,${owner},0`;
-      if(i < number - 1) {
-        this._subcard += ',';
+      if (i < number - 1) {
+        this._subcard += ",";
       }
     }
 
@@ -227,8 +253,8 @@ export class SubcardBuilder {
   }
 
   public AddCaptive(cardID: string, owner: number) {
-    if(this._subcard !== '') {
-      this._subcard += ',';
+    if (this._subcard !== "") {
+      this._subcard += ",";
     }
     this._subcard += `${cardID},${owner},0`;
 

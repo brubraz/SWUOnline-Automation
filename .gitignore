@@ -30,3 +30,4 @@ test-results.xml
 chromedriver-mobile/
 *.sw[po]
 screenshots/
+package-lock.json
