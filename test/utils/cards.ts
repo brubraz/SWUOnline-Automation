@@ -127,6 +127,7 @@ export const cards = {
     EphantMon: '9734237871',
     Finalizer: '9752523457',
     CartelTurncoat: '9108611319',
+    LomPyke: '5632569775',
     //upgrades
     TopTarget: '4282425335',
     Darksaber: '3141660491',

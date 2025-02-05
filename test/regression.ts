@@ -21,6 +21,7 @@ import { LeaderUnitSHDCases } from './cases/leader-unit-shd';
 import { LeaderUnitTWICases } from './cases/leader-unit-twi';
 import { SpecificSORCases } from './cases/specific/sor';
 import { BountyCases } from './cases/bounty';
+import { SmuggleCases } from './cases/smuggle';
 import { SpecificSHDCases } from './cases/specific/shd';
 import { ExploitCases } from './cases/exploit';
 import { CloneCases } from './cases/clone';
@@ -51,6 +52,7 @@ const home: NightwatchTests = {
   ...LeaderUnitTWICases,
   ...SpecificSORCases,
   ...BountyCases,
+  ...SmuggleCases,
   ...SpecificSHDCases,
   ...ExploitCases,
   ...CloneCases,
