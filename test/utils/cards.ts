@@ -157,6 +157,7 @@ export const cards = {
     //leaders and leader units
     CountDookuLeader: '5683908835',
     NalaSeLeader: '2742665601',
+    NalaSeLeaderUnit: 'f05184bd91',
     YodaLeader: '2847868671',
     //units
     Malevolence: '3381931079',

@@ -29,6 +29,7 @@ import { SpecificTWICases } from './cases/specific/twi';
 import { PilotJTLCases } from './cases/pilots';
 
 import { LocalTestCase } from './cases/local';
+import { LeaderAbilityTWICases } from './cases/leader-ability-twi';
 
 const home: NightwatchTests = {
   before: init,
@@ -46,16 +47,17 @@ const home: NightwatchTests = {
   ...BoardWipeCases,
   ...ControlCases,
   ...DefeatUpgradeCases,
-  ...LeaderAbilitySORCases,
-  ...LeaderUnitSORCases,
-  ...LeaderUnitSHDCases,
-  ...LeaderUnitTWICases,
-  ...SpecificSORCases,
   ...BountyCases,
   ...SmuggleCases,
-  ...SpecificSHDCases,
   ...ExploitCases,
   ...CloneCases,
+  ...LeaderAbilitySORCases,
+  ...LeaderUnitSORCases,
+  ...SpecificSORCases,
+  ...LeaderUnitSHDCases,
+  ...SpecificSHDCases,
+  ...LeaderAbilityTWICases,
+  ...LeaderUnitTWICases,
   ...SpecificTWICases,
   ...PilotJTLCases,
 //end regression suite
