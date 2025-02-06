@@ -5,18 +5,26 @@ import {
   g
 } from './util';
 
+let uniqueIdCounter = 1;
+
+export function GetUniqueId(): number {
+  return uniqueIdCounter++;
+}
+
+export function ResetUniqueId() {
+  uniqueIdCounter = 1;
+}
 
 export class GameState {
   private _gameName: string = '';
   private _gameState: string[] = [];
-  private _uniqueIdCounter: number = 0;
 
   public constructor(gameName: string) {
     if(gameName === '') {
       throw new Error('Game name cannot be empty.');
     }
     this._gameName = gameName;
-    this._uniqueIdCounter = 1;
+    ResetUniqueId();
   }
 
   public async LoadGameStateLinesAsync() {
@@ -145,7 +153,7 @@ export class GameState {
     if(this._gameState[index] !== '') {
       this._gameState[index] += ' ';
     }
-    this._gameState[index] += `${cardID} DOWN 1 0 ${ready ? "0" : "1"} ${this._uniqueIdCounter++} ${stealSource}`;
+    this._gameState[index] += `${cardID} DOWN 1 0 ${ready ? "0" : "1"} ${GetUniqueId()} ${stealSource}`;
 
     return this;
   }
@@ -156,7 +164,7 @@ export class GameState {
       this._gameState[index] += ' ';
     }
     for(let i = 0; i < times; ++i) {
-      this._gameState[index] += `${cardID} DOWN 1 0 0 ${this._uniqueIdCounter++} -1`;
+      this._gameState[index] += `${cardID} DOWN 1 0 0 ${GetUniqueId()} -1`;
       if(i < times - 1) {
         this._gameState[index] += ' ';
       }
@@ -174,7 +182,7 @@ export class GameState {
       this._gameState[index] += ' ';
     }
     this._gameState[index] += (
-      `${cardID} ${ready ? "2" : "1"} ${damage} ${carbonite ? "1" : "0"} ${upgrades} ${this._uniqueIdCounter++} 0 0 `
+      `${cardID} ${ready ? "2" : "1"} ${damage} ${carbonite ? "1" : "0"} ${upgrades} ${GetUniqueId()} 0 0 `
       + `${numUses} 0 ${numAttacks} ${owner} ${turnsInPlay} ${cloned ? "1" : "0"} ${healed ? "1" : "0"} ${arenaOverride} 0`
     );
 
@@ -226,7 +234,7 @@ export class SubcardBuilder {
     if(this._subcard !== '') {
       this._subcard += ',';
     }
-    this._subcard += `${cardID},${owner},${isPilot ? "1" : "0"}`;
+    this._subcard += `${cardID},${owner},${isPilot ? "1" : "0"},${GetUniqueId()}`;
 
     return this;
   }
@@ -236,7 +244,7 @@ export class SubcardBuilder {
       this._subcard += ',';
     }
     for(let i = 0; i < number; ++i) {
-      this._subcard += `8752877738,${owner},0`;
+      this._subcard += `8752877738,${owner},0,${GetUniqueId()}`;
       if(i < number - 1) {
         this._subcard += ',';
       }
@@ -250,7 +258,7 @@ export class SubcardBuilder {
       this._subcard += ',';
     }
     for(let i = 0; i < number; ++i) {
-      this._subcard += `2007868442,${owner},0`;
+      this._subcard += `2007868442,${owner},0,${GetUniqueId()}`;
       if(i < number - 1) {
         this._subcard += ',';
       }
@@ -263,7 +271,7 @@ export class SubcardBuilder {
     if(this._subcard !== '') {
       this._subcard += ',';
     }
-    this._subcard += `${cardID},${owner},0`;
+    this._subcard += `${cardID},${owner},0,${GetUniqueId()}`;
 
     return this;
   }
